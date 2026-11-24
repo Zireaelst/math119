@@ -4,7 +4,7 @@
 
 Bu sayfa notebook’un GitHub’da okunabilen kısa özetidir. Kapsam, duyuru ve [kapsam görselindeki](kapsam.png) 12 başlıktır. Kalın numaralar [210 soruluk bankadaki](210-cikmis.pdf) Item numaralarıdır, sayfaları [dizinde](cikmis-dizini.md).
 
-[Teoremle ispat örnekleri](teoremle-ispat.pdf) · [Haftalık çözümler](../recitations/README.md) · [Özgün deneme](deneme.md) · [Genel defter](../defter.html)
+[Teoremle ispat örnekleri](teoremle-ispat.pdf) · [Haftalık çözümler](../recitations/README.md) · [Özgün deneme](deneme.md) · [Ek mock 1–2 (PDF + çözüm)](ek-mock/README.md) · [Genel defter](../defter.html)
 
 ## 2.8 Mean-Value Theorem
 
