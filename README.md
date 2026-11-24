@@ -5,6 +5,7 @@
 
 | Çalışmak istediğin şey | Nereden başlamalı? |
 | --- | --- |
+| **MT2 notebook** (formül kartı, trickler, 53 soru tipi, 210 çıkmışın tamamı, 3 mock) | [mt2/notebook.html](mt2/notebook.html): repoyu indirip tarayıcıda aç. Çıkmış bağlantıları aynı klasördeki PDF’in ilgili sayfasını açar. |
 | MT2’de hangi soruyu nasıl çözerim? | [12 konu, çözümlü örnekler ve konuya göre çıkmış numaraları](mt2/README.md) |
 | Finalde integral yöntemini nasıl seçerim? | [15 konu, çözümlü örnekler ve sınav sayfaları](final/README.md) |
 | Cevabı görmeden pratik yapmak | [Tarayıcıda açılan çevrimdışı defter](defter.html) · [MT2 denemesi](mt2/deneme.md) · [Final denemesi](final/deneme.md) |
@@ -27,6 +28,8 @@
 [14 haftalık ek recitation dizini](recitations/2024-guz/README.md) · [210 MT2 sorusu ve çözüm sayfaları](mt2/cikmis-dizini.md) · [Final için 180 integral ve geometri sorusu](final/cikmis-dizini.md)
 
 ## MT2’ye dört oturumda hazırlan
+
+Ayrıntılı yol: [MT2 notebook](mt2/notebook.html) her konuda formül kartı → tuzaklar → soru tipi → recitation → çıkmış → çözüm sırasıyla ilerler. Aşağıdaki dört oturum kısa sürümdür.
 
 1. **Teorem ve türev.** [Hafta 4](recitations/hafta-04.pdf) Q3–7 ile ispat yaz. [Hafta 5](recitations/hafta-05.pdf) Q1 ve Q3–8 ile örtük türev, ters fonksiyon ve logaritmik türeve geç. Ters trigonometrik fonksiyonlar için [210 soruluk bankadan](mt2/210-cikmis.pdf) 50, 52, 55’i çöz.
 2. **Hız ve limit.** [Hafta 6](recitations/hafta-06.pdf) Q3–6 ve Q8’i çöz. Hız sorusunda önce değişkenlerin birimlerini, limit sorusunda ilk belirsizlik biçimini yaz.

@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MATH119 MT2 Notebook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=STIX+Two+Text:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+:root{--ink:#192c25;--muted:#4d6258;--line:#c9d3c8;--paper:#f8f7f0;--card:#fffefa;--green:#174939;--green2:#e3ece5;--accent:#974324;--warn:#fbeee3;--warnline:#e2b48f;--hard:#7a1f3d;--hardbg:#f8e9ee;--code:#eef1ea}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#e6ece6;--muted:#a7b8ae;--line:#36483f;--paper:#111a16;--card:#17221d;--green:#8fd1b2;--green2:#1d3329;--accent:#f0a27a;--warn:#2c241c;--warnline:#7a5636;--hard:#f29bb5;--hardbg:#2b1820;--code:#1c2a23}}
+:root[data-theme="dark"]{--ink:#e6ece6;--muted:#a7b8ae;--line:#36483f;--paper:#111a16;--card:#17221d;--green:#8fd1b2;--green2:#1d3329;--accent:#f0a27a;--warn:#2c241c;--warnline:#7a5636;--hard:#f29bb5;--hardbg:#2b1820;--code:#1c2a23}
+*{box-sizing:border-box}
+html{scroll-padding-top:70px}
+body{margin:0;color:var(--ink);background:var(--paper);font:16.5px/1.62 "Source Sans 3",system-ui,sans-serif}
+h1,h2,h3,h4{font-family:"STIX Two Text",Georgia,serif;line-height:1.15;margin:0}
+a{color:var(--green);text-underline-offset:.2em}
+a:hover{color:var(--accent)}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer;background:var(--green);color:var(--paper);border:0;border-radius:6px;padding:.4rem .8rem}
+button.ghost{background:transparent;color:var(--green);border:1px solid var(--line)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.top{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+.top .in{display:flex;gap:.8rem;align-items:center;max-width:1280px;margin:auto;padding:.55rem 16px}
+.brand{font-family:"STIX Two Text",Georgia,serif;font-weight:700;font-size:1.15rem;white-space:nowrap}
+.top input[type=search]{flex:1;min-width:0;padding:.4rem .7rem;border:1px solid var(--line);border-radius:6px;background:var(--card)}
+.prog{font-size:.85rem;color:var(--muted);white-space:nowrap}
+.layout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:2rem;max-width:1280px;margin:auto;padding:0 16px}
+nav.toc{position:sticky;top:60px;align-self:start;max-height:calc(100vh - 70px);overflow:auto;padding:1rem 0;font-size:.92rem}
+nav.toc a{display:block;padding:.18rem .5rem;border-left:3px solid transparent;text-decoration:none;color:var(--ink)}
+nav.toc a:hover,nav.toc a.on{border-left-color:var(--accent);background:var(--green2)}
+nav.toc .grp{margin:.9rem 0 .25rem .5rem;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+nav.toc .cnt{float:right;color:var(--muted);font-size:.8rem}
+main{padding:1.2rem 0 5rem;min-width:0}
+.hero{padding:1.5rem 0 1rem;border-bottom:1px solid var(--line);margin-bottom:1.5rem}
+.hero h1{font-size:clamp(1.8rem,4vw,2.6rem)}
+.hero p{color:var(--muted);max-width:70ch;margin:.6rem 0 0}
+section.topic,section.block{margin:2.8rem 0 0;padding-top:.5rem}
+section.topic>h2,section.block>h2{font-size:1.9rem;border-bottom:2px solid var(--green);padding-bottom:.35rem;margin-bottom:.9rem}
+section.topic>h2 .no{color:var(--accent);margin-right:.4rem}
+h3{font-size:1.3rem;margin:1.6rem 0 .6rem}
+h4{font-size:1.08rem;margin:1rem 0 .35rem}
+p{margin:.45rem 0}
+ul,ol{margin:.4rem 0;padding-left:1.4rem}
+li{margin:.2rem 0}
+.meta{font-size:.9rem;color:var(--muted)}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding: .9rem 1.1rem;margin:.8rem 0}
+.cheat{border-left:5px solid var(--green)}
+.cheat h4{margin-top:0}
+.trick{background:var(--warn);border:1px solid var(--warnline);border-left:5px solid var(--accent);border-radius:10px;padding:.8rem 1.1rem;margin:.8rem 0}
+.trick h4{margin-top:0;color:var(--accent)}
+.hard{background:var(--hardbg);border:1px solid var(--line);border-left:5px solid var(--hard);border-radius:10px;padding:.8rem 1.1rem;margin:1rem 0}
+.hard h4{margin-top:0;color:var(--hard)}
+.tip{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:.9rem 1.1rem;margin:1rem 0}
+.tip>header{display:flex;gap:.7rem;align-items:baseline;flex-wrap:wrap;justify-content:space-between}
+.tip>header h4{margin:0;font-size:1.12rem}
+.tip>header label{font-size:.85rem;color:var(--muted);white-space:nowrap;cursor:pointer}
+.tip.done{opacity:.78;border-color:var(--green)}
+.tag{display:inline-block;font-size:.75rem;padding:.05rem .45rem;border-radius:20px;border:1px solid var(--line);color:var(--muted);margin-left:.3rem;vertical-align:middle}
+.tag.f{background:var(--green2);color:var(--green);border-color:transparent}
+.tag.h{background:var(--hardbg);color:var(--hard);border-color:transparent}
+.steps{counter-reset:s;list-style:none;padding-left:0}
+.steps li{counter-increment:s;padding-left:2rem;position:relative}
+.steps li::before{content:counter(s);position:absolute;left:0;top:.1rem;width:1.4rem;height:1.4rem;border-radius:50%;background:var(--green);color:var(--paper);font-size:.8rem;display:grid;place-items:center}
+.ex{border-top:1px dashed var(--line);margin-top:.7rem;padding-top:.5rem}
+.ex>p:first-child b{color:var(--accent)}
+details.sol{margin:.5rem 0;border:1px solid var(--line);border-radius:8px;background:var(--paper)}
+details.sol>summary{cursor:pointer;padding:.35rem .8rem;font-weight:600;color:var(--green);list-style:none}
+details.sol>summary::before{content:"▸ "}
+details.sol[open]>summary::before{content:"▾ "}
+details.sol>div{padding:.2rem 1rem .8rem}
+.past{font-size:.92rem;margin-top:.6rem}
+.past b{font-weight:600}
+a.it{display:inline-block;margin:.12rem .15rem;padding:.02rem .45rem;border:1px solid var(--line);border-radius:6px;text-decoration:none;font-size:.86rem;background:var(--paper);white-space:nowrap}
+a.it:hover{border-color:var(--accent)}
+a.it .y{color:var(--muted)}
+a.it.out{border-style:dashed}
+.sl{font-size:.8rem;margin-left:.1rem}
+table{border-collapse:collapse;width:100%;margin:.6rem 0;font-size:.95rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;text-align:left;vertical-align:top}
+th{background:var(--green2)}
+.tw{overflow-x:auto}
+.katex-display{overflow-x:auto;overflow-y:hidden;padding:.15rem 0}
+textarea.note{width:100%;min-height:90px;border:1px solid var(--line);border-radius:8px;padding:.6rem;background:var(--card);resize:vertical}
+.notewrap{margin-top:1.2rem}
+.notewrap label{font-weight:600;font-size:.95rem}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.8rem}
+.mock .q{border-top:1px solid var(--line);padding-top:.6rem;margin-top:.9rem}
+.mock .q>p:first-child b{color:var(--accent)}
+.timer{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap;margin:.6rem 0}
+.timer .clock{font-family:ui-monospace,Menlo,monospace;font-size:1.4rem;min-width:6ch}
+.hidden{display:none!important}
+.bar{height:8px;background:var(--line);border-radius:6px;overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--green);width:0}
+.freq td:nth-child(2){font-variant-numeric:tabular-nums;text-align:right}
+.fb{display:inline-block;height:10px;background:var(--green);border-radius:3px;vertical-align:middle;margin-left:.3rem}
+#menuBtn{display:none}
+@media (max-width:860px){.brand{font-size:1rem}.prog{display:none}.layout{grid-template-columns:1fr}nav.toc{display:none;position:fixed;inset:52px 0 0 0;background:var(--paper);z-index:30;padding:1rem 16px;max-height:none}nav.toc.open{display:block}#menuBtn{display:inline-block}}
+@media print{.top,nav.toc,.notewrap,.timer,.tip>header label{display:none!important}.layout{display:block}details.sol{display:block}details.sol>div{display:block}body{font-size:12pt}}
+</style>
+</head>
+<body>
+<div class="top"><div class="in">
+<button id="menuBtn" class="ghost" aria-label="İçindekiler">☰</button>
+<span class="brand">MATH119 · MT2</span>
+<input type="search" id="q" placeholder="Ara: L'Hôpital, silindir, arctan, #85 …" aria-label="Notebook içinde ara">
+<span class="prog" id="prog">0/0 tip</span>
+<button class="ghost" id="themeBtn" aria-label="Tema değiştir">◐</button>
+</div></div>
+<div class="layout">
+<nav class="toc" id="toc">
+<div class="grp">Başlangıç</div>
+<a href="#profil">Sınav profili</a>
+<a href="#rota">Çalışma rotası</a>
+<div class="grp">Bölüm 2 · Differentiation</div>
+<a href="#mvt">2.8 Mean-Value Theorem</a>
+<a href="#imp">2.9 Implicit Differentiation</a>
+<div class="grp">Bölüm 3 · Transcendental</div>
+<a href="#inv">3.1 Inverse Functions</a>
+<a href="#ln">3.3 ln ve exp</a>
+<a href="#atrig">3.5 Inverse Trig</a>
+<div class="grp">Bölüm 4 · Applications</div>
+<a href="#rr">4.1 Related Rates</a>
+<a href="#lh">4.3 Indeterminate Forms</a>
+<a href="#ext">4.4 Extreme Values</a>
+<a href="#conc">4.5 Concavity</a>
+<a href="#sketch">4.6 Graph Sketching</a>
+<a href="#opt">4.8 Extreme-Value Problems</a>
+<a href="#lin">4.9 Linear Approximation</a>
+<div class="grp">Sınav provası</div>
+<a href="#kart">Tek sayfa formül kartı</a>
+<a href="#mock1">Mock 1</a>
+<a href="#mock2">Mock 2</a>
+<a href="#mock3">Mock 3</a>
+<a href="#kaynak">Kaynaklar ve bağlantılar</a>
+</nav>
+<main id="main">
+<div class="hero">
+<h1>MATH119 · MT2 Notebook</h1>
+<p>28 Kasım 2026 MT2 kapsamındaki 12 başlık için hazırlanmış konu defteri. Her konuda önce formül kartı ve tuzaklar, ardından çıkmış sorulardan çıkarılmış <b>bütün soru tipleri</b> var. Her tip için nasıl tanınacağı, adım adım yöntem, çözümlü bir gerçek soru, aynı tipteki diğer çıkmışların bağlantıları ve ilgili recitation sorusu verilmiştir. En sonda üç süreli mock sınav bulunur.</p>
+<p class="meta">Çözümler bu çalışma için yazıldı; resmî cevap anahtarı değildir. Çıkmış bağlantıları <a href="210-cikmis.pdf">210 soruluk MT2 bankasının</a> soru ve çözüm sayfalarını açar (#numara = bankadaki Item). Kesik çerçeveli bağlantılar sorunun bir kısmının bu dönemki MT2 kapsamı dışında kaldığını (integral, FTC, Riemann toplamı) gösterir. İşaretlediğin tipler ve notların bu tarayıcıda saklanır.</p>
+</div>
+
+<section class="block" id="profil">
+<h2>Sınav profili</h2>
+<p>Kapsam: Adams &amp; Essex <b>2.8, 2.9, 3.1, 3.3, 3.5, 4.1, 4.3, 4.4, 4.5, 4.6, 4.8, 4.9</b>. Aradaki 3.2, 3.4, 4.2 ve 4.7 kapsamda değil. İntegral, FTC ve Riemann toplamı final konusu.</p>
+<h3>210 çıkmış sorunun konu dağılımı</h3>
+<div class="tw"><table class="freq">
+<tr><th>Bankadaki konu</th><th>Soru</th><th>Notebook bölümü</th></tr>
+<tr><td>Indeterminate forms · l’Hôpital<span class="fb" style="width:120px"></span></td><td>30</td><td><a href="#lh">4.3</a></td></tr>
+<tr><td>Curve sketching<span class="fb" style="width:112px"></span></td><td>28</td><td><a href="#sketch">4.6</a> + <a href="#conc">4.5</a></td></tr>
+<tr><td>Mean value theorem<span class="fb" style="width:104px"></span></td><td>26</td><td><a href="#mvt">2.8</a></td></tr>
+<tr><td>Implicit differentiation<span class="fb" style="width:92px"></span></td><td>23</td><td><a href="#imp">2.9</a></td></tr>
+<tr><td>Optimization<span class="fb" style="width:92px"></span></td><td>23</td><td><a href="#opt">4.8</a></td></tr>
+<tr><td>Related rates<span class="fb" style="width:88px"></span></td><td>22</td><td><a href="#rr">4.1</a></td></tr>
+<tr><td>Logarithmic differentiation<span class="fb" style="width:64px"></span></td><td>16</td><td><a href="#ln">3.3</a></td></tr>
+<tr><td>Extreme values<span class="fb" style="width:60px"></span></td><td>15</td><td><a href="#ext">4.4</a></td></tr>
+<tr><td>Linear approximation<span class="fb" style="width:48px"></span></td><td>12</td><td><a href="#lin">4.9</a></td></tr>
+<tr><td>Inverse functions<span class="fb" style="width:36px"></span></td><td>9</td><td><a href="#inv">3.1</a></td></tr>
+<tr><td>Inverse trigonometric functions<span class="fb" style="width:16px"></span></td><td>4</td><td><a href="#atrig">3.5</a> (başka sorularda da parça olarak geçer)</td></tr>
+<tr><td>Concavity and inflection<span class="fb" style="width:8px"></span></td><td>2</td><td><a href="#conc">4.5</a> (grafik sorularının içinde her yıl var)</td></tr>
+</table></div>
+<h3>Son MT2’lerden çıkan desen</h3>
+<ul>
+<li><b>Q1 neredeyse her zaman limit</b> (2–3 alt soru): bir $0/0$, bir $1^\infty$ ya da $0^0$, bazen $\infty-\infty$. Örnek: <a class="it" data-i="81"></a> <a class="it" data-i="86"></a> <a class="it" data-i="97"></a> <a class="it" data-i="100"></a>.</li>
+<li><b>Her kâğıtta bir grafik sorusu</b> var. Ya $f, f', f''$ verilir ya da sadece işaret tablosu ve limitlerle “bilgiden çizim” istenir: <a class="it" data-i="87"></a> <a class="it" data-i="82"></a> <a class="it" data-i="93"></a> <a class="it" data-i="98"></a>.</li>
+<li>Ekstremum ya da kritik nokta sınıflandırması (sıklıkla $x^{2/3}$ gibi tekil noktalı): <a class="it" data-i="88"></a> <a class="it" data-i="95"></a>.</li>
+<li>Bir optimizasyon ve bir bağlı hız ya da doğrusal yaklaşım.</li>
+<li>Bu dönem 2.8–3.5 de MT2’de. Eskiden MT1’de sorulan <b>MVT ispatı, örtük türev, ters fonksiyonun türevi ve logaritmik türev</b> sorularını MT2’de de bekle. Güncel MT1 kâğıdına göre beklenen uzunluk 90–100 dakikada 7–9 soru.</li>
+</ul>
+<div class="hard"><h4>“Ekstra zor” 1–2 soru nasıl geliyor?</h4>
+<p>Son dönemdeki zor sorular yeni bir konudan gelmiyor. Bildiğin bir tipi <b>bir adım daha soyut</b> kuruyorlar:</p>
+<ul>
+<li>İki ayrı uzaklık verilip koordinatın hızı soruluyor, yani iki denklemli bağlı hız: <a class="it" data-i="79"></a>.</li>
+<li>Fonksiyon formülle değil bir türev bağıntısıyla veriliyor, kritik nokta sınıflandırılıyor: <a class="it" data-i="90" data-x></a>.</li>
+<li>Geometrik kısıt ($\angle OBA=\pi/2$) koordinata çevrilip optimizasyon yapılıyor: <a class="it" data-i="85"></a>.</li>
+<li>Bir MVT sorusunda sabitleri senin seçmen isteniyor (<a class="it" data-i="14"></a>). Doğru/Yanlış’ta karşı örnek isteniyor (<a class="it" data-i="1"></a>, <a class="it" data-i="23"></a>).</li>
+</ul>
+<p>Hazırlık: her tipte <b>neden</b> o adımın atıldığını bil, hipotezleri (süreklilik, türevlenebilirlik, kapalı aralık) her zaman yaz. Her konu sonundaki zor soruyu kâğıt üzerinde çöz.</p></div>
+</section>
+
+<section class="block" id="rota">
+<h2>Çalışma rotası</h2>
+<p>STAT291’deki sıra: <b>konu → recitation sorusu → gerçek çıkmış → çözüm</b>.</p>
+<ol class="steps">
+<li>Konunun formül kartını oku, boş kâğıda ezberden yaz. Kartı kendi defterine geçir.</li>
+<li>Tuzak kutusundaki her maddeyi bir örnekle eşleştir.</li>
+<li>Her soru tipinde önce yöntem adımlarını oku, sonra çözümlü örneği <b>çözümü açmadan</b> dene.</li>
+<li>Aynı tipteki recitation sorusunu çöz ve <a href="../recitations/README.md">haftalık çözümlerle</a> karşılaştır.</li>
+<li>Tipin altındaki çıkmışlardan en az ikisini (biri en yeni dönemden) çöz, sonra çözüm sayfasını aç. Tip kartındaki kutuyu işaretle.</li>
+<li>Konu sonundaki zor soruyu çöz ve not alanına hatanı yaz.</li>
+<li>Son iki gün: <a href="#kart">formül kartı</a>, ardından süre tutarak Mock 1–3.</li>
+</ol>
+<div class="box"><b>Son 4 gün için öneri (24–28 Kasım).</b> 1. gün: 2.8, 2.9, 3.1, 3.3, 3.5. 2. gün: 4.1, 4.3, 4.9. 3. gün: 4.4, 4.5, 4.6, 4.8 ve Mock 1. 4. gün: Mock 2 ve 3, ardından not alanlarındaki hatalarını tekrar et.</div>
+</section>
+
+<section class="topic" id="mvt" data-topic="2.8">
+<h2><span class="no">2.8</span>Ortalama değer teoremi (Mean-Value Theorem)</h2>
+<p class="meta">Bankada 26 soru · Recitation: <a href="../recitations/hafta-04.md">H04 Q3–7</a> · <a href="../recitations/2024-guz/hafta-05.pdf">2024 föy 5</a> · Konu defteri: <a href="../kaynaklar/konu-defteri.pdf#page=36">s.36</a> · <a href="teoremle-ispat.pdf">Teoremle ispat örnekleri</a></p>
+
+<div class="box cheat"><h4>Formül kartı</h4>
+<p><b>MVT.</b> $f$, $[a,b]$ üzerinde <b>sürekli</b> ve $(a,b)$ içinde <b>türevlenebilir</b> ise
+$$\exists\, c\in(a,b):\qquad f'(c)=\frac{f(b)-f(a)}{b-a}.$$</p>
+<p><b>Rolle.</b> Ek olarak $f(a)=f(b)$ ise $\exists\,c\in(a,b)$ ile $f'(c)=0$.</p>
+<p><b>Generalized MVT (Cauchy).</b> $f,g$ aynı koşullarda ve $g'\neq0$ ise $\dfrac{f(b)-f(a)}{g(b)-g(a)}=\dfrac{f'(c)}{g'(c)}$. (L’Hôpital’in ispatında kullanılır.)</p>
+<p><b>Sonuçlar (Adams Teorem 12–13).</b></p>
+<ul>
+<li>Bir aralıkta $f'>0$ ise $f$ artandır, $f'\lt 0$ ise azalandır.</li>
+<li>Bir aralıkta $f'\equiv0$ ise $f$ sabittir. $f'=g'$ ise $f-g$ sabittir.</li>
+<li>$m\le f'(x)\le M$ ise $m(b-a)\le f(b)-f(a)\le M(b-a)$.</li>
+</ul>
+<p><b>IVT (MT1’den).</b> $f$, $[a,b]$’de sürekli ve $s$ değeri $f(a)$ ile $f(b)$ arasındaysa $f(c)=s$ olacak bir $c$ vardır. Kök <b>varlığı</b> IVT ile, kök <b>tekliği</b> Rolle ya da monotonlukla gösterilir.</p>
+<p><b>Darboux (bilmek iyi).</b> Türev fonksiyonu, kendisi sürekli olmasa bile ara değer özelliğine sahiptir. Sınavda güvenli yol yine de $f'$’nin sürekliliği verilmişse IVT’yi $f'$’ye uygulamaktır.</p>
+</div>
+
+<div class="trick"><h4>Tuzaklar ve trickler</h4>
+<ul>
+<li><b>Hipotez yazmayan puan kaybeder.</b> “$f$ polinom olduğu için $[0,x]$’te sürekli, $(0,x)$’te türevlenebilir” cümlesi sınav puanının bir parçası.</li>
+<li>$\tan x$, $\ln x$, $x^{1/3}$, $|x|$ gibi fonksiyonlarda aralığın tanım kümesinin ve türevlenebilirlik bölgesinin içinde kaldığını kontrol et. $|x|$ için $[-1,1]$’de Rolle uygulanamaz.</li>
+<li>$c$’nin <b>açık aralıkta</b> olduğunu kullan: $0\lt c\lt x$ verir $\cos c\lt 1$, $\frac1{1+c}\lt 1$, $e^{c}\gt 1$ gibi kesin eşitsizlikler.</li>
+<li>“Tam olarak bir kök” = <b>en az bir</b> (IVT) + <b>en fazla bir</b> (Rolle ile çelişki ya da $f'\gt 0$). İkisini ayrı paragraflarda yaz.</li>
+<li>$n$ kök varsa Rolle’ü tekrar uygulayarak $f'$’nin en az $n-1$, $f''$’nün en az $n-2$ kökü olur. “$f''\gt 0$ ise en fazla 2 kök” böyle gösterilir.</li>
+<li>Tek fonksiyon ($f(-x)=-f(x)$) verilmişse $[-b,b]$ aralığını kullan. Bu durumda $f(b)-f(-b)=2f(b)$ olur.</li>
+<li>Doğru/Yanlış sorusunda <b>yanlış</b> için tek bir somut karşı örnek yeter. Grafik çizmek de kabul ediliyor.</li>
+</ul></div>
+
+<h3>Soru tipleri</h3>
+
+<article class="tip" data-key="mvt-a"><header><h4>Tip A · Teorem ifadesi, hipotez kontrolü, Doğru/Yanlış</h4><span><span class="tag f">sık</span><label><input type="checkbox"> çalıştım</label></span></header>
+<p><b>Tanı:</b> “State the MVT”, “verify the hypotheses”, “TRUE or FALSE, give a counterexample”.</p>
+<ol class="steps"><li>Teoremi tam koşullarıyla yaz: kapalı aralıkta süreklilik, açıkta türevlenebilirlik.</li><li>Verilen ifadedeki eksik hipotezi bul: süreklilik uçta mı yok, türev bir noktada mı yok, aralık açık mı?</li><li>Yanlışsa eksik hipotezi bozan en basit fonksiyonu yaz: parçalı, $|x|$, sabit fark, uçta sıçrama.</li></ol>
+<div class="ex"><p><b>Örnek <a class="it" data-i="17"></a> (c).</b> $f$, $[0,1]$’de tanımlı, $(0,1)$’de türevlenebilir ve $f(0)=f(1)=2$ ise $f'(c)=0$ olan bir $c\in(0,1)$ vardır. Doğru mu?</p>
+<details class="sol"><summary>Çözüm</summary><div><p><b>Yanlış.</b> Rolle $[0,1]$ üzerinde <b>süreklilik</b> ister, burada verilmemiş. Karşı örnek: $f(x)=x+2$ ($0\le x\lt 1$), $f(1)=2$. $f(0)=f(1)=2$ ve $(0,1)$’de $f'(x)=1\neq0$. Kusur $x=1$’deki sıçramadır.</p>
+<p>Aynı sorunun (a) şıkkı: $f(x)=\frac{x^2-4}{x-2}$ için “$f'(x)=1,\ \forall x\in\mathbb R$” <b>yanlış</b>. $f$, $x=2$’de tanımsız olduğundan orada türev yoktur.</p></div></details></div>
+<div class="ex"><p><b>Örnek <a class="it" data-i="1"></a> (a).</b> Her $x$ için $h'(x)=k'(x)$ ise $h(x)=k(x)$ midir?</p>
+<details class="sol"><summary>Çözüm</summary><div><p><b>Yanlış.</b> $h'=k'$ ancak $h-k$’nin sabit olduğunu verir. Karşı örnek: $h=x^2$, $k=x^2+1$. (b) $x=0$ kritik nokta ise yerel maksimum mu? <b>Yanlış</b>: $f=x^3$. (c) $[2,7]$’de sürekli, $(2,7)$’de türevli, $f(2)=f(7)$ ise $f'(c)=0$ olan $c$ var mı? <b>Doğru</b>, Rolle.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="1"></a> <a class="it" data-i="3"></a> <a class="it" data-i="14"></a> <a class="it" data-i="17"></a> <a class="it" data-i="23"></a> <a class="it" data-i="26"></a> · Recitation <a href="../recitations/hafta-04.md">H04 Q7</a></p>
+</article>
+
+<article class="tip" data-key="mvt-b"><header><h4>Tip B · MVT ile eşitsizlik ispatı</h4><span><span class="tag f">sık</span><label><input type="checkbox"> çalıştım</label></span></header>
+<p><b>Tanı:</b> “Show that $\tan x\gt x$”, “$\ln x\lt x-1$”, “$\ln(1+x^2)\le 2x$”, “$e\ln x\le x$”.</p>
+<ol class="steps"><li>Eşitsizliğin bir tarafını $f(x)-f(a)$ biçimine getir. $a$, fonksiyonun bilinen değeri olsun: $\tan0=0$, $\ln1=0$.</li><li>$[a,x]$ (ya da $[x,a]$) üzerinde hipotezleri yaz, MVT ile $f(x)-f(a)=f'(c)(x-a)$.</li><li>$c$ aralığın içinde olduğundan $f'(c)$’yi kesin olarak sınırla. $x-a$’nın işaretine dikkat et.</li></ol>
+<div class="ex"><p><b>Örnek <a class="it" data-i="43"></a>.</b> $x\gt 1$ için $\ln x\lt x-1$ olduğunu kanıtla.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$f(t)=\ln t$, $[1,x]$’te sürekli ve $(1,x)$’te türevlenebilir ($t\gt 0$). MVT: bir $c\in(1,x)$ için
+$$\ln x-\ln1=\frac1c\,(x-1).$$
+$c\gt 1$ olduğundan $\frac1c\lt 1$ ve $x-1\gt 0$. Böylece $\ln x=\frac{x-1}{c}\lt x-1$. ∎</p></div></details></div>
+<div class="ex"><p><b>Örnek <a class="it" data-i="35"></a>.</b> $f'(x)=e^{-x^2}$ ve $f(0)=0$ ise $x\ne0$ için $|f(x)|\lt |x|$.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$f$ her yerde türevlenebilir, dolayısıyla süreklidir. $0$ ile $x$ arasında MVT: $f(x)-f(0)=e^{-c^2}(x-0)$, $c$ ile $0$ arasında ve $c\neq 0$. $0\lt e^{-c^2}\lt 1$ olduğundan $|f(x)|=e^{-c^2}|x|\lt |x|$. ∎</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="4"></a> <a class="it" data-i="7"></a> <a class="it" data-i="35"></a> <a class="it" data-i="36"></a> <a class="it" data-i="43"></a> <a class="it" data-i="46"></a> · Recitation <a href="../recitations/hafta-04.md">H04 Q3</a> ($\cos x\gt 1-x^2/2$)</p>
+</article>
+
+<article class="tip" data-key="mvt-c"><header><h4>Tip C · Türev sınırından fonksiyon değeri sınırı</h4><label><input type="checkbox"> çalıştım</label></header>
+<p><b>Tanı:</b> “$4\le f'(x)\le6$ ve $f(0)=119$ ise $121\le f(\tfrac12)\le122$”, “öyle bir $f$ var mı?”.</p>
+<ol class="steps"><li>MVT: $f(b)=f(a)+f'(c)(b-a)$.</li><li>$f'(c)$’nin sınırlarını $(b-a)$ ile çarp. $b-a\lt 0$ ise eşitsizlik yön değiştirir.</li><li>“Var mı?” sorusunda gereken ortalama eğimi hesapla, verilen türev sınırıyla çeliştiğini göster.</li></ol>
+<div class="ex"><p><b>Örnek <a class="it" data-i="6"></a>.</b> $f(-1)=2$, $f(3)=6$ ve her $x\in(-1,3)$ için $f'(x)\lt 1$ olan, $[-1,3]$’te türevlenebilir bir $f$ var mı?</p>
+<details class="sol"><summary>Çözüm</summary><div><p>Yok. Olsaydı $f$, $[-1,3]$’te türevlenebilir, dolayısıyla sürekli olurdu. MVT bir $c\in(-1,3)$ için $f'(c)=\frac{6-2}{3-(-1)}=1$ verirdi. Bu, $f'(c)\lt 1$ ile çelişir.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="6"></a> <a class="it" data-i="23"></a> (d) <a class="it" data-i="26"></a> <a class="it" data-i="45"></a> <a class="it" data-i="49"></a> · Recitation <a href="../recitations/hafta-04.md">H04 Q7</a></p>
+</article>
+
+<article class="tip" data-key="mvt-d"><header><h4>Tip D · Tam olarak bir (ya da $n$) kök</h4><span><span class="tag f">sık</span><label><input type="checkbox"> çalıştım</label></span></header>
+<p><b>Tanı:</b> “has exactly one solution”, “unique zero”, “cannot have three roots”, “$f$ does NOT have two zeros in $[0,1]$”.</p>
+<ol class="steps"><li>Her şeyi bir tarafa topla: $g(x)=0$.</li><li><b>Varlık:</b> işaret değiştiren iki nokta bul, $g$ sürekli olduğu için IVT.</li><li><b>Teklik:</b> iki kök $a\lt b$ olsaydı Rolle bir $c\in(a,b)$ için $g'(c)=0$ verirdi. Oysa $g'\gt 0$ (ya da $\lt 0$) her yerde. Çelişki.</li><li>“En fazla iki kök” için $g''$’nün işaretini kullan (Rolle iki kez).</li></ol>
+<div class="ex"><p><b>Örnek <a class="it" data-i="30"></a>.</b> $\arctan x=2-x-x^3$ denkleminin tam bir çözümü olduğunu göster.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$g(x)=\arctan x+x+x^3-2$ her yerde sürekli ve türevlenebilir.</p>
+<p><b>Varlık:</b> $g(0)=-2\lt 0$ ve $g(1)=\frac\pi4+1+1-2=\frac\pi4\gt 0$. IVT’ye göre $(0,1)$’de bir kök var.</p>
+<p><b>Teklik:</b> $g'(x)=\dfrac1{1+x^2}+1+3x^2\gt 0$. İki kök $a\lt b$ olsaydı Rolle $g'(c)=0$ olan bir $c\in(a,b)$ verirdi. Bu çelişkidir, dolayısıyla kök tektir. ∎</p></div></details></div>
+<div class="ex"><p><b>Örnek <a class="it" data-i="20"></a>.</b> $f''(x)\gt 0$ ise $f$’nin üç kökü olamaz.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>Üç kök $a\lt b\lt c$ olsaydı Rolle $[a,b]$ ve $[b,c]$ üzerinde $f'(p)=f'(q)=0$ verirdi ($p\lt q$). $f'$, $[p,q]$’da türevlenebilir olduğundan Rolle yine uygulanır: bir $r$ için $f''(r)=0$. Bu, $f''\gt 0$ ile çelişir.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="19"></a> (b) <a class="it" data-i="20"></a> <a class="it" data-i="25"></a> (b, c) <a class="it" data-i="28"></a> <a class="it" data-i="30"></a> <a class="it" data-i="33"></a> · Recitation <a href="../recitations/hafta-04.md">H04 Q4–5</a></p>
+</article>
+
+<article class="tip" data-key="mvt-e"><header><h4>Tip E · Verilen değerlerden $f'(c)=k$ ya da $f''(c)=0$</h4><span><span class="tag f">sık</span><label><input type="checkbox"> çalıştım</label></span></header>
+<p><b>Tanı:</b> Bir tablo değer verilir ($f(1)=1$, $f(2)=2$, …) ve “show there is $c$ with $f'(c)=0$” / “horizontal tangent” / “$f''(c)=0$” istenir.</p>
+<ol class="steps"><li>Ardışık noktalar arasında MVT ile eğimleri bul: $f'(c_1)=m_1$, $f'(c_2)=m_2$.</li><li>$f'(c)=0$ isteniyorsa iki yol var. (i) Eşit değerli iki nokta bul (gerekirse IVT ile üret) ve Rolle uygula. (ii) $f'$ sürekli verilmişse işaret değiştiren iki eğim arasında $f'$’ye IVT uygula.</li><li>$f''(c)=0$ için önce $f'(c_1)=f'(c_2)$ elde et, sonra $f'$’ye Rolle.</li></ol>
+<div class="ex"><p><b>Örnek <a class="it" data-i="12"></a>.</b> $f, f'$ sürekli, $f(-2)=5$, $f(1)=7$, $f(2)=6$. $f'(c)=0$ olan bir $c\in(-2,2)$ bulunduğunu göster.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$5\lt 6\lt 7$ ve $f$, $[-2,1]$’de sürekli. IVT’ye göre bir $a\in(-2,1)$ için $f(a)=6=f(2)$.</p>
+<p>$f$, $[a,2]$’de sürekli, $(a,2)$’de türevlenebilir ve uç değerleri eşit. Rolle bir $c\in(a,2)\subset(-2,2)$ için $f'(c)=0$ verir. ∎</p>
+<p><i>Alternatif:</i> MVT ile $[-2,1]$’de $f'(c_1)=\frac{2}{3}\gt 0$, $[1,2]$’de $f'(c_2)=-1\lt 0$. $f'$ sürekli olduğundan IVT ile aralarında $f'=0$.</p></div></details></div>
+<div class="ex"><p><b>Örnek <a class="it" data-i="37"></a>.</b> $f$, $[0,2]$’de sürekli, $f',f''$ $(0,2)$’de var. (a) $f(0)=0$, $f(1)=1$ ise $f'(a)=1$ olan $a\in(0,1)$ var. (b) Ek olarak $f(2)=2$ ise $f''(c)=0$ olan $c\in(0,2)$ var.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>(a) $[0,1]$’de MVT: $f'(a)=\frac{1-0}{1}=1$.</p><p>(b) $[1,2]$’de MVT: $f'(b)=\frac{2-1}{1}=1$, $b\in(1,2)$. $f'$, $[a,b]$’de türevlenebilir (dolayısıyla sürekli) ve $f'(a)=f'(b)$. $f'$’ye Rolle: $f''(c)=0$, $c\in(a,b)\subset(0,2)$. ∎</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="10"></a> (b) <a class="it" data-i="12"></a> <a class="it" data-i="19"></a> (a) <a class="it" data-i="22"></a> <a class="it" data-i="25"></a> <a class="it" data-i="37"></a> <a class="it" data-i="14"></a> (b) · Recitation <a href="../recitations/hafta-04.md">H04 Q6</a></p>
+</article>
+
+<article class="tip" data-key="mvt-f"><header><h4>Tip F · Türevi sıfır olduğu için sabit (özdeşlik ispatı)</h4><label><input type="checkbox"> çalıştım</label></header>
+<p><b>Tanı:</b> “Show that $\ln(kx)=\ln k+\ln x$”, “$f(x)=f(1/x)$”, “$\arctan x+\arctan\frac1x=\frac\pi2$”, “$f(x)=C$ for some constant”.</p>
+<ol class="steps"><li>Farkı tanımla: $h(x)=\text{sol}-\text{sağ}$.</li><li>Bir <b>aralıkta</b> $h'(x)=0$ olduğunu hesapla (aralık önemli: $(0,\infty)$, $(-1,\infty)$ gibi).</li><li>$h$ sabittir. Sabiti uygun bir noktada hesapla ($x=1$, $x=0$).</li></ol>
+<div class="ex"><p><b>Örnek <a class="it" data-i="3"></a> (a).</b> $k\gt 0$ sabit ve $x\gt 0$ için $\ln(kx)=\ln k+\ln x$.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$f(x)=\ln(kx)-\ln x$, $(0,\infty)$’da türevlenebilir: $f'(x)=\frac{k}{kx}-\frac1x=0$. Aralıkta türev sıfır olduğu için $f$ sabittir: $f(x)=f(1)=\ln k$. ∎ (b) şıkkı: türevlenebilir çift $f$ için $f'(0)=0$. Çünkü $f(-x)=f(x)$ türetilince $-f'(-x)=f'(x)$ olur, $x=0$’da $f'(0)=0$. Rolle ile de olur: $f(-1)=f(1)$.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="3"></a> <a class="it" data-i="39"></a> · ters trig sürümleri <a class="it" data-i="52"></a> <a class="it" data-i="55"></a> (bkz. <a href="#atrig">3.5 Tip B</a>)</p>
+</article>
+
+<div class="hard"><h4>Zor soru · Sabitleri sen seç (<a class="it" data-i="14"></a> (b) tipi)</h4>
+<p>$f:\mathbb R\to\mathbb R$ türevlenebilir. $f(0)=k$, $f(2)=\ell$, $f(3)=m$. Hangi $k,\ell,m$ için $f'(c_1)=5$ ve $f'(c_2)=6$ olan $c_1,c_2$’nin varlığı <b>garanti</b> olur? Ek soru: aynı verilerle $f''(c)=0$ olan bir $c$ garanti edilebilir mi?</p>
+<details class="sol"><summary>Çözüm</summary><div><p>MVT: $[0,2]$’de $f'(c_1)=\frac{\ell-k}{2}$, $[2,3]$’te $f'(c_2)=m-\ell$. $\ell-k=10$ ve $m-\ell=6$ seçmek yeter, örneğin $k=0,\ \ell=10,\ m=16$.</p>
+<p>Ek: Hayır, $f''$’nün varlığı verilmemiş. $f''$ var olsa bile, $f'(c_1)=5\neq6=f'(c_2)$ olduğundan Rolle uygulanamaz. $f''(c)=0$ için iki eşit eğim gerekir. Örneğin $\ell-k=2(m-\ell)$ seçilirse ve $f''$ varsa Rolle uygulanır.</p></div></details></div>
+
+<div class="notewrap"><label>Notlarım · 2.8 <textarea class="note" data-key="note-mvt" placeholder="Hatalarım, eklemek istediğim trickler…"></textarea></label></div>
+</section>
+
+<section class="topic" id="imp" data-topic="2.9">
+<h2><span class="no">2.9</span>Örtük türev (Implicit Differentiation)</h2>
+<p class="meta">Bankada 23 soru · Recitation: <a href="../recitations/hafta-05.md">H05 Q1</a> · <a href="../recitations/2024-guz/hafta-04.pdf">2024 föy 4</a> · Konu defteri: <a href="../kaynaklar/konu-defteri.pdf#page=32">s.32 (teğet/normal)</a></p>
+
+<div class="box cheat"><h4>Formül kartı</h4>
+<ul>
+<li>$y=y(x)$ kabul et, her terimi $x$’e göre türet. $y$ içeren her terimde zincir kuralı uygula: $\frac{d}{dx}y^n=ny^{n-1}y'$, $\frac{d}{dx}e^{xy}=e^{xy}(y+xy')$, $\frac{d}{dx}\sin(x+y)=\cos(x+y)(1+y')$.</li>
+<li>$F(x,y)=0$ ise $\displaystyle y'=-\frac{F_x}{F_y}$ ($F_y\neq0$). $F_y=0$ olan noktada teğet düşey olabilir.</li>
+<li><b>Teğet:</b> $y-y_0=m(x-x_0)$. <b>Normal:</b> $y-y_0=-\frac1m(x-x_0)$. $m=0$ ise normal $x=x_0$, $m$ tanımsızsa teğet $x=x_0$.</li>
+<li><b>Yatay teğet:</b> pay $=0$ (yani $F_x=0$) ve eğri denklemi birlikte. <b>Düşey teğet:</b> payda $=0$ ($F_y=0$) ve eğri denklemi.</li>
+<li><b>İkinci türev:</b> $y'$ ifadesini bir kez daha türet, içindeki $y'$’yi yerine koy. Noktada sayısal soruluyorsa önce $y'(x_0)$’ı bul, sonra türetilmiş denklemde sayıları yerine koy. Cebire hiç girme.</li>
+<li><b>Dik kesişim (orthogonal):</b> iki eğrinin kesişim noktasında $m_1m_2=-1$.</li>
+</ul></div>
+
+<div class="trick"><h4>Tuzaklar ve trickler</h4>
+<ul>
+<li><b>Önce noktanın eğri üzerinde olduğunu kontrol et.</b> Sorularda “Is $P$ on the curve?” sık geçer (<a class="it" data-i="8"></a>, <a class="it" data-i="31"></a>). Bu kontrol puanlıdır.</li>
+<li>Sayısal noktada sadeleştirme yapma: türev al, <b>hemen</b> $x_0,y_0$’ı koy, $y'$ için doğrusal denklemi çöz. Daha hızlı ve hatasız.</li>
+<li>$x^y$ ya da $y^x$ gibi terimler örtük denklemde de logaritmik türev ister: önce $\ln$ al ($x^y=y^x\iff y\ln x=x\ln y$).</li>
+<li>Soyut fonksiyon içeren denklemde ($y=[f(xy^2-3)]^3+1$) zincir kuralı iç içe uygulanır ve $f'$’nin <b>hangi argümanda</b> hesaplanacağı noktadan bulunur.</li>
+<li>Örtük eğride doğrusallaştırma: $y(x_0+\Delta x)\approx y_0+y'(x_0)\Delta x$ (bkz. <a href="#lin">4.9</a>).</li>
+</ul></div>
+
+<h3>Soru tipleri</h3>
+
+<article class="tip" data-key="imp-a"><header><h4>Tip A · Verilen noktada teğet ya da normal doğru</h4><span><span class="tag f">en sık</span><label><input type="checkbox"> çalıştım</label></span></header>
+<ol class="steps"><li>Noktayı denklemde dene.</li><li>Her iki tarafı türet.</li><li>$(x_0,y_0)$’ı koy, $y'$’yi çöz.</li><li>Teğet ya da normal doğru denklemini yaz.</li></ol>
+<div class="ex"><p><b>Örnek <a class="it" data-i="11"></a>.</b> $e^{xy}+y^2=e^{x^2}+y$ eğrisine $(1,1)$’de teğet doğru.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>Kontrol: $e+1=e+1$ ✓. Türev:
+$$e^{xy}(y+xy')+2yy'=2xe^{x^2}+y'.$$
+$(1,1)$: $e(1+y')+2y'=2e+y'$, buradan $(e+1)y'=e$ ve $y'=\dfrac{e}{e+1}$.</p>
+<p>Teğet: $y-1=\dfrac{e}{e+1}(x-1)$.</p></div></details></div>
+<div class="ex"><p><b>Örnek <a class="it" data-i="34"></a>.</b> $x^y=y^x$ eğrisine $(2,4)$’te teğet.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$2^4=4^2$ ✓. $\ln$ al: $y\ln x=x\ln y$. Türev: $y'\ln x+\frac yx=\ln y+\frac{x}{y}y'$. $(2,4)$: $y'\ln2+2=\ln4+\frac12y'$, yani $y'(\ln2-\tfrac12)=2\ln2-2$ ve
+$$y'=\frac{2\ln2-2}{\ln2-\frac12}=\frac{4(\ln2-1)}{2\ln2-1}.$$
+Teğet: $y-4=\frac{4(\ln2-1)}{2\ln2-1}(x-2)$.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="2"></a> <a class="it" data-i="8"></a> <a class="it" data-i="9"></a> (c) <a class="it" data-i="11"></a> <a class="it" data-i="13"></a> <a class="it" data-i="24"></a> <a class="it" data-i="27"></a> (c) <a class="it" data-i="29"></a> <a class="it" data-i="31"></a> <a class="it" data-i="32"></a> <a class="it" data-i="34"></a> <a class="it" data-i="41"></a> <a class="it" data-i="48"></a> <a class="it" data-i="71"></a> (b) <a class="it" data-i="21"></a> (a, e; diğer şıklar final) · Recitation <a href="../recitations/hafta-05.md">H05 Q1</a></p>
+</article>
+
+<article class="tip" data-key="imp-b"><header><h4>Tip B · Noktayı sen bul: verilen $x$ için tüm noktalar, yatay ya da düşey teğet</h4><label><input type="checkbox"> çalıştım</label></header>
+<ol class="steps"><li>$x=x_0$’ı koy ve $y$ için çöz. Birden fazla nokta çıkabilir.</li><li>Her nokta için ayrı eğim ve doğru yaz.</li><li>Yatay teğet: $y'$’nün payı $=0$ denklemini eğri denklemiyle ortak çöz.</li></ol>
+<div class="ex"><p><b>Örnek <a class="it" data-i="42"></a>.</b> $xy^2+\sin((x-1)y)=4$. (a) $(1,y)$ noktaları, (b) teğetler, (c) paraleller mi?</p>
+<details class="sol"><summary>Çözüm</summary><div><p>(a) $x=1$: $y^2+\sin0=4$, yani $y=\pm2$. Noktalar $(1,2)$ ve $(1,-2)$.</p>
+<p>(b) Türev: $y^2+2xyy'+\cos((x-1)y)\,\big(y+(x-1)y'\big)=0$. $x=1$’de: $y^2+2yy'+y=0$, dolayısıyla $y'=-\dfrac{y^2+y}{2y}=-\dfrac{y+1}{2}$.</p>
+<p>$(1,2)$: $y'=-\frac32$, teğet $y-2=-\frac32(x-1)$. $(1,-2)$: $y'=\frac12$, teğet $y+2=\frac12(x-1)$.</p>
+<p>(c) Eğimler farklı ($-\frac32\neq\frac12$), paralel değiller.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="38"></a> <a class="it" data-i="42"></a> · Recitation <a href="../recitations/2024-guz/hafta-04.pdf">2024 föy 4</a></p>
+</article>
+
+<article class="tip" data-key="imp-c"><header><h4>Tip C · İkinci türev $y''$</h4><label><input type="checkbox"> çalıştım</label></header>
+<ol class="steps"><li>Birinci türev denklemini yaz ve noktada $y'$’yi bul.</li><li>Birinci türev denklemini (sadeleştirmeden) bir kez daha türet. $y'$ ve $y''$ birlikte görünür.</li><li>Noktayı ve bulduğun $y'$’yi koy, $y''$’yü çöz.</li></ol>
+<div class="ex"><p><b>Örnek <a class="it" data-i="18"></a>.</b> $y^3+e^x=x+2y$, $f(0)=1$. $(0,1)$’de teğet ve $y''(0)$.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>Kontrol: $1+1=0+2$ ✓. Türev: $3y^2y'+e^x=1+2y'$. $(0,1)$: $3y'+1=1+2y'$, dolayısıyla $y'(0)=0$. Teğet $y=1$.</p>
+<p>Tekrar türet: $6y(y')^2+3y^2y''+e^x=2y''$. Koy: $0+3y''+1=2y''$, buradan $y''(0)=-1$.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="18"></a> · ayrıca <a class="it" data-i="66"></a> (d) (bileşkede $y''$)</p>
+</article>
+
+<article class="tip" data-key="imp-d"><header><h4>Tip D · Soyut $f$, $g$ içeren örtük denklem</h4><label><input type="checkbox"> çalıştım</label></header>
+<p><b>Tanı:</b> Denklemde $f(\cdot)$, $g(\cdot)$ var ve $f(1)$, $f'(1)$ gibi değerler verilmiş.</p>
+<ol class="steps"><li>Noktayı koyarak $f$’nin hangi argümanda hesaplanacağını bul.</li><li>Zincir kuralıyla türet: $\frac{d}{dx}f(u)=f'(u)\,u'$.</li><li>Verilen değerleri koy, $y'$’yi çöz.</li></ol>
+<div class="ex"><p><b>Örnek <a class="it" data-i="5"></a>.</b> $f(1)=1$, $f'(1)=-1$ ve $y=[f(xy^2-3)]^3+1$. $(1,2)$’de $\frac{dy}{dx}$?</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$(1,2)$’de $u=xy^2-3=1$. Kontrol: $y=f(1)^3+1=2$ ✓.</p>
+<p>Türev: $y'=3[f(u)]^2f'(u)\,(y^2+2xyy')$. Koy: $y'=3\cdot1\cdot(-1)(4+4y')=-12-12y'$, buradan $13y'=-12$ ve $y'=-\frac{12}{13}$.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="5"></a> <a class="it" data-i="9"></a> (b) <a class="it" data-i="44"></a> <a class="it" data-i="75"></a> (c)</p>
+</article>
+
+<article class="tip" data-key="imp-e"><header><h4>Tip E · Geometrik özellik ispatı (sabit toplam, dik kesişim)</h4><span><span class="tag h">zor</span><label><input type="checkbox"> çalıştım</label></span></header>
+<ol class="steps"><li>Genel noktada $(a,b)$ türev al, eğimi $a,b$ cinsinden yaz.</li><li>Teğet doğrunun kesişimlerini ya da iki eğimin çarpımını hesapla.</li><li>Eğri denklemini ($a,b$ arasındaki bağıntıyı) kullanarak sadeleştir.</li></ol>
+<div class="ex"><p><b>Örnek <a class="it" data-i="15"></a>.</b> $\sqrt x+\sqrt y=1$. $P(a,b)$’deki teğetin $x$- ve $y$-kesişimlerinin toplamı 1’dir.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$\frac1{2\sqrt x}+\frac{y'}{2\sqrt y}=0$, yani $y'=-\sqrt{y/x}$. Teğet: $y-b=-\sqrt{b/a}\,(x-a)$.</p>
+<p>$y=0$: $x=a+\sqrt{ab}$. $x=0$: $y=b+\sqrt{ab}$. Toplam: $a+2\sqrt{ab}+b=(\sqrt a+\sqrt b)^2=1$. ∎</p></div></details></div>
+<div class="ex"><p><b>Örnek <a class="it" data-i="47"></a>.</b> $x^2+2y^2=2$ elipsi ile $2x^2-2y^2=1$ hiperbolü dik kesişir.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>Elips: $y'_1=-\frac{x}{2y}$. Hiperbol: $y'_2=\frac xy$. Çarpım $-\frac{x^2}{2y^2}$.</p><p>Kesişim: $x^2+2y^2=2$ ve $x^2-y^2=\frac12$. Çıkarınca $3y^2=\frac32$, yani $y^2=\frac12$ ve $x^2=1$. Çarpım $-\frac{1}{2\cdot\frac12}=-1$. ∎</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="15"></a> <a class="it" data-i="47"></a></p>
+</article>
+
+<article class="tip" data-key="imp-f"><header><h4>Tip F · Örtük fonksiyonu doğrusallaştırma</h4><label><input type="checkbox"> çalıştım</label></header>
+<p>Örtük türevle $y'(x_0)$’ı bul, sonra $y(x_0+h)\approx y_0+y'(x_0)h$. Ayrıntı ve örnek: <a href="#lin">4.9 Tip C</a>.</p>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="16"></a> <a class="it" data-i="40"></a> <a class="it" data-i="80"></a> <a class="it" data-i="149"></a> <a class="it" data-i="201"></a></p>
+</article>
+
+<div class="hard"><h4>Zor soru</h4>
+<p>$x^2+xy+y^2=3$ eğrisinde teğetin <b>yatay</b> ve <b>düşey</b> olduğu bütün noktaları bul.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$2x+y+(x+2y)y'=0$, yani $y'=-\dfrac{2x+y}{x+2y}$.</p>
+<p><b>Yatay:</b> $y=-2x$. Eğriye koy: $x^2-2x^2+4x^2=3$, yani $x=\pm1$. Noktalar $(1,-2)$ ve $(-1,2)$. Bu noktalarda payda $x+2y=-3$ ya da $3$, sıfır değil.</p>
+<p><b>Düşey:</b> $x=-2y$. Eğriye koy: $4y^2-2y^2+y^2=3$, yani $y=\pm1$. Noktalar $(-2,1)$ ve $(2,-1)$. Payda sıfırken payın sıfır olmadığını kontrol et: $2x+y=\mp3$.</p></div></details></div>
+
+<div class="notewrap"><label>Notlarım · 2.9 <textarea class="note" data-key="note-imp"></textarea></label></div>
+</section>
+
+<section class="topic" id="inv" data-topic="3.1">
+<h2><span class="no">3.1</span>Ters fonksiyonlar (Inverse Functions)</h2>
+<p class="meta">Bankada 9 soru (+ başka sorularda parça) · Recitation: <a href="../recitations/hafta-05.md">H05 Q3–5</a> · <a href="../recitations/2024-guz/hafta-06.pdf">2024 föy 6</a></p>
+
+<div class="box cheat"><h4>Formül kartı</h4>
+<ul>
+<li><b>Bire bir (one-to-one):</b> $f(x_1)=f(x_2)\Rightarrow x_1=x_2$. Aralıkta $f'\gt 0$ (ya da $f'\lt 0$) ise $f$ kesin monotondur, dolayısıyla bire birdir.</li>
+<li>$\mathcal D(f^{-1})=\mathcal R(f)$ ve $\mathcal R(f^{-1})=\mathcal D(f)$. $f^{-1}(f(x))=x$, $f(f^{-1}(y))=y$.</li>
+<li><b>Tersin türevi:</b> $f(a)=b$ ve $f'(a)\neq0$ ise
+$$\big(f^{-1}\big)'(b)=\frac{1}{f'(a)}=\frac{1}{f'\!\big(f^{-1}(b)\big)}.$$</li>
+<li>$y=f^{-1}(x)$ grafiği $y=f(x)$’in $y=x$ doğrusuna göre yansımasıdır. $(a,b)$’deki eğim $m$ ise ters grafikte $(b,a)$’daki eğim $1/m$’dir.</li>
+<li>Görüntü kümesi için uç limitleri hesapla. Sürekli ve kesin monoton $f$ için $\mathcal R(f)=(\lim_{x\to\text{sol uç}}f,\ \lim_{x\to\text{sağ uç}}f)$.</li>
+</ul></div>
+
+<div class="trick"><h4>Tuzaklar ve trickler</h4>
+<ul>
+<li><b>$f^{-1}$’in formülünü bulmaya çalışma.</b> $x^3+5x+2$, $2x+\cos x$, $e^x+x$ gibi fonksiyonların tersi kapalı formda yazılamaz. İstenen hep $f(a)=b$ denkleminin <b>tahminle</b> bulunan kökü: $a=0$, $1$, $\pi/2$, $-1$ dene.</li>
+<li>$(f^{-1})'(b)\neq\frac1{f'(b)}$. Türev $a=f^{-1}(b)$ noktasında hesaplanır, en sık yapılan hata budur.</li>
+<li>“Invertible” göstermek için $f'\gt 0$ yazmak yetmez, <b>hangi aralıkta</b> olduğunu yaz. $f'$ tek noktada sıfır oluyorsa ($x^3$ gibi) fonksiyon yine kesin artandır.</li>
+<li>Tersin tanım kümesi sorulursa görüntü kümesini bulmak için IVT ve uç limitleri kullan.</li>
+</ul></div>
+
+<h3>Soru tipleri</h3>
+<article class="tip" data-key="inv-a"><header><h4>Tip A · Terslenebilirlik + $(f^{-1})'(b)$</h4><span><span class="tag f">en sık</span><label><input type="checkbox"> çalıştım</label></span></header>
+<ol class="steps"><li>$f'$’yi hesapla, aralıkta işaretini göster, ardından kesin monoton ve bire bir olduğunu yaz.</li><li>$f(a)=b$’yi tahminle çöz (genelde $a\in\{0,1,\pi/2\}$).</li><li>$(f^{-1})'(b)=1/f'(a)$.</li></ol>
+<div class="ex"><p><b>Örnek <a class="it" data-i="76"></a>.</b> $f(x)=2x+\cos x$. (a) Terslenebilir olduğunu göster. (b) $f^{-1}(\pi)$ ve $(f^{-1})'(\pi)$.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>(a) $f'(x)=2-\sin x\ge1\gt 0$. $f$, $\mathbb R$’de kesin artan, dolayısıyla bire bir.</p>
+<p>(b) $f(\pi/2)=\pi+0=\pi$, yani $f^{-1}(\pi)=\pi/2$. $(f^{-1})'(\pi)=\dfrac1{f'(\pi/2)}=\dfrac1{2-1}=1$.</p></div></details></div>
+<div class="ex"><p><b>Örnek <a class="it" data-i="64"></a>.</b> $f(x)=e^{\arctan\sqrt{1+\ln x}}$. (a) Tanım kümesi, (b) $f'$, (c) terslenebilir, (d) $\frac{d}{dx}f^{-1}(x)\big|_{x=e^{\pi/4}}$.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>(a) $x\gt 0$ ve $1+\ln x\ge0$, yani $\mathcal D=[1/e,\infty)$.</p>
+<p>(b) $f'(x)=e^{\arctan\sqrt{1+\ln x}}\cdot\dfrac{1}{2+\ln x}\cdot\dfrac{1}{2\sqrt{1+\ln x}}\cdot\dfrac1x$ ($x\gt 1/e$).</p>
+<p>(c) $(1/e,\infty)$’da $f'\gt 0$ ve $f$, $[1/e,\infty)$’da sürekli. Kesin artan, bire bir.</p>
+<p>(d) $\arctan\sqrt{1+\ln x}=\pi/4$ için $\sqrt{1+\ln x}=1$, yani $x=1$. $f'(1)=e^{\pi/4}\cdot\frac12\cdot\frac12=\frac{e^{\pi/4}}4$. Cevap: $4e^{-\pi/4}$.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="51"></a> (b) <a class="it" data-i="57"></a> <a class="it" data-i="61"></a> <a class="it" data-i="62"></a> (a) <a class="it" data-i="64"></a> <a class="it" data-i="65"></a> (c) <a class="it" data-i="66"></a> (c) <a class="it" data-i="68"></a> <a class="it" data-i="72"></a> <a class="it" data-i="73"></a> <a class="it" data-i="76"></a> <a class="it" data-i="78"></a> · Recitation <a href="../recitations/hafta-05.md">H05 Q4</a></p>
+</article>
+
+<article class="tip" data-key="inv-b"><header><h4>Tip B · Tersin tanım ve değer kümesi</h4><label><input type="checkbox"> çalıştım</label></header>
+<ol class="steps"><li>$f$’nin tanım kümesini bul ve monotonluğu göster.</li><li>Uç limitleri hesapla. Bunlar $\mathcal R(f)=\mathcal D(f^{-1})$’i verir.</li><li>$\mathcal R(f^{-1})=\mathcal D(f)$.</li></ol>
+<div class="ex"><p><b>Örnek.</b> $f(x)=\dfrac{e^x}{1+e^x}$ için $f^{-1}$’in tanım ve değer kümesi ile formülü.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$f'=\frac{e^x}{(1+e^x)^2}\gt 0$. $\lim_{-\infty}f=0$ ve $\lim_{\infty}f=1$. Dolayısıyla $\mathcal D(f^{-1})=(0,1)$ ve $\mathcal R(f^{-1})=\mathbb R$. Formül: $y(1+e^x)=e^x$, buradan $e^x=\frac{y}{1-y}$ ve $f^{-1}(y)=\ln\frac{y}{1-y}$.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="64"></a> (a) · Recitation <a href="../recitations/hafta-05.md">H05 Q3</a></p>
+</article>
+
+<article class="tip" data-key="inv-c"><header><h4>Tip C · Ters fonksiyonun grafiğine teğet</h4><label><input type="checkbox"> çalıştım</label></header>
+<p>$y=f^{-1}(x)$ grafiğinde $x=b$ noktası $(b,a)$’dır, eğim $1/f'(a)$’dır. Teğet: $y-a=\frac1{f'(a)}(x-b)$.</p>
+<div class="ex"><p><b>Örnek <a class="it" data-i="27"></a> (b).</b> $f(x)=2x-\sin x$ ise $y=f^{-1}(x)$’in $x=2\pi$’deki teğeti.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$f(\pi)=2\pi$, yani nokta $(2\pi,\pi)$. $f'(\pi)=2-\cos\pi=3$. Teğet: $y-\pi=\frac13(x-2\pi)$.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="27"></a> · Recitation <a href="../recitations/hafta-05.md">H05 Q5</a></p>
+</article>
+<div class="notewrap"><label>Notlarım · 3.1 <textarea class="note" data-key="note-inv"></textarea></label></div>
+</section>
+
+<section class="topic" id="ln" data-topic="3.3">
+<h2><span class="no">3.3</span>Doğal logaritma ve üstel fonksiyon · logaritmik türev</h2>
+<p class="meta">Bankada 16 soru · Recitation: <a href="../recitations/hafta-05.md">H05 Q6–8</a>, <a href="../recitations/hafta-06.md">H06 Q1–2</a> · Konu defteri: <a href="../kaynaklar/konu-defteri.pdf#page=24">s.24</a></p>
+
+<div class="box cheat"><h4>Formül kartı</h4>
+<div class="grid2"><div>
+<p>$\dfrac{d}{dx}\ln|x|=\dfrac1x$, $\ \dfrac{d}{dx}\ln|u|=\dfrac{u'}{u}$</p>
+<p>$\dfrac{d}{dx}e^{u}=e^{u}u'$, $\ \dfrac{d}{dx}a^{u}=a^{u}\ln a\;u'$</p>
+<p>$\dfrac{d}{dx}\log_a u=\dfrac{u'}{u\ln a}$</p>
+<p>$a^x=e^{x\ln a}$, $\ \log_a x=\dfrac{\ln x}{\ln a}$</p>
+</div><div>
+<p><b>Logaritmik türev:</b> $y=f(x)^{g(x)}$, $f\gt 0$ için
+$$\ln y=g\ln f\ \Rightarrow\ y'=y\Big(g'\ln f+g\frac{f'}{f}\Big).$$</p>
+<p>Çarpım ya da bölüm için: $\ln|y|=\sum\ln|\text{çarpan}|$, sonra $y'/y$ toplamı.</p>
+</div></div>
+<p>Limitler: $\displaystyle\lim_{x\to\infty}\frac{\ln x}{x^p}=0$, $\displaystyle\lim_{x\to\infty}\frac{x^p}{e^x}=0$, $\displaystyle\lim_{x\to0^+}x^p\ln x=0$ ($p\gt 0$), $\displaystyle\lim_{x\to 0}(1+x)^{1/x}=e$.</p>
+<p>Hiperbolik: $\sinh x=\frac{e^x-e^{-x}}2$, $\cosh x=\frac{e^x+e^{-x}}2$, $(\sinh x)'=\cosh x$, $(\cosh x)'=\sinh x$.</p>
+</div>
+
+<div class="trick"><h4>Tuzaklar ve trickler</h4>
+<ul>
+<li>$x^x$’in türevi $x\cdot x^{x-1}$ <b>değildir</b>, $x^x\ln x$ da değildir. Doğrusu $x^x(\ln x+1)$. Taban da üs de değişkense mutlaka logaritma al.</li>
+<li>“DO NOT SIMPLIFY” yazıyorsa sadeleştirmeye çalışıp hata yapma. Ama $y$’yi orijinal ifadeyle yerine yazmayı unutma.</li>
+<li>Bir noktada değer isteniyorsa önce $y(x_0)$’ı bul, sonra $y'/y$’yi noktada hesapla: <b>$y'=y\cdot(y'/y)$</b>.</li>
+<li><b>$\ln(\ln e)=0$ hilesi:</b> $(\ln x)^{f(x)}$ türevinde $x=e$’de bilinmeyen $f'(e)$ terimi $\ln\ln e=0$ ile çarpıldığı için kaybolur (<a class="it" data-i="60"></a>).</li>
+<li>Logaritmik türev, ifadenin <b>sıfır</b> olduğu noktalarda $\ln|y|$ tanımsız olduğundan doğrudan çalışmaz. O noktada türev tanımla ya da çarpım kuralıyla bulunur (Recitation <a href="../recitations/hafta-05.md">H05 Q7</a>).</li>
+</ul></div>
+
+<h3>Soru tipleri</h3>
+<article class="tip" data-key="ln-a"><header><h4>Tip A · $f(x)^{g(x)}$ türevi</h4><span><span class="tag f">en sık</span><label><input type="checkbox"> çalıştım</label></span></header>
+<div class="ex"><p><b>Örnek <a class="it" data-i="56"></a>.</b> $f(x)=(x^2+e^{2x})^{\sin x}$, $f'(x)$ (sadeleştirme).</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$\ln f=\sin x\,\ln(x^2+e^{2x})$. Türev:
+$$f'(x)=(x^2+e^{2x})^{\sin x}\Big[\cos x\,\ln(x^2+e^{2x})+\sin x\,\frac{2x+2e^{2x}}{x^2+e^{2x}}\Big].$$</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="29"></a> (b) <a class="it" data-i="56"></a> <a class="it" data-i="58"></a> (b) <a class="it" data-i="59"></a> (b) <a class="it" data-i="63"></a> (a) <a class="it" data-i="65"></a> (b) <a class="it" data-i="66"></a> (b) <a class="it" data-i="69"></a> (b) <a class="it" data-i="70"></a> (b) <a class="it" data-i="71"></a> (a) <a class="it" data-i="75"></a> (a) <a class="it" data-i="77"></a> (b) · Recitation <a href="../recitations/hafta-05.md">H05 Q8</a>, <a href="../recitations/hafta-06.md">H06 Q2</a></p>
+</article>
+
+<article class="tip" data-key="ln-b"><header><h4>Tip B · Karmaşık çarpım ya da bölümün türevi, bir noktada</h4><label><input type="checkbox"> çalıştım</label></header>
+<div class="ex"><p><b>Örnek <a class="it" data-i="54"></a>.</b> $f(x)=\dfrac{(x^3+1)^2(2x-1)^8}{(\sqrt[3]{x^3+8})^2}$ için $f'(0)$.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$f(0)=\frac{1\cdot1}{2^2}=\frac14$. $\ln|f|=2\ln|x^3+1|+8\ln|2x-1|-\frac23\ln|x^3+8|$.</p>
+<p>$\dfrac{f'}{f}=\dfrac{6x^2}{x^3+1}+\dfrac{16}{2x-1}-\dfrac{2x^2}{x^3+8}$. $x=0$’da $0-16-0=-16$. $f'(0)=\frac14(-16)=-4$.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="51"></a> (c) <a class="it" data-i="54"></a> <a class="it" data-i="62"></a> (b) <a class="it" data-i="74"></a> (c) · Recitation <a href="../recitations/hafta-06.md">H06 Q1</a></p>
+</article>
+
+<article class="tip" data-key="ln-c"><header><h4>Tip C · Soyut $f$ ile $g=f^{h}$, teğet ya da normal</h4><span><span class="tag f">son dönem</span><label><input type="checkbox"> çalıştım</label></span></header>
+<div class="ex"><p><b>Örnek <a class="it" data-i="53"></a>.</b> $f:\mathbb R\to(0,\infty)$, $f(\pi/2)=f'(\pi/2)=e$, $g(x)=f(x)^{\sin x}$. (a) $g'$, (b) $g'(\pi/2)$, (c) $x=\pi/2$’de normal doğru.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>(a) $\ln g=\sin x\ln f(x)$, dolayısıyla $g'=f^{\sin x}\Big[\cos x\ln f+\sin x\frac{f'}{f}\Big]$.</p>
+<p>(b) $g(\pi/2)=e^1=e$. Köşeli parantez: $0+1\cdot\frac ee=1$. $g'(\pi/2)=e$.</p>
+<p>(c) Normal eğim $-1/e$: $y-e=-\frac1e\big(x-\frac\pi2\big)$.</p></div></details></div>
+<div class="ex"><p><b>Örnek <a class="it" data-i="60"></a> (b).</b> $f(e)=2$ ve $g(x)=(\ln x)^{f(x)}$ ise $g'(e)$.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$\ln g=f(x)\ln(\ln x)$, dolayısıyla $\frac{g'}{g}=f'(x)\ln(\ln x)+f(x)\frac{1}{x\ln x}$. $x=e$’de $\ln\ln e=0$ olduğundan $f'(e)$ gerekmez. $g(e)=1^2=1$, $g'(e)=\frac{2}{e}$.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="53"></a> <a class="it" data-i="60"></a> <a class="it" data-i="67"></a></p>
+</article>
+
+<article class="tip" data-key="ln-d"><header><h4>Tip D · $\log_a$, $a^x$, $\ln\ln$ zinciri ve karışık türevler</h4><label><input type="checkbox"> çalıştım</label></header>
+<div class="ex"><p><b>Örnek <a class="it" data-i="63"></a> (b, c).</b> $g(x)=\dfrac{\log_2x+3^x}{x^2+1}$ ve $h(x)=\dfrac1{\ln(\ln x)}$.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$g'=\dfrac{\big(\frac1{x\ln2}+3^x\ln3\big)(x^2+1)-(\log_2x+3^x)2x}{(x^2+1)^2}$.</p><p>$h'=-\dfrac{1}{(\ln\ln x)^2}\cdot\dfrac1{\ln x}\cdot\dfrac1x$.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="9"></a> (a) <a class="it" data-i="59"></a> (a) <a class="it" data-i="60"></a> (c) <a class="it" data-i="63"></a> <a class="it" data-i="66"></a> (a) <a class="it" data-i="69"></a> (a) <a class="it" data-i="70"></a> (a) <a class="it" data-i="74"></a> (b) · Recitation <a href="../recitations/hafta-05.md">H05 Q6</a></p>
+</article>
+
+<div class="hard"><h4>Zor soru</h4>
+<p>$f(x)=x^{1/x}$, $x\gt 0$. (a) $f$’nin en büyük değerini bul. (b) Bundan $e^\pi$ ile $\pi^e$’den hangisinin büyük olduğunu çıkar.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>(a) $\ln f=\frac{\ln x}{x}$, dolayısıyla $f'=x^{1/x}\cdot\frac{1-\ln x}{x^2}$. $x\lt e$’de pozitif, $x\gt e$’de negatif. Maksimum $f(e)=e^{1/e}$, mutlak maksimumdur.</p>
+<p>(b) $\pi\neq e$ olduğundan $\pi^{1/\pi}\lt e^{1/e}$. İki tarafın $e\pi$’inci kuvvetini al: $\pi^{e}\lt e^{\pi}$.</p></div></details></div>
+<div class="notewrap"><label>Notlarım · 3.3 <textarea class="note" data-key="note-ln"></textarea></label></div>
+</section>
+
+<section class="topic" id="atrig" data-topic="3.5">
+<h2><span class="no">3.5</span>Ters trigonometrik fonksiyonlar (Inverse Trigonometric Functions)</h2>
+<p class="meta">Bankada 4 ayrı soru, ama türev ve limit sorularının içinde sık geçer · Recitation: <a href="../recitations/2024-guz/hafta-07.pdf">2024 föy 7</a></p>
+
+<div class="box cheat"><h4>Formül kartı</h4>
+<div class="tw"><table>
+<tr><th>Fonksiyon</th><th>Tanım</th><th>Değer (range)</th><th>Türev</th></tr>
+<tr><td>$\arcsin x$ ($\sin^{-1}$)</td><td>$[-1,1]$</td><td>$[-\frac\pi2,\frac\pi2]$</td><td>$\dfrac1{\sqrt{1-x^2}}$, $\ \lvert x\rvert\lt 1$</td></tr>
+<tr><td>$\arccos x$</td><td>$[-1,1]$</td><td>$[0,\pi]$</td><td>$-\dfrac1{\sqrt{1-x^2}}$</td></tr>
+<tr><td>$\arctan x$</td><td>$\mathbb R$</td><td>$(-\frac\pi2,\frac\pi2)$</td><td>$\dfrac1{1+x^2}$</td></tr>
+<tr><td>$\operatorname{arcsec} x$</td><td>$\lvert x\rvert\ge1$</td><td>$[0,\pi]\setminus\{\frac\pi2\}$</td><td>$\dfrac1{\lvert x\rvert\sqrt{x^2-1}}$</td></tr>
+<tr><td>$\operatorname{arccot}x$</td><td>$\mathbb R$</td><td>$(0,\pi)$</td><td>$-\dfrac1{1+x^2}$</td></tr>
+</table></div>
+<ul>
+<li>$\arcsin x+\arccos x=\frac\pi2$, $\ \arctan x+\arctan\frac1x=\frac\pi2$ ($x\gt 0$), $-\frac\pi2$ ($x\lt 0$).</li>
+<li>$\cos(\arcsin x)=\sqrt{1-x^2}$, $\ \sec(\arctan x)=\sqrt{1+x^2}$, $\ \tan(\arcsin x)=\frac{x}{\sqrt{1-x^2}}$ (dik üçgen çiz).</li>
+<li>$\arcsin(\sin x)=x$ yalnızca $x\in[-\frac\pi2,\frac\pi2]$ için. $\arctan(\tan x)=x$ yalnızca $x\in(-\frac\pi2,\frac\pi2)$ için.</li>
+<li>$\displaystyle\lim_{x\to\pm\infty}\arctan x=\pm\frac\pi2$, $\ \lim_{x\to0}\frac{\arctan x}{x}=1$, $\ \lim_{x\to0}\frac{\arcsin x}{x}=1$.</li>
+</ul></div>
+
+<div class="trick"><h4>Tuzaklar ve trickler</h4>
+<ul>
+<li>Zincir kuralı: $\frac{d}{dx}\arcsin(u)=\frac{u'}{\sqrt{1-u^2}}$. Karekökün içinde $u^2$ var, $u'$ değil.</li>
+<li>Tanım kümesi: $\arcsin(2x)$ için $|2x|\le1$. Türev uç noktalarda yoktur (dikey teğet).</li>
+<li>$\sqrt{1-u^2}$ sadeleşirken mutlak değer doğar: $\sqrt{(1-x^2)^2}=|1-x^2|$. Özdeşlik ispatlarında aralığı bu yüzden ayırırlar.</li>
+<li>$\sin^{-1}x\neq\frac1{\sin x}$. Sınavda $\sin^{-1}$ yazımı hep arcsin anlamındadır.</li>
+</ul></div>
+
+<h3>Soru tipleri</h3>
+<article class="tip" data-key="atrig-a"><header><h4>Tip A · Türev hesabı</h4><span><span class="tag f">sık</span><label><input type="checkbox"> çalıştım</label></span></header>
+<div class="ex"><p><b>Örnek <a class="it" data-i="58"></a> (a) ve <a class="it" data-i="50"></a>.</b> $g(x)=\arcsin(2x)+\arctan(3x)$ ve $\frac{d}{dx}\big(\sqrt{\ln(5x)}\,\arctan(x^3)\big)$.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$g'(x)=\dfrac{2}{\sqrt{1-4x^2}}+\dfrac{3}{1+9x^2}$, $|x|\lt \frac12$.</p>
+<p>$\dfrac{1}{2\sqrt{\ln 5x}}\cdot\dfrac1x\cdot\arctan(x^3)+\sqrt{\ln5x}\cdot\dfrac{3x^2}{1+x^6}$.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="27"></a> (a) <a class="it" data-i="50"></a> <a class="it" data-i="58"></a> <a class="it" data-i="60"></a> (c) <a class="it" data-i="66"></a> (a) <a class="it" data-i="75"></a> (b) <a class="it" data-i="77"></a> (a)</p>
+</article>
+
+<article class="tip" data-key="atrig-b"><header><h4>Tip B · Türev sıfır, özdeşlik ve sabit</h4><span><span class="tag f">son dönem</span><label><input type="checkbox"> çalıştım</label></span></header>
+<div class="ex"><p><b>Örnek <a class="it" data-i="52"></a>.</b> $f(x)=\arctan\dfrac{x-1}{x+1}-\arctan x$, $x\gt -1$. $f(x)=C$ olduğunu göster, $C$’yi bul.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$u=\frac{x-1}{x+1}$, $u'=\frac{2}{(x+1)^2}$, $1+u^2=\frac{2(x^2+1)}{(x+1)^2}$. Dolayısıyla
+$$\frac{u'}{1+u^2}=\frac{1}{1+x^2},\qquad f'(x)=\frac1{1+x^2}-\frac1{1+x^2}=0.$$
+$(-1,\infty)$ bir aralık ve $f'=0$, dolayısıyla $f$ sabit. $C=f(0)=\arctan(-1)-0=-\frac\pi4$.</p></div></details></div>
+<div class="ex"><p><b>Örnek <a class="it" data-i="55"></a>.</b> $x\gt 0$ için $\arctan x+\arctan\frac1x=\frac\pi2$.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>Türev: $\frac1{1+x^2}+\frac{-1/x^2}{1+1/x^2}=\frac1{1+x^2}-\frac1{x^2+1}=0$. $(0,\infty)$’da sabit, $x=1$’de $\frac\pi4+\frac\pi4=\frac\pi2$. Not: $x\lt 0$ için sabit $-\frac\pi2$ olur. Aralık $0$’da kesilir.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="52"></a> <a class="it" data-i="55"></a></p>
+</article>
+
+<article class="tip" data-key="atrig-c"><header><h4>Tip C · Limit ve monotonluk içinde arctan, arcsin</h4><label><input type="checkbox"> çalıştım</label></header>
+<p>$\arctan$’ın $\pm\infty$’daki limitleri ve küçük $x$’te $\arctan x\approx x-\frac{x^3}{3}$ davranışı limit sorularında kullanılır. $\arctan x+x+x^3$ gibi fonksiyonların türevi her zaman pozitiftir (bkz. <a href="#mvt">2.8 Tip D</a>).</p>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="30"></a> <a class="it" data-i="100"></a> (a) <a class="it" data-i="115"></a> (a) <a class="it" data-i="135"></a> (d) <a class="it" data-i="150"></a> (b) <a class="it" data-i="175"></a> (a)</p>
+</article>
+
+<div class="hard"><h4>Zor soru</h4>
+<p>$x\ge1$ için $2\arctan x+\arcsin\dfrac{2x}{1+x^2}=\pi$ olduğunu göster.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$u=\frac{2x}{1+x^2}$ için $u'=\frac{2(1-x^2)}{(1+x^2)^2}$ ve $\sqrt{1-u^2}=\frac{|1-x^2|}{1+x^2}$. $x\gt 1$’de
+$$\frac{d}{dx}\arcsin u=\frac{2(1-x^2)}{(1+x^2)|1-x^2|}=-\frac{2}{1+x^2}.$$
+Toplamın türevi $\frac{2}{1+x^2}-\frac{2}{1+x^2}=0$, dolayısıyla $(1,\infty)$’da sabit. Fonksiyon $[1,\infty)$’da sürekli olduğundan sabit $x=1$’deki değerdir: $2\cdot\frac\pi4+\arcsin1=\pi$. ∎</p>
+<p><i>Dikkat:</i> $|x|\lt 1$’de aynı ifadenin türevi $\frac{4}{1+x^2}$ olur ve özdeşlik orada geçerli değildir. Mutlak değer bu yüzden önemli.</p></div></details></div>
+<div class="notewrap"><label>Notlarım · 3.5 <textarea class="note" data-key="note-atrig"></textarea></label></div>
+</section>
+
+<section class="topic" id="rr" data-topic="4.1">
+<h2><span class="no">4.1</span>Bağlı hızlar (Related Rates)</h2>
+<p class="meta">Bankada 22 soru · Recitation: <a href="../recitations/hafta-06.md">H06 Q3–5</a> · <a href="../recitations/2024-guz/hafta-07.pdf">2024 föy 7</a> · Konu defteri: <a href="../kaynaklar/konu-defteri.pdf#page=41">s.41</a></p>
+
+<div class="box cheat"><h4>Formül kartı</h4>
+<p><b>Altın kural:</b> Önce genel bağıntıyı yaz, <b>sonra</b> $t$’ye göre türet, <b>en son</b> anlık değerleri koy. Anlık değeri türevden önce koyarsan değişken sabit olur ve türevi sıfır çıkar.</p>
+<div class="grid2"><div>
+<p><b>Hacim / alan</b></p>
+<ul>
+<li>Küre: $V=\frac43\pi r^3$, $\ S=4\pi r^2$</li>
+<li>Silindir: $V=\pi r^2h$, $\ S=2\pi r^2+2\pi rh$</li>
+<li>Koni: $V=\frac13\pi r^2h$, benzerlikten $\frac rh=\frac RH$</li>
+<li>Küp: $V=s^3$, $\ S=6s^2$</li>
+<li>Dikdörtgen: $A=xy$, $\ P=2(x+y)$</li>
+</ul></div><div>
+<p><b>Uzaklık / açı</b></p>
+<ul>
+<li>$D^2=(x-a)^2+(y-b)^2\Rightarrow DD'=(x-a)x'+(y-b)y'$</li>
+<li>Pisagor: $x^2+y^2=L^2$ (merdiven)</li>
+<li>Açı: $\tan\theta=\frac{\text{karşı}}{\text{komşu}}\Rightarrow\sec^2\theta\,\theta'=\cdots$</li>
+<li>Eğri üzerinde parçacık: $y=f(x)\Rightarrow y'=f'(x)\,x'$</li>
+<li>Eğim hızı: $m=f'(x)\Rightarrow\frac{dm}{dt}=f''(x)\,x'$</li>
+</ul></div></div>
+<p><b>Çarpım kuralı formları</b> (en çok kullanılan): $\frac{d}{dt}(\pi r^2h)=\pi(2rh\,r'+r^2h')$, $\ \frac{d}{dt}(xy)=x'y+xy'$.</p>
+</div>
+
+<div class="trick"><h4>Tuzaklar ve trickler</h4>
+<ul>
+<li><b>İşaret:</b> “decreasing at 3 cm/s” ise türev $-3$. Cevapta “artıyor mu azalıyor mu?” sorusunu işaretle cevapla.</li>
+<li><b>Birim</b> yaz: cm³/s, rad/s. Bazı sorularda puan birime de verilmiş.</li>
+<li>Bir büyüklük <b>sabit</b> tutuluyorsa (alan, yüzey, hacim) türevi sıfırdır. Bu, eksik hızı bulmanın denklemidir (<a class="it" data-i="112"></a>, <a class="it" data-i="124"></a>).</li>
+<li>Koni sorularında $r$’yi $h$ cinsinden yazıp tek değişkene indir. İki değişkenle devam etmek hataya açık.</li>
+<li>Bilinmeyen iki hız varsa iki bağıntı gerekir (<a class="it" data-i="79"></a>). Her bağıntıyı ayrı türet, doğrusal sistemi çöz.</li>
+<li>Açılı sorularda $\sin$ yerine $\tan$ seçmek çoğu zaman türevi basitleştirir. $\sec^2\theta=1+\tan^2\theta$ ile hesapla.</li>
+</ul></div>
+
+<h3>Soru tipleri</h3>
+<article class="tip" data-key="rr-a"><header><h4>Tip A · Geometrik formül (silindir, küre, küp, dikdörtgen)</h4><span><span class="tag f">en sık</span><label><input type="checkbox"> çalıştım</label></span></header>
+<div class="ex"><p><b>Örnek <a class="it" data-i="84"></a>.</b> Silindirde $r=5$ m, $h=8$ m. $r$ saatte 1 m artıyor, $h$ saatte 4 m azalıyor. Hacmin değişim hızı?</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$V=\pi r^2h$, dolayısıyla $V'=\pi(2rh\,r'+r^2h')=\pi(2\cdot5\cdot8\cdot1+25\cdot(-4))=\pi(80-100)=-20\pi$ m³/saat. Hacim azalıyor.</p></div></details></div>
+<div class="ex"><p><b>Örnek <a class="it" data-i="158"></a>.</b> Kutunun yüksekliği 1, genişliği 0.5, uzunluğu 2 cm/saat azalıyor. Kutu küp olduğu anda hacim 14 cm³/saat azalıyor. O andaki hacim?</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$V=\ell wh$, dolayısıyla $V'=\ell'wh+\ell w'h+\ell wh'$. Küp anında $\ell=w=h=s$: $V'=s^2(-2-0.5-1)=-3.5s^2=-14$, buradan $s=2$ ve $V=8$ cm³.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="84"></a> <a class="it" data-i="89"></a> <a class="it" data-i="102"></a> <a class="it" data-i="121"></a> <a class="it" data-i="126"></a> <a class="it" data-i="158"></a> <a class="it" data-i="164"></a> <a class="it" data-i="174"></a> <a class="it" data-i="192"></a> <a class="it" data-i="205"></a> <a class="it" data-i="207"></a> · Recitation <a href="../recitations/hafta-06.md">H06 Q3–4</a></p>
+</article>
+
+<article class="tip" data-key="rr-b"><header><h4>Tip B · Bir büyüklük sabit (alan, yüzey, hacim sabit)</h4><label><input type="checkbox"> çalıştım</label></header>
+<div class="ex"><p><b>Örnek <a class="it" data-i="112"></a>.</b> Kapalı silindirin toplam yüzey alanı sabit. $r=h=10$ cm iken hacim $3\pi$ cm³/s değişiyor. $r$ ne hızla değişiyor?</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$S=2\pi r^2+2\pi rh$ sabit: $4\pi rr'+2\pi(r'h+rh')=0$. $r=h=10$’da $40r'+20r'+20h'=0$, yani $h'=-3r'$.</p>
+<p>$V'=\pi(2rh\,r'+r^2h')=\pi(200r'-300r')=-100\pi r'=3\pi$. Sonuç $r'=-0.03$ cm/s, yarıçap küçülüyor.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="112"></a> <a class="it" data-i="124"></a> <a class="it" data-i="126"></a> <a class="it" data-i="139"></a> (d) <a class="it" data-i="183"></a></p>
+</article>
+
+<article class="tip" data-key="rr-c"><header><h4>Tip C · Eğri üzerindeki parçacık: uzaklık, eğim, alan hızı</h4><span><span class="tag f">sık</span><label><input type="checkbox"> çalıştım</label></span></header>
+<ol class="steps"><li>Parçacık $(x,y)$, $y=f(x)$. Verilen hızdan diğerini bul: $y'=f'(x)x'$ ya da örtük türev.</li><li>İstenen büyüklüğü (uzaklık, eğim, üçgen alanı) $x$ ve $y$ cinsinden yaz.</li><li>Türet ve yerine koy.</li></ol>
+<div class="ex"><p><b>Örnek <a class="it" data-i="134"></a>.</b> Parçacık $y=x^2$ üzerinde, $x'=2$. Üçgenin köşeleri parçacık, orijin ve parçacıktaki teğetin $x$-kesişimi. $(2,4)$’te alan hangi hızla artıyor?</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$(a,a^2)$’de teğet $y=2ax-a^2$, $x$-kesişimi $a/2$. Taban $a/2$, yükseklik $a^2$, alan $A=\frac{a^3}{4}$.</p>
+<p>$A'=\frac{3a^2}{4}a'=\frac{3\cdot4}{4}\cdot2=6$ birim²/s.</p></div></details></div>
+<div class="ex"><p><b>Örnek <a class="it" data-i="187"></a>.</b> Parçacık $y=4x-x^3$ üzerinde, $x'=-\frac13$. $x=2$ anında (a) $y'$, (b) teğet eğiminin değişim hızı.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>(a) $y'=(4-3x^2)x'=(-8)(-\frac13)=\frac83$.</p><p>(b) $m=4-3x^2$, dolayısıyla $m'=-6x\,x'=-12\cdot(-\frac13)=4$.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="134"></a> <a class="it" data-i="153"></a> <a class="it" data-i="168"></a> <a class="it" data-i="178"></a> <a class="it" data-i="187"></a> <a class="it" data-i="198"></a> · Recitation <a href="../recitations/hafta-06.md">H06 Q5</a></p>
+</article>
+
+<article class="tip" data-key="rr-d"><header><h4>Tip D · Merdiven, üçgen ve açı hızı</h4><label><input type="checkbox"> çalıştım</label></header>
+<div class="ex"><p><b>Örnek <a class="it" data-i="146"></a>.</b> 13 m merdiven, alt uç 0.6 m/s ile uzaklaşıyor. Alt uç 5 m’deyken üst uç?</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$x^2+y^2=169$, dolayısıyla $xx'+yy'=0$. $x=5$ iken $y=12$: $5(0.6)+12y'=0$, yani $y'=-0.25$ m/s (aşağı kayıyor).</p></div></details></div>
+<div class="ex"><p><b>Örnek <a class="it" data-i="183"></a>.</b> Dik üçgende ($C$ dik açı) alan hep 16 cm². $a=BC$ kenarı $\frac12$ cm/s artıyor. $a=8$ iken $\theta=\angle B$ hangi hızla değişir?</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$\frac12ab=16$, yani $b=\frac{32}{a}$ ve $\tan\theta=\frac ba=\frac{32}{a^2}$. Türev: $\sec^2\theta\,\theta'=-\frac{64}{a^3}a'$. $a=8$’de $\tan\theta=\frac12$, $\sec^2\theta=\frac54$, sağ taraf $-\frac{64}{512}\cdot\frac12=-\frac1{16}$. Sonuç $\theta'=-\frac1{20}$ rad/s.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="146"></a> <a class="it" data-i="183"></a></p>
+</article>
+
+<div class="hard"><h4>Zor soru · İki uzaklık, bilinmeyen iki hız (<a class="it" data-i="79"></a>, 2026 Bahar finali)</h4>
+<p>$P=(x(t),y(t))$ düzlemde hareket ediyor. $P=(4,3)$ anında $A=(0,0)$’a uzaklığı $\sqrt2$ cm/s ile artıyor, $B=(7,0)$’a uzaklığı 3 cm/s ile azalıyor. $x'$ nedir?</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$D_A=\sqrt{x^2+y^2}=5$, $D_B=\sqrt{(x-7)^2+y^2}=3\sqrt2$.</p>
+<p>$D_AD_A'=xx'+yy'$, dolayısıyla $5\sqrt2=4x'+3y'$. $D_BD_B'=(x-7)x'+yy'$, dolayısıyla $3\sqrt2(-3)=-3x'+3y'$, yani $y'=x'-3\sqrt2$.</p>
+<p>Yerine koy: $4x'+3x'-9\sqrt2=5\sqrt2$, buradan $x'=2\sqrt2$ cm/s ve $y'=-\sqrt2$ cm/s.</p></div></details></div>
+<div class="notewrap"><label>Notlarım · 4.1 <textarea class="note" data-key="note-rr"></textarea></label></div>
+</section>
+
+<section class="topic" id="lh" data-topic="4.3">
+<h2><span class="no">4.3</span>Belirsiz biçimler ve l’Hôpital kuralı (Indeterminate Forms)</h2>
+<p class="meta">Bankada 30 soru · her MT2’nin Q1’i · Recitation: <a href="../recitations/hafta-06.md">H06 Q6–8</a> · Konu defteri: <a href="../kaynaklar/konu-defteri.pdf#page=43">s.43</a></p>
+
+<div class="box cheat"><h4>Formül kartı</h4>
+<p><b>L’Hôpital.</b> $\lim f=\lim g=0$ (ya da ikisi de $\pm\infty$), $g'\neq0$ yakınında ve $\lim\frac{f'}{g'}=L$ (sonlu ya da $\pm\infty$) ise $\lim\frac fg=L$.</p>
+<div class="tw"><table>
+<tr><th>Biçim</th><th>Dönüşüm</th></tr>
+<tr><td>$0\cdot\infty$</td><td>$fg=\dfrac{f}{1/g}$ ya da $\dfrac{g}{1/f}$ (türevi kolay olanı payda bırakma)</td></tr>
+<tr><td>$\infty-\infty$</td><td>Payda eşitle ya da ortak çarpan parantezine al</td></tr>
+<tr><td>$1^\infty,\ 0^0,\ \infty^0$</td><td>$L=\lim f^g$ için $\ln L=\lim g\ln f$, sonra $L=e^{\ln L}$</td></tr>
+<tr><td>$1^\infty$ kısayolu</td><td>$\lim f^g=e^{\lim g(f-1)}$ (kontrol için)</td></tr>
+</table></div>
+<p><b>Sıfıra yakın açılımlar</b> (sadece kontrol için, çözümde L’Hôpital yaz):
+$\sin x\approx x-\frac{x^3}6$, $\ \tan x\approx x+\frac{x^3}3$, $\ \cos x\approx1-\frac{x^2}2$, $\ e^x\approx1+x+\frac{x^2}2$, $\ \ln(1+x)\approx x-\frac{x^2}2$, $\ \arctan x\approx x-\frac{x^3}3$.</p>
+<p><b>Büyüme sırası</b> ($x\to\infty$): $\ln x\ll x^p\ll a^x\ (a\gt 1)\ll x^x$.</p>
+<p><b>Klasikler:</b> $\displaystyle\lim_{x\to0^+}x^x=1$, $\ \lim_{x\to0}(1+ax)^{b/x}=e^{ab}$, $\ \lim_{x\to0}(\cos ax)^{1/x^2}=e^{-a^2/2}$, $\ \lim_{x\to\infty}\Big(\frac{x+a}{x+b}\Big)^{x}=e^{a-b}$.</p>
+</div>
+
+<div class="trick"><h4>Tuzaklar ve trickler</h4>
+<ul>
+<li><b>Her uygulamadan önce biçimi yaz</b> ($\frac00$ ya da $\frac\infty\infty$). Belirsiz olmayan limitte L’Hôpital yanlış cevap verir.</li>
+<li>Bölüm kuralı <b>değil</b>: pay ve paydanın türevlerini ayrı ayrı al.</li>
+<li>Paydaki ya da paydadaki <b>sıfır olmayan limitli çarpanları</b> ($\cos x$, $e^x$, $\frac{1}{x+1}$) ayır. Türevler çok kısalır.</li>
+<li>Üstel biçimde son adımda $e$’ye dönmeyi unutma. Cevap $\ln L$ değil, $L$.</li>
+<li>$a^x$ ve $b^x$ oranlarında ($x\to\infty$) L’Hôpital döngüye girer. <b>En büyük tabana böl</b> (<a class="it" data-i="125"></a> (b)).</li>
+<li>$\lim\frac{f'}{g'}$ yoksa (salınım) sonuç “limit yok” değildir. Başka yol dene: sıkıştırma ya da sınırlı × sıfır (<a class="it" data-i="104"></a>, <a class="it" data-i="135"></a> (a)).</li>
+<li>$\frac{\sin(1/x)}{1/x}$ gibi ifadelerde $x\to\infty$’u $t=1/x\to0^+$ değişkenine çevir.</li>
+<li>İç içe kök ve kuvvetlerde ($(1-\cos x)^{3/2}$) önce $1-\cos x=2\sin^2\frac x2$ dönüşümü yap.</li>
+</ul></div>
+
+<h3>Soru tipleri</h3>
+<article class="tip" data-key="lh-a"><header><h4>Tip A · $\frac00$ ve $\frac\infty\infty$ (gerekirse birkaç kez)</h4><span><span class="tag f">her sınav</span><label><input type="checkbox"> çalıştım</label></span></header>
+<div class="ex"><p><b>Örnek <a class="it" data-i="81"></a> (a).</b> $\displaystyle\lim_{x\to0}\frac{\tan x-x}{x-\sin x}$</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$\frac00$: $\displaystyle\lim\frac{\sec^2x-1}{1-\cos x}=\lim\frac{\tan^2x}{1-\cos x}$. Hâlâ $\frac00$. $\sec^2x-1=\frac{1-\cos^2x}{\cos^2x}=\frac{(1-\cos x)(1+\cos x)}{\cos^2x}$ olduğundan
+$$\lim_{x\to0}\frac{1+\cos x}{\cos^2x}=2.$$
+<i>(L’Hôpital’i iki kez daha uygulamak da 2 verir. Sadeleştirme daha kısa.)</i></p></div></details></div>
+<div class="ex"><p><b>Örnek <a class="it" data-i="106"></a> (b).</b> $\displaystyle\lim_{x\to0}\frac{e^{3x^2}-e^{x^2}-2x^2}{2x^4}$</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$u=x^2\to0^+$ koy: $\lim\frac{e^{3u}-e^u-2u}{2u^2}$, $\frac00$. L’H: $\frac{3e^{3u}-e^u-2}{4u}$, yine $\frac00$. L’H: $\frac{9e^{3u}-e^u}{4}\to\frac{8}{4}=2$.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="81"></a> <a class="it" data-i="106"></a> <a class="it" data-i="128"></a> (b) <a class="it" data-i="135"></a> <a class="it" data-i="147"></a> (c) <a class="it" data-i="156"></a> (c) <a class="it" data-i="162"></a> (b) <a class="it" data-i="165"></a> (a) <a class="it" data-i="171"></a> (b) <a class="it" data-i="189"></a> (a) <a class="it" data-i="208"></a> (a) <a class="it" data-i="94"></a> (a) <a class="it" data-i="185"></a> (b) · Recitation <a href="../recitations/hafta-06.md">H06 Q6</a></p>
+</article>
+
+<article class="tip" data-key="lh-b"><header><h4>Tip B · $\infty-\infty$</h4><label><input type="checkbox"> çalıştım</label></header>
+<div class="ex"><p><b>Örnek <a class="it" data-i="74"></a> (a).</b> $\displaystyle\lim_{x\to1}\Big(\frac{x}{x-1}-\frac1{\ln x}\Big)$</p>
+<details class="sol"><summary>Çözüm</summary><div><p>Payda eşitle: $\dfrac{x\ln x-x+1}{(x-1)\ln x}$, $\frac00$. L’H: $\dfrac{\ln x}{\ln x+1-\frac1x}$, $\frac00$. L’H: $\dfrac{1/x}{1/x+1/x^2}\to\frac{1}{2}$.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="74"></a> (a) <a class="it" data-i="150"></a> (a) <a class="it" data-i="156"></a> (a) <a class="it" data-i="165"></a> (b)</p>
+</article>
+
+<article class="tip" data-key="lh-c"><header><h4>Tip C · $0\cdot\infty$</h4><label><input type="checkbox"> çalıştım</label></header>
+<div class="ex"><p><b>Örnek <a class="it" data-i="115"></a> (a).</b> $\displaystyle\lim_{x\to\infty}x\Big(\arctan x-\frac\pi2\Big)$</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$\dfrac{\arctan x-\pi/2}{1/x}$, $\frac00$. L’H: $\dfrac{1/(1+x^2)}{-1/x^2}=-\dfrac{x^2}{1+x^2}\to-1$.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="115"></a> (a) <a class="it" data-i="119"></a> (a) <a class="it" data-i="165"></a> (b)</p>
+</article>
+
+<article class="tip" data-key="lh-d"><header><h4>Tip D · $1^\infty$</h4><span><span class="tag f">her sınav</span><label><input type="checkbox"> çalıştım</label></span></header>
+<ol class="steps"><li>$L=\lim f^g$, $\ln L=\lim g\ln f$ (biçim $\infty\cdot0$).</li><li>$\frac{\ln f}{1/g}$ biçimine getir, L’Hôpital.</li><li>$L=e^{\ln L}$.</li></ol>
+<div class="ex"><p><b>Örnek <a class="it" data-i="86"></a> (b).</b> $\displaystyle\lim_{x\to0^+}(e^x+6x)^{17/x}$</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$\ln L=\displaystyle\lim\frac{17\ln(e^x+6x)}{x}$, $\frac00$. L’H: $17\cdot\dfrac{e^x+6}{e^x+6x}\to17\cdot7=119$. $L=e^{119}$.</p></div></details></div>
+<div class="ex"><p><b>Örnek <a class="it" data-i="81"></a> (b).</b> $\displaystyle\lim_{x\to0}(\cos 2x)^{1/x^2}$</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$\ln L=\lim\frac{\ln\cos2x}{x^2}$. L’H: $\frac{-2\tan2x}{2x}=-\frac{\tan 2x}{x}\to-2$. $L=e^{-2}$.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="81"></a> (b) <a class="it" data-i="86"></a> (b) <a class="it" data-i="94"></a> (b) <a class="it" data-i="100"></a> (b) <a class="it" data-i="106"></a> (c) <a class="it" data-i="114"></a> (a) <a class="it" data-i="116"></a> <a class="it" data-i="135"></a> (b) <a class="it" data-i="147"></a> (a) <a class="it" data-i="150"></a> (b) <a class="it" data-i="156"></a> (b) <a class="it" data-i="165"></a> (c) <a class="it" data-i="175"></a> (a) <a class="it" data-i="185"></a> (a) <a class="it" data-i="189"></a> (b) <a class="it" data-i="203"></a> (b)</p>
+</article>
+
+<article class="tip" data-key="lh-e"><header><h4>Tip E · $0^0$ ve $\infty^0$</h4><span><span class="tag f">sık</span><label><input type="checkbox"> çalıştım</label></span></header>
+<div class="ex"><p><b>Örnek <a class="it" data-i="97"></a> (a).</b> $\displaystyle\lim_{x\to0^+}(-\ln x)^x$</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$\infty^0$. $\ln L=\lim\dfrac{\ln(-\ln x)}{1/x}$, $\frac\infty\infty$. L’H: pay türevi $\frac{1}{-\ln x}\cdot\left(-\frac1x\right)=\frac1{x\ln x}$, payda türevi $-\frac1{x^2}$. Oran $-\dfrac{x}{\ln x}\to0$. $L=e^0=1$.</p></div></details></div>
+<div class="ex"><p><b>Örnek <a class="it" data-i="122"></a> (a).</b> $\displaystyle\lim_{x\to1^+}(x^2-1)^{\ln x}$</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$0^0$. $\ln L=\lim\ln x\cdot\ln(x^2-1)=\lim\dfrac{\ln(x^2-1)}{1/\ln x}$. L’H: $\dfrac{2x/(x^2-1)}{-1/(x\ln^2x)}=-\dfrac{2x^2\ln^2x}{x^2-1}$. $\frac00$, $\ln^2x\sim(x-1)^2$ olduğundan $\to0$. $L=1$.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="97"></a> (a) <a class="it" data-i="115"></a> (c) <a class="it" data-i="119"></a> (b) <a class="it" data-i="122"></a> (a) <a class="it" data-i="128"></a> (a) <a class="it" data-i="137"></a> (a) <a class="it" data-i="160"></a> (a) <a class="it" data-i="162"></a> (a) <a class="it" data-i="171"></a> (a) <a class="it" data-i="208"></a> (b)</p>
+</article>
+
+<article class="tip" data-key="lh-f"><header><h4>Tip F · L’Hôpital gereksiz ya da işe yaramaz (baskın terim, sıkıştırma)</h4><label><input type="checkbox"> çalıştım</label></header>
+<div class="ex"><p><b>Örnek <a class="it" data-i="125"></a> (b).</b> $\displaystyle\lim_{x\to\infty}\frac{2^x+4\cdot3^{2x}}{3^x-9^x}$</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$9^x$’e böl: $\dfrac{(2/9)^x+4}{(1/3)^x-1}\to\dfrac{0+4}{0-1}=-4$. L’Hôpital burada aynı biçimi tekrar üretir.</p></div></details></div>
+<div class="ex"><p><b>Örnek <a class="it" data-i="104"></a> (a).</b> $\displaystyle\lim_{x\to0^+}x\,e^{\sin(1/x)}$</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$-1\le\sin(1/x)\le1$, dolayısıyla $e^{-1}x\le xe^{\sin(1/x)}\le ex$ ($x\gt 0$). Sıkıştırma ile limit 0.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="97"></a> (b) <a class="it" data-i="100"></a> (a) <a class="it" data-i="104"></a> <a class="it" data-i="125"></a> (b) <a class="it" data-i="135"></a> (a) <a class="it" data-i="137"></a> (b) <a class="it" data-i="160"></a> (b) <a class="it" data-i="208"></a> (d) · Recitation <a href="../recitations/hafta-06.md">H06 Q8</a></p>
+</article>
+
+<article class="tip" data-key="lh-g"><header><h4>Tip G · Kapsam dışı: integralli limit (FTC) ve Riemann toplamı</h4><span><span class="tag">final</span><label><input type="checkbox"> gördüm</label></span></header>
+<p>Eski MT2’lerde $\lim\frac{\int_0^{x^2}\sin t^2\,dt}{x^3}$ gibi FTC + L’Hôpital ve $\lim\sum\frac1n f(\frac in)$ gibi Riemann toplamı soruları var. Bu dönem 5.x konuları MT2’de olmadığı için bunları <b>finale</b> bırak: <a href="../final/README.md">final rehberi</a>.</p>
+<p class="past"><b>Bu tipteki eski sorular:</b> <a class="it" data-i="86" data-x></a> (a, c) <a class="it" data-i="97" data-x></a> (c) <a class="it" data-i="100" data-x></a> (c) <a class="it" data-i="114" data-x></a> (b) <a class="it" data-i="119" data-x></a> (c) <a class="it" data-i="125" data-x></a> (a) <a class="it" data-i="130" data-x></a> <a class="it" data-i="142" data-x></a> <a class="it" data-i="150" data-x></a> (c) <a class="it" data-i="162" data-x></a> (c) <a class="it" data-i="175" data-x></a> (b) <a class="it" data-i="203" data-x></a> (c)</p>
+</article>
+
+<div class="hard"><h4>Zor soru (<a class="it" data-i="135"></a> (c))</h4>
+<p>$\displaystyle\lim_{x\to0^+}\frac{x-\sin x}{(1-\cos x)^{3/2}}$</p>
+<details class="sol"><summary>Çözüm</summary><div><p>Doğrudan L’Hôpital paydada $(1-\cos x)^{1/2}$ bırakır ve döngüye girer. $1-\cos x=2\sin^2\frac x2$ ve $x\gt 0$ küçükken $\sin\frac x2\gt 0$, dolayısıyla payda $2\sqrt2\sin^3\frac x2$.</p>
+<p>$$\frac{x-\sin x}{2\sqrt2\sin^3(x/2)}=\frac{x-\sin x}{x^3}\cdot\frac{x^3}{2\sqrt2\sin^3(x/2)}.$$ İlk çarpan (üç kez L’H) $\frac16$. İkincisi $\frac{8}{2\sqrt2}\Big(\frac{x/2}{\sin(x/2)}\Big)^3\to2\sqrt2$. Sonuç $\frac{2\sqrt2}{6}=\frac{\sqrt2}{3}$.</p></div></details></div>
+<div class="notewrap"><label>Notlarım · 4.3 <textarea class="note" data-key="note-lh"></textarea></label></div>
+</section>
+
+<section class="topic" id="ext" data-topic="4.4">
+<h2><span class="no">4.4</span>Ekstremum değerler (Extreme Values)</h2>
+<p class="meta">Bankada 15 soru · Recitation: <a href="../recitations/hafta-07.md">H07 Q1–2</a> · <a href="../recitations/2024-guz/hafta-08.pdf">2024 föy 8</a></p>
+
+<div class="box cheat"><h4>Formül kartı</h4>
+<ul>
+<li><b>Aday noktalar (Adams):</b> (i) kritik nokta $f'(x)=0$, (ii) tekil nokta, yani $f'$ yok ama $f$ tanımlı ($x^{2/3}$’te $0$, $|x|$’te köşe), (iii) tanım kümesinin uç noktaları.</li>
+<li><b>Extreme Value Theorem:</b> $[a,b]$ <b>kapalı ve sınırlı</b>, $f$ <b>sürekli</b> ise mutlak maks ve min vardır. Kapalı aralık yöntemi: bütün adaylarda $f$’yi hesapla, en büyük ve en küçüğü seç.</li>
+<li><b>Birinci türev testi:</b> $f'$ işareti $+\to-$ ise yerel maks, $-\to+$ ise yerel min, değişmiyorsa ekstremum yok.</li>
+<li><b>İkinci türev testi:</b> $f'(c)=0$ ve $f''(c)\lt 0$ ise yerel maks, $f''(c)\gt 0$ ise yerel min. $f''(c)=0$ ise <b>test sonuçsuz</b>, birinci türev testine dön.</li>
+<li>Açık ya da sonsuz aralıkta mutlak ekstremum için uç limitlerini adaylarla karşılaştır. Limit değeri <b>alınmıyorsa</b> o ekstremum yoktur.</li>
+<li>Aralıkta tek kritik nokta varsa ve orada yerel maks ise, o nokta mutlak maksimumdur.</li>
+</ul></div>
+
+<div class="trick"><h4>Tuzaklar ve trickler</h4>
+<ul>
+<li>$f'$’yi <b>tek kesir</b> hâline getir: $f'=\frac{\text{pay}}{\text{payda}}$. Kritik noktalar paydan, tekil noktalar paydadan çıkar.</li>
+<li>$x^{2/3}$, $\sqrt[3]{\ }$ ve $|\,\cdot\,|$ içeren fonksiyonlarda tekil noktayı listeye eklemeyi unutma. En sık puan kaybı budur.</li>
+<li>Parçalı fonksiyonda birleşme noktası her zaman adaydır. Önce süreklilik kontrolü yap (EVT için şart).</li>
+<li>Tanım kümesi dışında kalan kritik noktaları at ($[1,\sqrt{15}]$ dışındaki kökler gibi).</li>
+<li>$(\cdots)^{2/3}$ fonksiyonu negatif olamaz. İçinin sıfır olduğu her nokta mutlak minimum adayıdır.</li>
+<li>“No partial credit for incorrect derivative computations” uyarısı son sınavlarda var: türevi iki kez kontrol et.</li>
+</ul></div>
+
+<h3>Soru tipleri</h3>
+<article class="tip" data-key="ext-a"><header><h4>Tip A · Kapalı aralıkta mutlak ekstremum (tekil noktalı)</h4><span><span class="tag f">sık</span><label><input type="checkbox"> çalıştım</label></span></header>
+<div class="ex"><p><b>Örnek <a class="it" data-i="181"></a>.</b> $f(x)=(x^3-9x^2+15x)^{2/3}$ için $[-1,6]$’da mutlak ekstremumlar.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$g=x^3-9x^2+15x$, $f'=\frac23g^{-1/3}g'$ ve $g'=3(x-1)(x-5)$.</p>
+<p>Kritik: $x=1,5$. Tekil ($g=0$): $x=0$ ve $x=\frac{9\pm\sqrt{21}}2$. Bunlardan aralıkta kalan $\frac{9-\sqrt{21}}2\approx2.21$ ($6.79$ dışarıda). Uçlar: $-1,6$.</p>
+<div class="tw"><table><tr><th>$x$</th><td>$-1$</td><td>$0$</td><td>$1$</td><td>$\frac{9-\sqrt{21}}2$</td><td>$5$</td><td>$6$</td></tr><tr><th>$g$</th><td>$-25$</td><td>$0$</td><td>$7$</td><td>$0$</td><td>$-25$</td><td>$-18$</td></tr><tr><th>$f$</th><td>$25^{2/3}$</td><td>$0$</td><td>$7^{2/3}$</td><td>$0$</td><td>$25^{2/3}$</td><td>$18^{2/3}$</td></tr></table></div>
+<p>Mutlak maks $25^{2/3}=5\sqrt[3]5$ ($x=-1$ ve $x=5$). Mutlak min $0$ ($x=0$ ve $x=\frac{9-\sqrt{21}}2$).</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="113"></a> <a class="it" data-i="136"></a> <a class="it" data-i="139"></a> (a) <a class="it" data-i="154"></a> <a class="it" data-i="181"></a> <a class="it" data-i="209"></a> (a) · Recitation <a href="../recitations/hafta-07.md">H07 Q2</a></p>
+</article>
+
+<article class="tip" data-key="ext-b"><header><h4>Tip B · Parçalı fonksiyon</h4><label><input type="checkbox"> çalıştım</label></header>
+<div class="ex"><p><b>Örnek <a class="it" data-i="159"></a>.</b> $f(x)=|x^2-1|$ ($x\le2$), $f(x)=2+\cos(x-2)$ ($x\gt 2$). (a) Hesaplamadan $[0,6]$’da mutlak ekstremum olduğunu göster. (b) Bul.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>(a) Her parça sürekli. $x=2$’de $f(2)=3$ ve $\lim_{x\to2^+}f=2+1=3$, dolayısıyla $f$, $[0,6]$’da sürekli. EVT’ye göre ekstremumlar var.</p>
+<p>(b) Adaylar: $x=0$ (uç), $x=1$ (köşe, $|x^2-1|$ türevsiz), $x=2$ (sol türev $4$, sağ türev $0$, türevsiz), $(2,6)$’da $\sin(x-2)=0$ için $x=2+\pi$, ve $x=6$ (uç).</p>
+<p>Değerler: $f(0)=1$, $f(1)=0$, $f(2)=3$, $f(2+\pi)=1$, $f(6)=2+\cos4\approx1.35$. Maks $3$ ($x=2$), min $0$ ($x=1$).</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="148"></a> <a class="it" data-i="159"></a></p>
+</article>
+
+<article class="tip" data-key="ext-c"><header><h4>Tip C · Açık ya da sonsuz aralık: ekstremum var mı?</h4><label><input type="checkbox"> çalıştım</label></header>
+<div class="ex"><p><b>Örnek <a class="it" data-i="170"></a>.</b> $f(x)=e^{-(1+x^2)/x}$, $(0,\infty)$’da mutlak maks ve min (varsa).</p>
+<details class="sol"><summary>Çözüm</summary><div><p>Üs $-(x+\frac1x)$. $x+\frac1x\ge2$, eşitlik $x=1$’de (AM-GM ya da türev: $1-\frac1{x^2}=0$). Maks $f(1)=e^{-2}$.</p>
+<p>$x\to0^+$ ve $x\to\infty$ için $x+\frac1x\to\infty$, yani $f\to0$. $f\gt 0$ her yerde ve $0$ değeri alınmıyor, <b>mutlak minimum yok</b>.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="82"></a> (c) <a class="it" data-i="110"></a> <a class="it" data-i="170"></a> <a class="it" data-i="209"></a> (b)</p>
+</article>
+
+<article class="tip" data-key="ext-d"><header><h4>Tip D · Kritik ve tekil noktaları bul, sınıflandır</h4><span><span class="tag f">son dönem</span><label><input type="checkbox"> çalıştım</label></span></header>
+<div class="ex"><p><b>Örnek <a class="it" data-i="88"></a> (2025 Güz MT2).</b> $f(x)=x^{2/3}e^x$. Artma/azalma aralıkları ve yerel ekstremum değerleri.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$x\neq0$ için $f'(x)=\frac23x^{-1/3}e^x+x^{2/3}e^x=\dfrac{e^x(3x+2)}{3x^{1/3}}$.</p>
+<p>Kritik $x=-\frac23$, tekil $x=0$. İşaret tablosu: $x\lt -\frac23$’te $\frac{-}{-}=+$, $(-\frac23,0)$’da $\frac{+}{-}=-$, $x\gt 0$’da $+$.</p>
+<p>Artan: $(-\infty,-\frac23]$ ve $[0,\infty)$. Azalan: $[-\frac23,0]$. Yerel maks $f(-\frac23)=\left(\frac49\right)^{1/3}e^{-2/3}$. Yerel min $f(0)=0$ (tekil nokta).</p></div></details></div>
+<div class="ex"><p><b>Örnek <a class="it" data-i="95"></a>.</b> $f(x)=(-x^2+x-1)e^{-x^2/2}$ kritik noktalarını bul ve sınıflandır.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$f'=e^{-x^2/2}\big[(-2x+1)+(-x^2+x-1)(-x)\big]=e^{-x^2/2}(x^3-x^2-x+1)=e^{-x^2/2}(x-1)^2(x+1)$.</p>
+<p>Kritik $x=-1$ ve $x=1$. İşaret: $x\lt -1$’de $-$, $x\gt -1$’de $+$ ($x=1$’de işaret değişmez). $x=-1$ yerel min, $f(-1)=-3e^{-1/2}$. $x=1$’de ekstremum yok.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="88"></a> <a class="it" data-i="95"></a> <a class="it" data-i="105"></a> <a class="it" data-i="10"></a> (a) <a class="it" data-i="123"></a> (b–d) · Recitation <a href="../recitations/hafta-07.md">H07 Q1</a></p>
+</article>
+
+<article class="tip" data-key="ext-e"><header><h4>Tip E · Türev bağıntısıyla verilen fonksiyon (zor tip)</h4><span><span class="tag h">zor</span><label><input type="checkbox"> çalıştım</label></span></header>
+<p><b>Tanı:</b> $f$’nin formülü yok, $f'$ bir bağıntıyla veriliyor: <a class="it" data-i="90" data-x></a>. ($f'(x)=f(x)\int_{119}^xf$ sorusu FTC içerdiğinden bu dönem kapsam dışı, ama aynı fikir kapsam içinde de sorulabilir.)</p>
+<div class="ex"><p><b>Kapsam içi sürüm.</b> $f$ iki kez türevlenebilir, her $x$ için $f'(x)=(x-2)\,e^{f(x)}$ ve $f(2)=0$. $x=2$’yi sınıflandır.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$f'(2)=0$, kritik nokta. $e^{f}\gt 0$ olduğundan $f'$’nin işareti $x-2$’nin işaretidir: $-\to+$, yani <b>yerel minimum</b>. (İkinci türev testi de olur: $f''=e^{f}+(x-2)e^{f}f'$, $f''(2)=e^0=1\gt 0$.) Mutlak minimum da: $f$, $(-\infty,2]$’de azalıyor, $[2,\infty)$’da artıyor.</p></div></details></div>
+</article>
+
+<div class="hard"><h4>Zor soru (<a class="it" data-i="184"></a> tipi · en büyük eğim)</h4>
+<p>$f(x)=1+6x^2-x^4$ eğrisinde, $[-1,3]$ aralığında teğet eğiminin <b>en büyük</b> olduğu noktayı bul.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>Eğim $m(x)=f'(x)=12x-4x^3$. $m$’yi $[-1,3]$’te maksimize et: $m'=12-12x^2=0$, yani $x=\pm1$.</p>
+<p>$m(-1)=-8$, $m(1)=8$, $m(3)=36-108=-72$. En büyük eğim $8$, $x=1$’de. Nokta $(1,f(1))=(1,6)$. Burada $f''(1)=0$ ve $f''$ işaret değiştirdiği için bu bir büküm noktasıdır. En dik teğet büküm noktalarında aranır.</p></div></details></div>
+<div class="notewrap"><label>Notlarım · 4.4 <textarea class="note" data-key="note-ext"></textarea></label></div>
+</section>
+
+<section class="topic" id="conc" data-topic="4.5">
+<h2><span class="no">4.5</span>Konkavlık ve büküm noktaları (Concavity and Inflections)</h2>
+<p class="meta">Bankada 2 ayrı soru, grafik sorularının hepsinde parça · Recitation: <a href="../recitations/hafta-07.md">H07 Q3–4</a></p>
+<div class="box cheat"><h4>Formül kartı</h4>
+<ul>
+<li>Aralıkta $f''\gt 0$ ise yukarı konkav (concave up, $\smile$): $f'$ artar, teğet eğrinin altında kalır. $f''\lt 0$ ise aşağı konkav ($\frown$).</li>
+<li><b>Büküm noktası (inflection point, Adams):</b> $f$ $x_0$’da sürekli, grafiğin orada teğeti var (düşey olabilir) ve konkavlık yön değiştiriyor.</li>
+<li>Büküm adayları: $f''(x)=0$ ya da $f''$ tanımsız. Adayda $f''$’nün <b>işaret değiştirdiğini</b> mutlaka göster.</li>
+<li>$f'$ grafiğinden okuma: $f'$ artıyorsa $f$ yukarı konkav, $f'$ azalıyorsa aşağı konkav. $f'$’nün yerel ekstremumları $f$’nin bükümleridir.</li>
+</ul></div>
+<div class="trick"><h4>Tuzaklar ve trickler</h4>
+<ul>
+<li>$f''(c)=0$ büküm demek değildir: $x^4$’te $f''(0)=0$, ama büküm yok.</li>
+<li>$f''$ tanımsız olabilir ama büküm vardır: $x^{1/3}$’te $(0,0)$ (düşey teğet). $f$ orada tanımsızsa ($x=1$ düşey asimptot) büküm yoktur, sadece konkavlık değişir.</li>
+<li>$x^{2/3}$’te iki tarafta da $f''\lt 0$, büküm yok (sivri nokta, cusp).</li>
+<li>Büküm noktası bir <b>nokta</b>: $(x_0,f(x_0))$ olarak yaz.</li>
+<li>Soruda “about the function $f$ (NOT about the given graph)” uyarısı varsa verilen grafik $f'$ grafiğidir. Okumayı $f'$ üzerinden yap.</li>
+</ul></div>
+<h3>Soru tipleri</h3>
+<article class="tip" data-key="conc-a"><header><h4>Tip A · $f'$ (ya da $f''$) grafiğinden $f$ hakkında okuma</h4><span><span class="tag f">son dönem</span><label><input type="checkbox"> çalıştım</label></span></header>
+<ol class="steps"><li>$f'$’nün işareti ($x$-ekseninin üstü/altı): artma ve azalma.</li><li>$f'$’nün $x$-eksenini kestiği yerler: yerel ekstremum adayları. İşaret değişimine bak.</li><li>$f'$’nün eğimi (artıyor/azalıyor): konkavlık. $f'$’nün tepe ve dip noktaları: büküm.</li></ol>
+<div class="ex"><p><b>Örnek (<a class="it" data-i="107"></a> ve <a class="it" data-i="169"></a> tipi).</b> $f'(x)=x^2(x-3)$ veriliyor. $f$ için artma/azalma, yerel ekstremum, konkavlık ve büküm noktalarının $x$-koordinatları.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$f'\le0$ ($x\lt 3$), $f'\gt 0$ ($x\gt 3$). Azalan $(-\infty,3]$, artan $[3,\infty)$. $x=0$’da $f'=0$, ama işaret değişmiyor, ekstremum yok. $x=3$ yerel (ve mutlak) min.</p>
+<p>$f''=3x^2-6x=3x(x-2)$: $x\lt 0$’da $+$, $(0,2)$’de $-$, $x\gt 2$’de $+$. Yukarı konkav $(-\infty,0)$ ve $(2,\infty)$, aşağı konkav $(0,2)$. Büküm $x=0$ ve $x=2$’de. $x=0$ yatay teğetli büküm noktasıdır.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="107"></a> <a class="it" data-i="169"></a> <a class="it" data-i="195"></a> (e–f kısımları integral içerir)</p>
+</article>
+<article class="tip" data-key="conc-b"><header><h4>Tip B · $f''$ işaret tablosu ve büküm noktası</h4><label><input type="checkbox"> çalıştım</label></header>
+<div class="ex"><p><b>Örnek.</b> $f(x)=x^{1/3}(x-4)$’ün büküm noktaları.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$f=x^{4/3}-4x^{1/3}$, $f'=\frac43x^{1/3}-\frac43x^{-2/3}=\frac{4(x-1)}{3x^{2/3}}$, $f''=\frac49x^{-2/3}+\frac89x^{-5/3}=\frac{4(x+2)}{9x^{5/3}}$.</p>
+<p>İşaret: $x\lt -2$’de $\frac{-}{-}=+$, $(-2,0)$’da $\frac{+}{-}=-$, $x\gt 0$’da $+$. Bükümler $(-2,\,6\sqrt[3]2)$ ve $(0,0)$. $x=0$’da $f''$ yok ama teğet düşey, $f$ sürekli ve konkavlık değişiyor, dolayısıyla büküm noktası.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> grafik sorularının hepsi, örn. <a class="it" data-i="82"></a> <a class="it" data-i="98"></a> <a class="it" data-i="161"></a> (c)</p>
+</article>
+<div class="notewrap"><label>Notlarım · 4.5 <textarea class="note" data-key="note-conc"></textarea></label></div>
+</section>
+
+<section class="topic" id="sketch" data-topic="4.6">
+<h2><span class="no">4.6</span>Grafik çizimi (Sketching the Graph of a Function)</h2>
+<p class="meta">Bankada 28 soru · her MT2’de bir tane, 15–30 puan · Recitation: <a href="../recitations/hafta-07.md">H07 Q3–4</a> · <a href="../recitations/2024-guz/hafta-08.pdf">2024 föy 8</a> · Konu defteri: <a href="../kaynaklar/konu-defteri.pdf#page=48">s.48</a></p>
+<div class="box cheat"><h4>Kontrol listesi (sırayla yaz, her biri puan)</h4>
+<ol>
+<li><b>Tanım kümesi</b>, simetri (tek/çift), periyot.</li>
+<li><b>Kesişimler:</b> $f(0)$ ve $f(x)=0$’ın kökleri.</li>
+<li><b>Asimptotlar:</b>
+<ul><li>Düşey: $\lim_{x\to a^\pm}f=\pm\infty$ (paydanın kökü, $\ln$’in $0^+$’ı). <b>İki yanlı limit yaz.</b></li>
+<li>Yatay: $\lim_{x\to\pm\infty}f=L$. İki yönü ayrı kontrol et ($e^x$, $\arctan$ için farklı olabilir).</li>
+<li>Eğik: $m=\lim\frac{f(x)}{x}$, $b=\lim(f(x)-mx)$. Rasyonelde polinom bölmesi: $\frac{x^2-3}{x-2}=x+2+\frac1{x-2}$.</li></ul></li>
+<li><b>$f'$:</b> kritik ve tekil noktalar, işaret tablosu, artma/azalma, yerel ekstremum <b>değerleri</b>.</li>
+<li><b>$f''$:</b> işaret tablosu, konkavlık, büküm noktaları $(x,f(x))$.</li>
+<li><b>Tek tablo:</b> $x$ ekseninde bütün özel noktalar, satırlarda $f'$, $f''$ işaretleri ve $\nearrow\searrow\smile\frown$.</li>
+<li><b>Çizim:</b> önce asimptotlar (kesik çizgi), sonra özel noktalar (etiketli), en son tabloya uygun eğri.</li>
+</ol></div>
+<div class="trick"><h4>Tuzaklar ve trickler</h4>
+<ul>
+<li><b>Sadeleşen çarpan delik bırakır, asimptot değil:</b> $\frac{2x^2+x-1}{x^2-1}=\frac{(2x-1)(x+1)}{(x-1)(x+1)}$ için $x=-1$’de delik var, düşey asimptot sadece $x=1$ (<a class="it" data-i="140"></a>).</li>
+<li>Grafik yatay asimptotu <b>kesebilir</b>. $f(x)=L$ denklemini çöz ve kesişimi işaretle.</li>
+<li>Paydada çift kuvvet ($(x-1)^2$) varsa iki tarafta limit aynı işaretli. Tek kuvvet ise işaret değişir.</li>
+<li>$f'$, $f''$ verilmişse onları kullan, yeniden türetme. Soru bazen bir sabiti ($A$, $B$) bulmanı ister (<a class="it" data-i="210"></a>).</li>
+<li>Tanım kümesi $(0,\infty)$ olan $\ln$’li fonksiyonda $x\to0^+$ limiti asimptot olmayabilir: $x(\ln x)^2\to0$ (<a class="it" data-i="98"></a>).</li>
+<li>“Bilgiden çiz” sorusunda her bilgiyi tabloya geçir. Çelişen bir şey yoksa çiz, gereksiz hesap yapma.</li>
+</ul></div>
+
+<h3>Soru tipleri</h3>
+<article class="tip" data-key="sk-a"><header><h4>Tip A · Rasyonel fonksiyon (genelde $f'$, $f''$ verilir)</h4><span><span class="tag f">en sık</span><label><input type="checkbox"> çalıştım</label></span></header>
+<div class="ex"><p><b>Örnek <a class="it" data-i="93"></a> (2025 Bahar MT2).</b> $f(x)=\dfrac{2x^2}{(x-1)^2}$, $f'(x)=\dfrac{-4x}{(x-1)^3}$, $f''(x)=\dfrac{4(2x+1)}{(x-1)^4}$. Asimptotlar, monotonluk, ekstremum, konkavlık.</p>
+<details class="sol"><summary>Çözüm</summary><div><p><b>Asimptotlar:</b> $x\to1^\pm$ için $f\to+\infty$ (pay $2\gt 0$, payda $0^+$), düşey asimptot $x=1$. $x\to\pm\infty$ için $f\to2$, yatay asimptot $y=2$. Kesişim: $2x^2=2(x-1)^2$, $x=\frac12$, yani $(\frac12,2)$’de asimptotu keser.</p>
+<p><b>$f'$:</b> $x\lt 0$’da $\frac{+}{-}\lt 0$, $(0,1)$’de $\frac{-}{-}\gt 0$, $x\gt 1$’de $\frac{-}{+}\lt 0$. Azalan $(-\infty,0]$, artan $[0,1)$, azalan $(1,\infty)$. Yerel min $(0,0)$, yerel maks yok.</p>
+<p><b>$f''$:</b> işaret $2x+1$’in işareti ($x\neq1$). Aşağı konkav $(-\infty,-\frac12)$, yukarı konkav $(-\frac12,1)$ ve $(1,\infty)$. Büküm $(-\frac12,\frac29)$.</p>
+<p><b>Çizim:</b> soldan $y=2$’nin altından gelir ($x\to-\infty$’da $f\lt 2$), $(-\frac12,\frac29)$’da büküm, $(0,0)$’da dip, $x=1$’de $+\infty$’a gider. Sağda $+\infty$’dan iner, $y=2$’ye <b>yukarıdan</b> yaklaşır.</p></div></details></div>
+<div class="ex"><p><b>Örnek (eğik asimptot).</b> $f(x)=\dfrac{x^2-3}{x-2}$.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$f=x+2+\frac1{x-2}$. Düşey $x=2$ ($2^-$’de $-\infty$, $2^+$’da $+\infty$), eğik $y=x+2$. $f'=1-\frac1{(x-2)^2}=\frac{(x-1)(x-3)}{(x-2)^2}$: artan $(-\infty,1]$ ve $[3,\infty)$, azalan $[1,2)$ ve $(2,3]$. Yerel maks $f(1)=2$, yerel min $f(3)=6$. $f''=\frac2{(x-2)^3}$: $x\lt 2$’de aşağı, $x\gt 2$’de yukarı konkav. $x=2$ tanım dışında olduğundan büküm yok. Kesişimler $(\pm\sqrt3,0)$ ve $(0,\frac32)$.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="93"></a> <a class="it" data-i="111"></a> <a class="it" data-i="120"></a> <a class="it" data-i="127"></a> <a class="it" data-i="140"></a> <a class="it" data-i="152"></a> <a class="it" data-i="155"></a> <a class="it" data-i="166"></a> <a class="it" data-i="177"></a> <a class="it" data-i="182"></a> <a class="it" data-i="190"></a> <a class="it" data-i="204"></a> <a class="it" data-i="210"></a> · Recitation <a href="../recitations/hafta-07.md">H07 Q4</a></p>
+</article>
+
+<article class="tip" data-key="sk-b"><header><h4>Tip B · Üstel ve logaritmik fonksiyon</h4><span><span class="tag f">son dönem</span><label><input type="checkbox"> çalıştım</label></span></header>
+<div class="ex"><p><b>Örnek <a class="it" data-i="98"></a> (2024 Güz MT2).</b> $f(x)=x(\ln x)^2$, $f'=(2+\ln x)\ln x$, $f''=\frac2x(1+\ln x)$. Boşlukları doldur ve çiz.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>Tanım $(0,\infty)$. $\lim_{x\to0^+}x\ln^2x=\lim\frac{\ln^2x}{1/x}$, L’H iki kez, sonuç 0. Düşey asimptot yok. $x\to\infty$’da $f\to\infty$, yatay asimptot yok.</p>
+<p>$f'$: $\ln x=0$ için $x=1$, $\ln x=-2$ için $x=e^{-2}$. İşaret $+,-,+$. Azalan $[e^{-2},1]$. Yerel maks $f(e^{-2})=\frac4{e^2}$, yerel min $f(1)=0$.</p>
+<p>$f''$: $x=\frac1e$’de işaret değişir. Aşağı konkav $(0,\frac1e)$, yukarı konkav $(\frac1e,\infty)$. Büküm $(\frac1e,\frac1e)$.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="83"></a> <a class="it" data-i="98"></a> <a class="it" data-i="103"></a> <a class="it" data-i="123"></a> <a class="it" data-i="133"></a> <a class="it" data-i="145"></a> <a class="it" data-i="161"></a> <a class="it" data-i="173"></a> <a class="it" data-i="186"></a> <a class="it" data-i="188"></a> <a class="it" data-i="193"></a> <a class="it" data-i="200"></a></p>
+</article>
+
+<article class="tip" data-key="sk-c"><header><h4>Tip C · Bilgiden (tablo ve limitlerden) çizim</h4><span><span class="tag f">son dönem</span><label><input type="checkbox"> çalıştım</label></span></header>
+<ol class="steps"><li>Verilen tanım boşluklarını ve limitleri asimptotlara çevir: $\lim_{x\to-\infty}(f(x)-\frac x2)=0$, eğik asimptot $y=\frac x2$ demektir.</li><li>$f'$ ve $f''$ işaretlerini aynı sayı doğrusunda birleştir.</li><li>Verilen değerleri ($f(-6)=-2$ gibi) işaretle: bunlar büküm, ekstremum ya da kesişim noktalarıdır.</li><li>Her aralıkta ok + kavis birleşimini çiz ($\nearrow\smile$, $\nearrow\frown$, …).</li></ol>
+<div class="ex"><p><b>Örnek <a class="it" data-i="87"></a> (2025 Güz MT2, 15 puan).</b> Soruyu bankada aç ve tabloyu kendin kur. Kontrol: $x=-4$ yerel maks, $x=3$ yerel min, $x=-6$ ve $x=0$ büküm, $x=-2$ ve $x=1$ düşey asimptot, $y=\frac x2$ sol eğik asimptot.</p>
+<details class="sol"><summary>Tablo</summary><div><div class="tw"><table><tr><th>aralık</th><td>$(-\infty,-6)$</td><td>$(-6,-4)$</td><td>$(-4,-2)$</td><td>$(-2,0)$</td><td>$(0,1)$</td><td>$(1,3)$</td><td>$(3,\infty)$</td></tr><tr><th>$f'$</th><td>$+$</td><td>$+$</td><td>$-$</td><td>$+$</td><td>$+$</td><td>$-$</td><td>$+$</td></tr><tr><th>$f''$</th><td>$+$</td><td>$-$</td><td>$-$</td><td>$-$</td><td>$+$</td><td>$+$</td><td>$+$</td></tr><tr><th>şekil</th><td>$\nearrow\smile$</td><td>$\nearrow\frown$</td><td>$\searrow\frown$</td><td>$\nearrow\frown$</td><td>$\nearrow\smile$</td><td>$\searrow\smile$</td><td>$\nearrow\smile$</td></tr></table></div>
+<p>$x\to-2$’de $-\infty$ (sol ve sağ), $x\to1$’de $+\infty$, $x\to\infty$’da $+\infty$. Noktalar: $(-6,-2)$, $(-4,1)$, $(-3,0)$, $(0,0)$, $(3,1)$, $(5,3)$.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="82"></a> <a class="it" data-i="87"></a> <a class="it" data-i="108"></a> <a class="it" data-i="197"></a> · Recitation <a href="../recitations/hafta-07.md">H07 Q3</a></p>
+</article>
+
+<div class="hard"><h4>Zor soru (<a class="it" data-i="210"></a> tipi)</h4>
+<p>$f(x)=\dfrac{ax^2}{(x+b)^2}$ grafiğinin düşey asimptotu $x=-1$, yatay asimptotu $y=2$. $a$, $b$’yi bul. $f'=\frac{Ax}{(x+1)^3}$ ve $f''=\frac{B(1-2x)}{(x+1)^4}$ olduğunu göster ($A$, $B$’yi bul). Büküm noktası nedir?</p>
+<details class="sol"><summary>Çözüm</summary><div><p>Düşey asimptot için $b=1$, yatay için $a=2$. $f=\frac{2x^2}{(x+1)^2}$. $f'=\frac{4x(x+1)^2-2x^2\cdot2(x+1)}{(x+1)^4}=\frac{4x}{(x+1)^3}$, yani $A=4$. $f''=\frac{4(x+1)^3-4x\cdot3(x+1)^2}{(x+1)^6}=\frac{4(1-2x)}{(x+1)^4}$, yani $B=4$. ($20A+9B+3=119$ ✓.) Büküm $x=\frac12$’de: $(\frac12,\frac29)$.</p></div></details></div>
+<div class="notewrap"><label>Notlarım · 4.6 <textarea class="note" data-key="note-sketch"></textarea></label></div>
+</section>
+
+<section class="topic" id="opt" data-topic="4.8">
+<h2><span class="no">4.8</span>Ekstremum problemleri · optimizasyon (Extreme-Value Problems)</h2>
+<p class="meta">Bankada 23 soru · Recitation: <a href="../recitations/hafta-08.md">H08 Q2–3</a> · <a href="../recitations/2024-guz/hafta-09.pdf">2024 föy 9 Q3–4</a> · Konu defteri: <a href="../kaynaklar/konu-defteri.pdf#page=60">s.60</a></p>
+<div class="box cheat"><h4>Yöntem kartı</h4>
+<ol>
+<li>Şekil çiz, değişkenleri adlandır.</li>
+<li><b>Amaç fonksiyonu</b> (alan, hacim, uzaklık, maliyet) ve <b>kısıt</b> denklemini ayrı yaz.</li>
+<li>Kısıtla tek değişkene indir. <b>Fiziksel aralığı</b> yaz: $0\lt x\lt 3$, $0\le y\le4$ gibi.</li>
+<li>Türev $=0$, kritik noktalar. Kapalı aralıkta uçları da karşılaştır. Açık aralıkta tek kritik nokta + işaret testi ile “mutlak” olduğunu gerekçelendir.</li>
+<li>Soru ne istiyorsa onu yaz: boyutlar mı, maksimum değer mi, nokta mı?</li>
+</ol>
+<p><b>Kısayollar:</b> Uzaklık yerine $D^2$’yi optimize et (aynı noktada ekstremum, kök yok). Alan yerine $A^2$ de olur. Çift fonksiyon altındaki dikdörtgen: köşeler $(\pm x, f(x))$, $A=2xf(x)$.</p>
+<p><b>Sık formüller:</b> Kapalı silindir $S=2\pi r^2+2\pi rh$, açık üst $S=\pi r^2+2\pi rh$. Kürenin içinde silindir: $r^2+(h/2)^2=R^2$. Konide silindir: $\frac{h}{H}=1-\frac rR$. Doğru $\frac xa+\frac yb=1$, noktadan geçiyorsa $\frac{p}{a}+\frac{q}{b}=1$.</p>
+</div>
+<div class="trick"><h4>Tuzaklar ve trickler</h4>
+<ul>
+<li><b>Uç nokta tuzağı:</b> kritik nokta minimumu verirken maksimum uçta olabilir (ya da tersi). Elipsten en uzak nokta sorusu buna örnek (Mock 3 Q6).</li>
+<li>Kapalı aralık değilse “mutlak” iddiası için gerekçe yaz: tek kritik nokta + birinci türev işareti, ya da uçlarda limit.</li>
+<li>“Closest and farthest” birlikte soruluyorsa biri <b>yok</b> olabilir (<a class="it" data-i="110"></a>: $y=e^{-x^2}$’de en uzak nokta yok).</li>
+<li>Ağaç ya da ürün sorusunda $n$ tam sayı olmalı. Kritik nokta tam sayı çıkmazsa komşu tam sayıları karşılaştır.</li>
+</ul></div>
+
+<h3>Soru tipleri</h3>
+<article class="tip" data-key="opt-a"><header><h4>Tip A · Noktadan eğriye en kısa ya da en uzak uzaklık</h4><span><span class="tag f">sık</span><label><input type="checkbox"> çalıştım</label></span></header>
+<div class="ex"><p><b>Örnek <a class="it" data-i="92"></a> (2025 Bahar MT2).</b> $P(8,1)$’den $y=1+x^{3/2}$ eğrisine en kısa uzaklık.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$x\ge0$. $D^2=(x-8)^2+(x^{3/2})^2=(x-8)^2+x^3$. Türev: $2(x-8)+3x^2=3x^2+2x-16=(3x+8)(x-2)$, aralıkta kök $x=2$. Uçlar: $x=0$’da $D^2=64$, $x\to\infty$’da $\infty$, $x=2$’de $36+8=44$. Minimum $\sqrt{44}=2\sqrt{11}$, nokta $(2,1+2\sqrt2)$.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="92"></a> <a class="it" data-i="110"></a> <a class="it" data-i="117"></a> <a class="it" data-i="144"></a> · Recitation <a href="../recitations/hafta-08.md">H08 Q3</a></p>
+</article>
+<article class="tip" data-key="opt-b"><header><h4>Tip B · Bölge içinde en büyük dikdörtgen</h4><span><span class="tag f">sık</span><label><input type="checkbox"> çalıştım</label></span></header>
+<div class="ex"><p><b>Örnek <a class="it" data-i="99"></a> (2024 Güz MT2).</b> Kenarları eksenlere paralel dikdörtgen, $y=\sqrt x$, $x$-ekseni ve $x=9$ ile sınırlı bölgede. En büyük alan?</p>
+<details class="sol"><summary>Çözüm</summary><div><p>En iyi dikdörtgen sağ kenarı $x=9$’a ve tabanı eksene dayalı olandır. Sol üst köşe eğri üzerinde: $(a,\sqrt a)$. $A(a)=(9-a)\sqrt a$, $0\le a\le9$.</p>
+<p>$A'=-\sqrt a+\frac{9-a}{2\sqrt a}=\frac{9-3a}{2\sqrt a}=0$, yani $a=3$. $A(0)=A(9)=0$. Maksimum $A(3)=6\sqrt3$.</p></div></details></div>
+<div class="ex"><p><b>Örnek <a class="it" data-i="163"></a>.</b> İki köşe $x$-ekseninde, ikisi $y=e^{-x^2}$ üzerinde. En büyük alan?</p>
+<details class="sol"><summary>Çözüm</summary><div><p>Çift fonksiyon: $A=2xe^{-x^2}$, $x\gt 0$. $A'=2e^{-x^2}(1-2x^2)=0$, yani $x=\frac1{\sqrt2}$. İşaret $+\to-$, tek kritik nokta. $A_{\max}=\sqrt2\,e^{-1/2}$.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="99"></a> <a class="it" data-i="109"></a> <a class="it" data-i="139"></a> (b) <a class="it" data-i="163"></a> <a class="it" data-i="206"></a></p>
+</article>
+<article class="tip" data-key="opt-c"><header><h4>Tip C · Üçgen ve doğru (kesişimler, teğet, açı kısıtı)</h4><span><span class="tag h">zor sorular buradan</span><label><input type="checkbox"> çalıştım</label></span></header>
+<div class="ex"><p><b>Örnek <a class="it" data-i="85"></a> (2025 Güz final).</b> $OAB$ üçgeni birinci bölgede. $O$ orijin, $A$ parabolü $x=4y-y^2$ üzerinde, $B$ $y$-ekseninde, $\angle OBA=\frac\pi2$. En büyük alan?</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$\angle OBA=\frac\pi2$ ve $OB$ düşey olduğundan $BA$ yataydır: $B=(0,y)$, $A=(4y-y^2,\,y)$. Birinci bölge için $0\lt y\lt 4$.</p>
+<p>$\text{Alan}=\frac12\cdot y\cdot(4y-y^2)=\frac{4y^2-y^3}{2}$. Türev $\frac{8y-3y^2}{2}=0$, yani $y=\frac83$. Uçlarda alan $0$. Maks $\frac12\cdot\frac{64}{9}\cdot\frac43=\frac{128}{27}$.</p></div></details></div>
+<div class="ex"><p><b>Örnek <a class="it" data-i="101"></a>.</b> $y=e^{-x}$’e $x=a\gt 0$’da teğet ile eksenlerin oluşturduğu üçgenin alanını maksimum yapan $a$.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>Teğet $y=e^{-a}(1-(x-a))$. Kesişimler $x=a+1$, $y=e^{-a}(1+a)$. $A(a)=\frac{(1+a)^2e^{-a}}{2}$. $A'=\frac{e^{-a}(1+a)(2-(1+a))}{2}=\frac{e^{-a}(1+a)(1-a)}{2}=0$, yani $a=1$. İşaret $+\to-$, maksimum $A=\frac{2}{e}$.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="85"></a> <a class="it" data-i="101"></a> <a class="it" data-i="131"></a> <a class="it" data-i="151"></a> <a class="it" data-i="179"></a> <a class="it" data-i="191"></a> <a class="it" data-i="202"></a></p>
+</article>
+<article class="tip" data-key="opt-d"><header><h4>Tip D · 3B: silindir, kutu, kutu maliyeti</h4><label><input type="checkbox"> çalıştım</label></header>
+<div class="ex"><p><b>Örnek <a class="it" data-i="194"></a>.</b> Üstü açık silindirin toplam yüzeyi $27\pi$ cm². Hacmi en büyük yapan yarıçap?</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$\pi r^2+2\pi rh=27\pi$, yani $h=\frac{27-r^2}{2r}$. $V=\pi r^2h=\frac\pi2(27r-r^3)$, $0\lt r\lt \sqrt{27}$. $V'=\frac\pi2(27-3r^2)=0$, yani $r=3$ ($h=3$). $V''=-3\pi r\lt 0$, uçlarda $V=0$. Maksimum, $V=27\pi$.</p></div></details></div>
+<div class="ex"><p><b>Örnek <a class="it" data-i="176"></a>.</b> Hacmi $20\pi$ m³ silindirik kutu. Alt ve üst 5 TL/m², yan 4 TL/m². En ucuz yükseklik?</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$h=\frac{20}{r^2}$. $C=5\cdot2\pi r^2+4\cdot2\pi rh=10\pi r^2+\frac{160\pi}{r}$. $C'=20\pi r-\frac{160\pi}{r^2}=0$, yani $r^3=8$, $r=2$, $h=5$. $C''\gt 0$, minimum.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="129"></a> <a class="it" data-i="141"></a> <a class="it" data-i="176"></a> <a class="it" data-i="194"></a> · Recitation <a href="../recitations/hafta-08.md">H08 Q2</a> (tel: daire + kare)</p>
+</article>
+<article class="tip" data-key="opt-e"><header><h4>Tip E · Sayı ve ekonomi problemleri</h4><label><input type="checkbox"> çalıştım</label></header>
+<div class="ex"><p><b>Örnek <a class="it" data-i="157"></a>.</b> 50 portakal ağacı, ağaç başına 800 portakal. Her ek ağaç, ağaç başına verimi 10 düşürüyor. Kaç ağaç eklenmeli?</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$n$ ek ağaç: $T=(50+n)(800-10n)=40000+300n-10n^2$. $T'=300-20n=0$, yani $n=15$ (tam sayı). $T=65\cdot650=42250$.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="157"></a> <a class="it" data-i="167"></a> <a class="it" data-i="199"></a></p>
+</article>
+<div class="hard"><h4>Zor soru (<a class="it" data-i="202"></a>)</h4>
+<p>Pozitif $x$-ekseni, pozitif $y$-ekseni ve $(1,3)$’ten geçen bir doğrunun oluşturduğu üçgenler arasında hipotenüsü en kısa olanın boyutları.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>Kesişimler $a\gt 1$, $b\gt 3$, kısıt $\frac1a+\frac3b=1$, yani $b=\frac{3a}{a-1}$. $H^2=a^2+\frac{9a^2}{(a-1)^2}$.</p>
+<p>$\frac{d}{da}H^2=2a+9\cdot\frac{2a(a-1)^2-2a^2(a-1)}{(a-1)^4}=2a-\frac{18a}{(a-1)^3}=0$, yani $(a-1)^3=9$ ve $a=1+3^{2/3}$, $b=3+3^{1/3}$.</p>
+<p>$a\to1^+$ ve $a\to\infty$’da $H\to\infty$, tek kritik nokta, dolayısıyla minimum. $H_{\min}=(1+3^{2/3})^{3/2}\approx5.41$.</p></div></details></div>
+<div class="notewrap"><label>Notlarım · 4.8 <textarea class="note" data-key="note-opt"></textarea></label></div>
+</section>
+
+<section class="topic" id="lin" data-topic="4.9">
+<h2><span class="no">4.9</span>Doğrusal yaklaşım (Linear Approximations)</h2>
+<p class="meta">Bankada 12 soru · Recitation: <a href="../recitations/hafta-08.md">H08 Q1</a> · <a href="../recitations/2024-guz/hafta-09.pdf">2024 föy 9 Q5</a> · Konu defteri: <a href="../kaynaklar/konu-defteri.pdf#page=64">s.64</a></p>
+<div class="box cheat"><h4>Formül kartı</h4>
+<ul>
+<li><b>Doğrusallaştırma:</b> $L(x)=f(a)+f'(a)(x-a)$ ve $f(x)\approx L(x)$, $x$ $a$’ya yakınken.</li>
+<li><b>Diferansiyel:</b> $dy=f'(x)\,dx$, $\ \Delta y\approx dy$. Bağıl hata $\frac{\Delta y}{y}$, yüzde hata $100\frac{\Delta y}{y}$.</li>
+<li>$V=kr^n$ ise $\frac{dV}{V}=n\frac{dr}{r}$. Yarıçaptaki %1 hata, kürenin hacminde ~%3 hata verir.</li>
+<li><b>Hata yönü:</b> $f''\gt 0$ (yukarı konkav) ise teğet eğrinin altında, $L$ <b>küçük tahmin</b> eder. $f''\lt 0$ ise <b>büyük tahmin</b> eder.</li>
+<li><b>Hata sınırı (Adams Teorem 11):</b> $|f''|\le K$ ise $|f(x)-L(x)|\le\frac K2(x-a)^2$.</li>
+</ul></div>
+<div class="trick"><h4>Tuzaklar ve trickler</h4>
+<ul>
+<li>Merkez $a$’yı, $f(a)$ ve $f'(a)$’yı kolay hesaplanan nokta seç: $\sqrt{4.1}$ için 4, $\sqrt[3]{33}$ için 27, $\arctan1.02$ için 1, $\sin31°$ için $30°=\frac\pi6$.</li>
+<li><b>Derece mi radyan mı:</b> türev formülleri radyan ister. $1°=\frac{\pi}{180}$.</li>
+<li>“Over or under estimate?” sorusunun cevabı $f''$’nün işaretinden gelir. Gerekçeyi yaz.</li>
+<li>Ters soru: $L(x_1)$ verilmişse $f'(a)=\frac{L(x_1)-f(a)}{x_1-a}$ (<a class="it" data-i="91"></a>).</li>
+</ul></div>
+<h3>Soru tipleri</h3>
+<article class="tip" data-key="lin-a"><header><h4>Tip A · Sayısal yaklaşım ($\sqrt{\ }$, $\sqrt[3]{\ }$, arctan, ln)</h4><span><span class="tag f">sık</span><label><input type="checkbox"> çalıştım</label></span></header>
+<div class="ex"><p><b>Örnek <a class="it" data-i="132"></a> ve <a class="it" data-i="143"></a>.</b> $\sqrt[3]{33}$ ve $\arctan(1.02)$ yaklaşık değerleri.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$f=x^{1/3}$, $a=27$: $f'(27)=\frac1{3\cdot9}=\frac1{27}$. $\sqrt[3]{33}\approx3+\frac6{27}=3+\frac29\approx3.222$ (gerçek 3.2075). $f''\lt 0$, büyük tahmin.</p>
+<p>$\arctan$, $a=1$: $\arctan1.02\approx\frac\pi4+\frac12(0.02)=\frac\pi4+0.01\approx0.7954$.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="118"></a> <a class="it" data-i="132"></a> <a class="it" data-i="143"></a> · Recitation <a href="../recitations/hafta-08.md">H08 Q1</a></p>
+</article>
+<article class="tip" data-key="lin-b"><header><h4>Tip B · Ters soru: $L$ verilmiş, $f'(a)$ ya da sabit iste</h4><label><input type="checkbox"> çalıştım</label></header>
+<div class="ex"><p><b>Örnek <a class="it" data-i="91"></a>.</b> $f$ grafiği $P(-1,5)$’ten geçiyor. $x=-1$ civarında doğrusal yaklaşımla $f(-0.8)\approx L(-0.8)=6$. $f'(-1)$?</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$L(-0.8)=5+f'(-1)(0.2)=6$, yani $f'(-1)=5$.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="91"></a></p>
+</article>
+<article class="tip" data-key="lin-c"><header><h4>Tip C · Örtük ya da soyut fonksiyonun doğrusallaştırılması</h4><span><span class="tag f">sık</span><label><input type="checkbox"> çalıştım</label></span></header>
+<div class="ex"><p><b>Örnek <a class="it" data-i="201"></a>.</b> $x^2y^3-x^3y^2=4$ ile tanımlı $y(x)$. (a) $y'(1)$ ($y(1)=2$). (b) $y(1.01)$ yaklaşık.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>Kontrol: $8-4=4$ ✓. $2xy^3+3x^2y^2y'-3x^2y^2-2x^3yy'=0$. $(1,2)$: $16+12y'-12-4y'=0$, yani $y'=-\frac12$.</p><p>$y(1.01)\approx2-\frac12(0.01)=1.995$.</p></div></details></div>
+<div class="ex"><p><b>Örnek <a class="it" data-i="80"></a> (2026 Bahar final).</b> (a) $\sin(x+y)+xy^2=K$ eğrisi $(\frac\pi4,0)$’dan geçiyor, $K$? (b) $y(x)$’in o noktadaki doğrusallaştırması. (c) $y(\frac{11\pi}{40})$ yaklaşık. (d) $y''(\frac\pi4)\gt 0$ ise gerçek değer büyük mü küçük mü?</p>
+<details class="sol"><summary>Çözüm</summary><div><p>(a) $K=\sin\frac\pi4=\frac{\sqrt2}2$.</p>
+<p>(b) $\cos(x+y)(1+y')+y^2+2xyy'=0$. Noktada $\frac{\sqrt2}2(1+y')=0$, yani $y'=-1$. $L(x)=-(x-\frac\pi4)$.</p>
+<p>(c) $y(\frac{11\pi}{40})\approx-\frac{\pi}{40}$.</p>
+<p>(d) Yukarı konkav, teğet eğrinin altında. Gerçek değer yaklaşık değerden <b>büyük</b>.</p></div></details></div>
+<p class="past"><b>Aynı tip:</b> <a class="it" data-i="16"></a> <a class="it" data-i="40"></a> <a class="it" data-i="80"></a> <a class="it" data-i="149"></a> <a class="it" data-i="201"></a></p>
+</article>
+<article class="tip" data-key="lin-d"><header><h4>Tip D · Diferansiyel ve hata tahmini</h4><label><input type="checkbox"> çalıştım</label></header>
+<div class="ex"><p><b>Örnek.</b> Kürenin yarıçapı 10 cm, ölçüm hatası en fazla 0.05 cm. Hacimdeki en büyük hatayı ve bağıl hatayı tahmin et.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$dV=4\pi r^2dr=4\pi\cdot100\cdot0.05=20\pi\approx62.8$ cm³. Bağıl hata $\frac{dV}{V}=3\frac{dr}{r}=0.015$, yani %1.5.</p></div></details></div>
+</article>
+<article class="tip" data-key="lin-e"><header><h4>Tip E · Kapsam dışı: integralle tanımlı fonksiyonun doğrusallaştırılması</h4><span><span class="tag">final</span><label><input type="checkbox"> gördüm</label></span></header>
+<p>$f(x)=5x+\int_4^{x^2}\frac{dt}{1+(t-4)^{12}}$ gibi sorular FTC ister. Finalde çalış.</p>
+<p class="past"><a class="it" data-i="96" data-x></a> <a class="it" data-i="138" data-x></a> <a class="it" data-i="172" data-x></a> <a class="it" data-i="180" data-x></a> <a class="it" data-i="196" data-x></a></p>
+</article>
+<div class="hard"><h4>Zor soru · Hata sınırı</h4>
+<p>$\sqrt{4.1}$’i $a=4$ merkezli doğrusal yaklaşımla hesapla. Hatanın $0.0002$’den küçük olduğunu göster ve yönünü belirt.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$L=2+\frac14(0.1)=2.025$. $f''(x)=-\frac14x^{-3/2}$. $[4,4.1]$’de $|f''|\le\frac14\cdot4^{-3/2}=\frac1{32}$. Hata $\le\frac{1}{2}\cdot\frac1{32}(0.1)^2=\frac{0.01}{64}\approx0.000156\lt 0.0002$. $f''\lt 0$, dolayısıyla $L$ büyük tahmin: $\sqrt{4.1}\lt 2.025$. (Gerçek: $2.02485$.)</p></div></details></div>
+<div class="notewrap"><label>Notlarım · 4.9 <textarea class="note" data-key="note-lin"></textarea></label></div>
+</section>
+
+<section class="block" id="kart">
+<h2>Tek sayfa formül kartı</h2>
+<p class="meta">Sınavdan önceki son tekrar. Yazdırmak için tarayıcının yazdır komutunu kullan.</p>
+<div class="grid2">
+<div class="box cheat"><h4>Teoremler</h4>
+<p>MVT: $f'(c)=\frac{f(b)-f(a)}{b-a}$ (sürekli $[a,b]$, türevli $(a,b)$).</p>
+<p>Rolle: $f(a)=f(b)\Rightarrow f'(c)=0$.</p>
+<p>$f'\equiv0\Rightarrow$ sabit. $\ f'\gt 0\Rightarrow$ artan.</p>
+<p>EVT: kapalı sınırlı aralık + süreklilik, mutlak ekstremum var.</p>
+<p>Tek kök = IVT + (Rolle ya da $f'\gt 0$).</p></div>
+<div class="box cheat"><h4>Türevler</h4>
+<p>$(a^u)'=a^u\ln a\,u'$, $\ (\log_au)'=\frac{u'}{u\ln a}$</p>
+<p>$(f^g)'=f^g\big(g'\ln f+g\frac{f'}{f}\big)$</p>
+<p>$(\arcsin u)'=\frac{u'}{\sqrt{1-u^2}}$, $\ (\arctan u)'=\frac{u'}{1+u^2}$</p>
+<p>$(\operatorname{arcsec}u)'=\frac{u'}{|u|\sqrt{u^2-1}}$, $\ (\arccos u)'=-\frac{u'}{\sqrt{1-u^2}}$</p>
+<p>$(f^{-1})'(b)=\frac1{f'(a)}$, $\ f(a)=b$</p>
+<p>Örtük: $y'=-F_x/F_y$</p></div>
+<div class="box cheat"><h4>Limitler</h4>
+<p>$1^\infty$: $e^{\lim g(f-1)}$. $\ 0^0,\infty^0$: $\ln$ al.</p>
+<p>$(1+ax)^{b/x}\to e^{ab}$, $\ (\cos ax)^{1/x^2}\to e^{-a^2/2}$</p>
+<p>$x^x\to1$ ($0^+$), $\ x^p\ln x\to0$ ($0^+$)</p>
+<p>$\ln x\ll x^p\ll a^x$</p>
+<p>$\sin x\approx x-\frac{x^3}6$, $\tan x\approx x+\frac{x^3}{3}$, $1-\cos x\approx\frac{x^2}2$</p></div>
+<div class="box cheat"><h4>Grafik ve optimizasyon</h4>
+<p>Adaylar: $f'=0$, $f'$ yok, uçlar.</p>
+<p>$f''(c)\lt 0$ maks, $\gt 0$ min, $=0$ sonuçsuz.</p>
+<p>Büküm: $f''$ işaret değiştirir + teğet var.</p>
+<p>Eğik asimptot: $m=\lim\frac fx$, $b=\lim(f-mx)$.</p>
+<p>Uzaklık yerine $D^2$. Fiziksel aralığı yaz.</p></div>
+<div class="box cheat"><h4>Bağlı hızlar</h4>
+<p>Bağıntı, sonra $\frac{d}{dt}$, en son değerler.</p>
+<p>$V_{\text{silindir}}'=\pi(2rhr'+r^2h')$</p>
+<p>$V_{\text{koni}}=\frac13\pi r^2h$, benzerlik: $r=\frac{R}{H}h$</p>
+<p>$DD'=(x-a)x'+(y-b)y'$</p>
+<p>$\sec^2\theta\,\theta'=\frac{d}{dt}\tan\theta$</p></div>
+<div class="box cheat"><h4>Doğrusal yaklaşım</h4>
+<p>$L(x)=f(a)+f'(a)(x-a)$, $\ dy=f'dx$</p>
+<p>$f''\gt 0$: küçük tahmin. $\ f''\lt 0$: büyük tahmin.</p>
+<p>$|E|\le\frac K2(x-a)^2$, $\ |f''|\le K$</p>
+<p>$V=kr^n\Rightarrow\frac{dV}V=n\frac{dr}r$</p></div>
+</div>
+</section>
+
+<section class="block mock" id="mock1">
+<h2>Mock 1 · 100 dakika · 100 puan</h2>
+<p class="meta">Çıkmış tiplere sadık bir kâğıt. Q8 bu kâğıdın “ekstra zor” sorusu. Hesap makinesi yok. Her sorunun gerekçesini yaz.</p>
+<div class="timer" data-min="100"><span class="clock">100:00</span><button class="start">Başlat</button><button class="ghost reset">Sıfırla</button><button class="ghost showall">Bütün çözümleri aç/kapat</button></div>
+
+<div class="q"><p><b>Q1 (5+5+5 pts)</b> Limitleri hesapla.</p>
+<p>(a) $\displaystyle\lim_{x\to0}\frac{e^{2x}-1-2x}{1-\cos x}$ &nbsp; (b) $\displaystyle\lim_{x\to0^+}(1+3\tan x)^{1/x}$ &nbsp; (c) $\displaystyle\lim_{x\to\infty}(x+e^x)^{1/x}$</p>
+<details class="sol"><summary>Çözüm</summary><div><p>(a) $\frac00$. L’H: $\frac{2e^{2x}-2}{\sin x}$, yine $\frac00$. L’H: $\frac{4e^{2x}}{\cos x}\to4$.</p>
+<p>(b) $1^\infty$. $\ln L=\lim\frac{\ln(1+3\tan x)}{x}$. L’H: $\frac{3\sec^2x}{1+3\tan x}\to3$. $L=e^3$.</p>
+<p>(c) $\infty^0$. $\ln L=\lim\frac{\ln(x+e^x)}{x}$. L’H: $\frac{1+e^x}{x+e^x}$, $\frac\infty\infty$. L’H: $\frac{e^x}{1+e^x}\to1$. $L=e$.</p></div></details></div>
+
+<div class="q"><p><b>Q2 (12 pts)</b> $y=y(x)$, $x^2+xy+y^3=3$ ile tanımlı ve $y(1)=1$. (a) $(1,1)$’de teğet doğruyu bul. (b) $y''(1)$’i hesapla. (c) $y(1.04)$’ü doğrusal yaklaşımla tahmin et. Tahmin büyük mü küçük mü? Gerekçelendir.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>(a) $2x+y+xy'+3y^2y'=0$. $(1,1)$: $3+4y'=0$, yani $y'=-\frac34$. Teğet $y-1=-\frac34(x-1)$.</p>
+<p>(b) Tekrar türet: $2+2y'+xy''+6y(y')^2+3y^2y''=0$. Koy: $2-\frac32+y''+\frac{27}8+3y''=0$, buradan $4y''=-\frac{31}{8}$ ve $y''(1)=-\frac{31}{32}$.</p>
+<p>(c) $y(1.04)\approx1-\frac34(0.04)=0.97$. $y''\lt 0$, eğri teğetin altında, tahmin <b>büyük</b>. (Gerçek $\approx0.9692$.)</p></div></details></div>
+
+<div class="q"><p><b>Q3 (10 pts)</b> Her $x\gt 0$ için $\dfrac{x}{1+x}\lt\ln(1+x)\lt x$ olduğunu Ortalama Değer Teoremi ile göster. Hipotezleri kontrol et.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$f(t)=\ln(1+t)$, $[0,x]$’te sürekli, $(0,x)$’te türevlenebilir ($1+t\gt 0$). MVT: $\ln(1+x)-0=\frac{1}{1+c}\,x$, $0\lt c\lt x$.</p>
+<p>$1\lt 1+c\lt 1+x$, dolayısıyla $\frac1{1+x}\lt\frac1{1+c}\lt 1$. $x\gt 0$ ile çarp: $\frac{x}{1+x}\lt\ln(1+x)\lt x$. ∎</p></div></details></div>
+
+<div class="q"><p><b>Q4 (12 pts)</b> Tepesi aşağıda, yüksekliği 10 m, üst yarıçapı 4 m olan koni şeklindeki depoya 2 m³/dk su pompalanıyor. Su derinliği 5 m iken (a) su seviyesi hangi hızla yükselir? (b) Su yüzeyinin alanı hangi hızla artar?</p>
+<details class="sol"><summary>Çözüm</summary><div><p>Benzerlik: $\frac rh=\frac4{10}$, yani $r=\frac{2h}5$. $V=\frac13\pi r^2h=\frac{4\pi h^3}{75}$.</p>
+<p>(a) $V'=\frac{4\pi h^2}{25}h'$. $h=5$: $2=4\pi h'$, yani $h'=\frac1{2\pi}$ m/dk.</p>
+<p>(b) $A=\pi r^2=\frac{4\pi h^2}{25}$, $A'=\frac{8\pi h}{25}h'=\frac{8\pi}{5}\cdot\frac{1}{2\pi}=\frac45$ m²/dk.</p></div></details></div>
+
+<div class="q"><p><b>Q5 (12 pts)</b> $f(x)=x^3+3x+\arctan x$. (a) $f$’nin terslenebilir olduğunu göster. (b) $(f^{-1})'\big(4+\frac\pi4\big)$’ü bul. (c) $y=f^{-1}(x)$ grafiğinin $x=4+\frac\pi4$’teki teğetini yaz.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>(a) $f'(x)=3x^2+3+\frac1{1+x^2}\gt 0$, kesin artan, bire bir.</p>
+<p>(b) $f(1)=1+3+\frac\pi4$, yani $f^{-1}(4+\frac\pi4)=1$. $f'(1)=3+3+\frac12=\frac{13}2$. Cevap $\frac2{13}$.</p>
+<p>(c) $y-1=\frac2{13}\big(x-4-\frac\pi4\big)$.</p></div></details></div>
+
+<div class="q"><p><b>Q6 (15 pts)</b> $f(x)=\dfrac{x^2-4}{x^2-1}$. Tanım kümesi, kesişimler, simetri, asimptotlar, artma/azalma, yerel ekstremum, konkavlık ve bükümleri bul, grafiği çiz.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$\mathcal D=\mathbb R\setminus\{\pm1\}$, çift fonksiyon. Kesişimler $(\pm2,0)$, $(0,4)$. $f=1-\frac{3}{x^2-1}$.</p>
+<p>Asimptotlar: $y=1$ (yatay). $x=1$: $1^-$’de $+\infty$, $1^+$’da $-\infty$. $x=-1$: $-1^-$’de $-\infty$, $-1^+$’da $+\infty$.</p>
+<p>$f'=\frac{6x}{(x^2-1)^2}$: azalan $(-\infty,-1)$ ve $(-1,0]$, artan $[0,1)$ ve $(1,\infty)$. Yerel min $(0,4)$.</p>
+<p>$f''=\frac{-6(3x^2+1)}{(x^2-1)^3}$: $|x|\lt 1$’de yukarı konkav, $|x|\gt 1$’de aşağı konkav. Büküm yok ($\pm1$ tanım dışı).</p>
+<p>Grafik: ortada $(0,4)$’te dibi olan ve iki yanda $+\infty$’a giden bir çanak. Dışta iki dal, $-\infty$’dan gelip $y=1$’e alttan yaklaşır ($f\lt 1$ için $|x|\gt 1$).</p></div></details></div>
+
+<div class="q"><p><b>Q7 (12 pts)</b> İki köşesi $x$-ekseninde, iki köşesi $y=\dfrac1{1+x^2}$ eğrisinde olan dikdörtgenin en büyük alanı nedir? Mutlak maksimum olduğunu gerekçelendir.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>Çift fonksiyon: köşeler $(\pm x,\frac1{1+x^2})$, $A(x)=\frac{2x}{1+x^2}$, $x\gt 0$. $A'=\frac{2(1-x^2)}{(1+x^2)^2}=0$, yani $x=1$. $(0,1)$’de $A'\gt 0$, $(1,\infty)$’da $A'\lt 0$, tek kritik nokta, mutlak maks. $A(1)=1$.</p></div></details></div>
+
+<div class="q"><p><b>Q8 (12 pts) · zor</b> $f$, $\mathbb R$’de türevlenebilir, $f(0)=0$ ve her $x$ için $f'(x)=\dfrac{1}{1+x^2+f(x)^2}$. (a) $f$’nin artan olduğunu göster. (b) $x\ge0$ için $0\le f(x)\le\arctan x$ olduğunu göster. (c) Buradan $x\ge0$ için $f(x)\lt \frac\pi2$ ve $f(x)\le x$ çıkar.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>(a) $f'\gt 0$ her yerde, kesin artan.</p>
+<p>(b) Alt sınır: $f$ artan ve $f(0)=0$, dolayısıyla $x\ge0$ için $f(x)\ge0$. Üst sınır: $g(x)=\arctan x-f(x)$. $g'(x)=\frac{1}{1+x^2}-\frac1{1+x^2+f^2}\ge0$. $x\gt 0$ için $[0,x]$’te MVT: $g(x)-g(0)=g'(c)x\ge0$, $g(0)=0$. Dolayısıyla $f(x)\le\arctan x$.</p>
+<p>(c) $\arctan x\lt\frac\pi2$. Ayrıca $f'\le1$ ve MVT: $f(x)=f'(c)x\le x$.</p></div></details></div>
+</section>
+
+<section class="block mock" id="mock2">
+<h2>Mock 2 · 100 dakika · 100 puan</h2>
+<p class="meta">Q8 bir Doğru/Yanlış ve özdeşlik ispatı. Son dönemin “ekstra zor” tarzında.</p>
+<div class="timer" data-min="100"><span class="clock">100:00</span><button class="start">Başlat</button><button class="ghost reset">Sıfırla</button><button class="ghost showall">Bütün çözümleri aç/kapat</button></div>
+
+<div class="q"><p><b>Q1 (5+5+5 pts)</b> (a) $\displaystyle\lim_{x\to0}\frac{x-\arctan x}{x^3}$ &nbsp; (b) $\displaystyle\lim_{x\to1}\Big(\frac1{\ln x}-\frac1{x-1}\Big)$ &nbsp; (c) $\displaystyle\lim_{x\to0^+}\Big(\frac1x\Big)^{\tan x}$</p>
+<details class="sol"><summary>Çözüm</summary><div><p>(a) L’H: $\frac{1-\frac1{1+x^2}}{3x^2}=\frac{x^2/(1+x^2)}{3x^2}=\frac1{3(1+x^2)}\to\frac13$.</p>
+<p>(b) $\frac{x-1-\ln x}{(x-1)\ln x}$, $\frac00$. L’H: $\frac{1-1/x}{\ln x+1-1/x}=\frac{x-1}{x\ln x+x-1}$, $\frac00$. L’H: $\frac{1}{\ln x+2}\to\frac12$.</p>
+<p>(c) $\infty^0$. $\ln L=\lim(-\tan x\ln x)=-\lim\frac{\tan x}{x}\cdot x\ln x=-1\cdot0=0$ ($x\ln x\to0$, L’H ile $\frac{\ln x}{1/x}$). $L=1$.</p></div></details></div>
+
+<div class="q"><p><b>Q2 (12 pts)</b> $f$ türevlenebilir, $f\gt 0$, $f(1)=2$, $f'(1)=3$. $g(x)=f(x)^{\,x+\ln x}$. (a) $g'(x)$’i $f$ ve $f'$ cinsinden yaz. (b) $y=g(x)$’in $x=1$’deki teğet doğrusunu bul.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>(a) $\ln g=(x+\ln x)\ln f$, dolayısıyla $g'=f^{x+\ln x}\Big[(1+\tfrac1x)\ln f+(x+\ln x)\frac{f'}{f}\Big]$.</p>
+<p>(b) $g(1)=2^1=2$. Parantez: $2\ln2+\frac32$. $g'(1)=4\ln2+3$. Teğet $y-2=(4\ln2+3)(x-1)$.</p></div></details></div>
+
+<div class="q"><p><b>Q3 (12 pts)</b> $e^x=1+2x$ denkleminin <b>tam olarak iki</b> gerçek kökü olduğunu göster.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$g(x)=e^x-1-2x$, her yerde türevlenebilir. $g(0)=0$, ilk kök. $g(1)=e-3\lt 0$ ve $g(2)=e^2-5\gt 0$, IVT ile $(1,2)$’de ikinci kök.</p>
+<p>En fazla iki: üç kök olsaydı Rolle iki kez uygulanır ve $g''(c)=0$ olurdu. Oysa $g''=e^x\gt 0$. Tam iki kök. ∎</p></div></details></div>
+
+<div class="q"><p><b>Q4 (10 pts)</b> $P$ parçacığı $y=\sqrt x$ eğrisi üzerinde, $x'=4$ birim/s. $\theta$, $OP$ ile pozitif $x$-ekseni arasındaki açı. $x=4$ anında $\theta$ hangi hızla değişir?</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$\tan\theta=\frac yx=x^{-1/2}$. $\sec^2\theta\,\theta'=-\frac12x^{-3/2}x'$. $x=4$’te $\tan\theta=\frac12$, $\sec^2\theta=\frac54$, sağ taraf $-\frac12\cdot\frac18\cdot4=-\frac14$. $\theta'=-\frac15$ rad/s (açı küçülüyor).</p></div></details></div>
+
+<div class="q"><p><b>Q5 (14 pts)</b> $f(x)=x^{1/3}(x-4)$. (a) $[-1,8]$’de mutlak maks ve min. (b) Konkavlık aralıkları ve büküm noktaları.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>(a) $f'=\frac{4(x-1)}{3x^{2/3}}$. Kritik $x=1$, tekil $x=0$. Değerler: $f(-1)=5$, $f(0)=0$, $f(1)=-3$, $f(8)=8$. Maks $8$ ($x=8$), min $-3$ ($x=1$).</p>
+<p>(b) $f''=\frac{4(x+2)}{9x^{5/3}}$. Yukarı konkav $(-\infty,-2)$ ve $(0,\infty)$, aşağı konkav $(-2,0)$. Bükümler $(-2,6\sqrt[3]2)$ ve $(0,0)$ (düşey teğet).</p></div></details></div>
+
+<div class="q"><p><b>Q6 (15 pts)</b> $f(x)=\dfrac{e^x}{x}$ grafiğini çiz: asimptotlar, monotonluk, ekstremum, konkavlık.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$\mathcal D=\mathbb R\setminus\{0\}$, kesişim yok. $x\to0^-$’da $-\infty$, $0^+$’da $+\infty$, düşey asimptot $x=0$. $x\to-\infty$’da $f\to0^-$, yatay $y=0$ (solda). $x\to\infty$’da $\infty$.</p>
+<p>$f'=\frac{e^x(x-1)}{x^2}$: azalan $(-\infty,0)$ ve $(0,1]$, artan $[1,\infty)$. Yerel min $(1,e)$.</p>
+<p>$f''=\frac{e^x(x^2-2x+2)}{x^3}$. $x^2-2x+2\gt 0$ olduğundan işaret $x^3$’ün işaretidir: $x\lt 0$’da aşağı, $x\gt 0$’da yukarı konkav. Büküm yok.</p></div></details></div>
+
+<div class="q"><p><b>Q7 (10 pts)</b> Yarıçapı 6, yüksekliği 12 olan dik koninin içine eksenleri çakışık bir silindir yerleştiriliyor. En büyük silindir hacmi nedir?</p>
+<details class="sol"><summary>Çözüm</summary><div><p>Benzerlik: $h=12\big(1-\frac r6\big)=12-2r$, $0\lt r\lt 6$. $V=\pi r^2(12-2r)$, $V'=\pi(24r-6r^2)=0$, yani $r=4$, $h=4$. Uçlarda $V=0$. $V_{\max}=64\pi$.</p></div></details></div>
+
+<div class="q"><p><b>Q8 (4+4+4 pts) · zor</b> (a) DOĞRU/YANLIŞ: $f(0)=g(0)$ ve her $x$ için $f'(x)\le g'(x)$ ise her $x$ için $f(x)\le g(x)$. (b) DOĞRU/YANLIŞ: her $x$ için $f''(x)\gt 0$ ise $f$’nin en fazla bir kritik noktası vardır. (c) $x\ge1$ için $2\arctan x+\arcsin\dfrac{2x}{1+x^2}=\pi$ olduğunu göster.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>(a) <b>Yanlış.</b> $f=0$, $g=x$: $f'=0\le1=g'$, $f(0)=g(0)$, ama $x=-1$’de $0\gt -1$. (Sadece $x\ge0$ için doğru: $h=g-f$ artan.)</p>
+<p>(b) <b>Doğru.</b> $f''\gt 0$ ise $f'$ kesin artan, en fazla bir sıfırı olur. (Ayrıca $f''$ var olduğundan $f'$ her yerde tanımlı, tekil nokta yok.)</p>
+<p>(c) <a href="#atrig">3.5 zor soru</a>: $x\gt 1$’de türev $\frac2{1+x^2}-\frac2{1+x^2}=0$, süreklilik ile $x=1$’deki değer $\pi$.</p></div></details></div>
+</section>
+
+<section class="block mock" id="mock3">
+<h2>Mock 3 · 100 dakika · 100 puan</h2>
+<p class="meta">2026 Bahar MT2 formatına yakın: limit, ters trig + ekstremum, MVT, hız, grafik, uç nokta tuzaklı optimizasyon, diferansiyel ve parametre bulma.</p>
+<div class="timer" data-min="100"><span class="clock">100:00</span><button class="start">Başlat</button><button class="ghost reset">Sıfırla</button><button class="ghost showall">Bütün çözümleri aç/kapat</button></div>
+
+<div class="q"><p><b>Q1 (4+4+4 pts)</b> (a) $\displaystyle\lim_{x\to0}\frac{e^{x^2}-\cos x}{x^2}$ &nbsp; (b) $\displaystyle\lim_{x\to\infty}\Big(x-x^2\ln\Big(1+\frac1x\Big)\Big)$ &nbsp; (c) $\displaystyle\lim_{x\to0^+}(1+\sin4x)^{\cot x}$</p>
+<details class="sol"><summary>Çözüm</summary><div><p>(a) L’H: $\frac{2xe^{x^2}+\sin x}{2x}=e^{x^2}+\frac{\sin x}{2x}\to1+\frac12=\frac32$.</p>
+<p>(b) $t=\frac1x\to0^+$: $\frac1t-\frac{\ln(1+t)}{t^2}=\frac{t-\ln(1+t)}{t^2}$. L’H: $\frac{1-\frac1{1+t}}{2t}=\frac{1}{2(1+t)}\to\frac12$.</p>
+<p>(c) $\ln L=\lim\frac{\ln(1+\sin4x)}{\tan x}$. L’H: $\frac{4\cos4x/(1+\sin4x)}{\sec^2x}\to4$. $L=e^4$.</p></div></details></div>
+
+<div class="q"><p><b>Q2 (12 pts)</b> $f(x)=x\arcsin x+\sqrt{1-x^2}$. (a) Tanım kümesi. (b) $f'(x)$’i sadeleştirerek bul. (c) $f$’nin mutlak maks ve min değerleri.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>(a) $[-1,1]$.</p><p>(b) $f'=\arcsin x+\frac{x}{\sqrt{1-x^2}}-\frac{x}{\sqrt{1-x^2}}=\arcsin x$, $|x|\lt 1$.</p>
+<p>(c) Kritik $x=0$, $f(0)=1$. Uçlar: $f(\pm1)=\frac\pi2$. Min $1$ ($x=0$), maks $\frac\pi2$ ($x=\pm1$). EVT uygulanır, $f$ $[-1,1]$’de sürekli.</p></div></details></div>
+
+<div class="q"><p><b>Q3 (12 pts)</b> MVT ile $10+\frac1{22}\lt\sqrt{101}\lt 10+\frac1{20}$ olduğunu göster. Doğrusal yaklaşımla bulacağın $\sqrt{101}\approx10.05$’in neden büyük tahmin olduğunu açıkla.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$f=\sqrt x$, $[100,101]$’de sürekli, $(100,101)$’de türevlenebilir. MVT: $\sqrt{101}-10=\frac1{2\sqrt c}$, $100\lt c\lt 101$.</p>
+<p>$10\lt\sqrt c\lt\sqrt{101}\lt 11$, dolayısıyla $\frac1{22}\lt\frac1{2\sqrt c}\lt\frac1{20}$. ∎</p>
+<p>$L(101)=10+\frac1{20}$, üst sınırın ta kendisi. $f''=-\frac14x^{-3/2}\lt 0$, teğet eğrinin üstünde, büyük tahmin.</p></div></details></div>
+
+<div class="q"><p><b>Q4 (10 pts)</b> A arabası bir kavşaktan kuzeye 60 km/sa ile uzaklaşıyor. B arabası kavşağa batıdan 80 km/sa ile yaklaşıyor. A 3 km, B 4 km uzaktayken aralarındaki uzaklık nasıl değişiyor?</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$D^2=x^2+y^2$, $x=4$, $x'=-80$, $y=3$, $y'=60$, $D=5$. $DD'=xx'+yy'$, yani $5D'=-320+180$. $D'=-28$ km/sa, uzaklık azalıyor.</p></div></details></div>
+
+<div class="q"><p><b>Q5 (14 pts)</b> $f(x)=x+\dfrac4{x^2}$. Asimptotlar (eğik dahil), artma/azalma, ekstremum, konkavlık, kesişimler ve grafik.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>Düşey $x=0$ (iki yanda $+\infty$), eğik $y=x$ ($f-x=\frac4{x^2}\to0^+$, eğri asimptotun üstünde).</p>
+<p>$f'=1-\frac8{x^3}=\frac{x^3-8}{x^3}$: artan $(-\infty,0)$ ve $[2,\infty)$, azalan $(0,2]$. Yerel min $(2,3)$.</p>
+<p>$f''=\frac{24}{x^4}\gt 0$: her iki dalda yukarı konkav, büküm yok. $x$-kesişimi $x=-\sqrt[3]4$, $y$-kesişimi yok.</p></div></details></div>
+
+<div class="q"><p><b>Q6 (14 pts)</b> $x^2+4y^2=4$ elipsi üzerinde $(1,0)$’a en yakın ve en uzak noktaları bul.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$y^2=\frac{4-x^2}4$, $D^2=(x-1)^2+\frac{4-x^2}{4}=\frac34x^2-2x+2$, $x\in[-2,2]$ (<b>kapalı aralık</b>).</p>
+<p>Türev: $\frac32x-2=0$, yani $x=\frac43$. Değerler: $D^2(-2)=9$, $D^2(2)=1$, $D^2(\frac43)=\frac23$.</p>
+<p>En yakın: $\big(\frac43,\pm\frac{\sqrt5}3\big)$, uzaklık $\sqrt{2/3}$. En uzak: $(-2,0)$, uzaklık $3$. Uç nokta tuzağı: maksimum kritik noktada değil, uçta.</p></div></details></div>
+
+<div class="q"><p><b>Q7 (8 pts)</b> Bir kürenin yarıçapı 10 cm ölçülüyor, ölçüm hatası en fazla 0.05 cm. Diferansiyellerle hacimdeki en büyük hatayı ve bağıl hatayı tahmin et.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>$dV=4\pi r^2dr=20\pi\approx62.8$ cm³. Bağıl hata $3\frac{dr}r=0.015$ (%1.5).</p></div></details></div>
+
+<div class="q"><p><b>Q8 (6+6+6 pts) · zor</b> $f(x)=ax^3+bx^2+cx+d$’nin $(-1,4)$’te yerel maksimumu ve $(1,-12)$’de büküm noktası var. (a) $a,b,c,d$’yi bul. (b) $[-2,6]$’da mutlak ekstremumlar. (c) $f(x)=0$’ın tam üç gerçek kökü olduğunu göster.</p>
+<details class="sol"><summary>Çözüm</summary><div><p>(a) $f''(1)=6a+2b=0$, yani $b=-3a$. $f'(-1)=3a-2b+c=0$, yani $c=-9a$. $f(-1)=-a+b-c+d=5a+d=4$ ve $f(1)=a+b+c+d=-11a+d=-12$. Çıkar: $16a=16$, buradan $a=1$, $b=-3$, $c=-9$, $d=-1$. Kontrol: $f''(-1)=-12\lt 0$, maks ✓.</p>
+<p>(b) $f'=3(x-3)(x+1)$. $f(-2)=-3$, $f(-1)=4$, $f(3)=-28$, $f(6)=53$. Maks $53$ ($x=6$), min $-28$ ($x=3$).</p>
+<p>(c) $f(-2)\lt 0\lt f(-1)$, $f(-1)\gt 0\gt f(3)$, $f(3)\lt 0\lt f(6)$. IVT ile üç ayrı aralıkta kök. Kübik polinomun en fazla üç kökü var (ya da Rolle: dört kök $f''$’yü iki kez sıfırlardı, oysa $f''$ doğrusal).</p></div></details></div>
+</section>
+
+<section class="block" id="kaynak">
+<h2>Kaynaklar ve bağlantılar</h2>
+<ul>
+<li><a href="210-cikmis.pdf">210 soruluk MT2 bankası</a> ve <a href="cikmis-dizini.md">sayfa dizini</a></li>
+<li><a href="README.md">MT2 rehberi</a> · <a href="deneme.md">özgün deneme</a> · <a href="teoremle-ispat.pdf">teoremle ispat örnekleri</a> · <a href="kapsam.png">resmî kapsam görseli</a></li>
+<li><a href="../recitations/README.md">2026 Güz haftalık föyler ve çözümleri</a> · <a href="../recitations/2024-guz/README.md">2024 Güz ek föyler</a></li>
+<li>Tam kâğıt provası: <a href="../denemeler/README.md">boş gerçek sınavlar ve çözüm eşleşmeleri</a>. 2024 Güz MT2 Q1(c) ve 2024 Bahar MT2 Q1(c) kapsam dışı.</li>
+<li><a href="../kaynaklar/cikmis-sinavlar.pdf">352 sayfalık tam sınav arşivi</a> · <a href="../kaynaklar/konu-defteri.pdf">konu defteri</a> · <a href="../defter.html">genel çalışma defteri (MT2 + final)</a></li>
+</ul>
+</section>
+</main>
+</div>
+<script>
+const ITEMS={"1":[4,121,"2025-2026 Bahar Final Q9"],"3":[5,121,"2025-2026 Bahar MT1 Q8"],"4":[5,122,"2025-2026 Güz Final Q4"],"6":[6,123,"2024-2025 Bahar MT1 Q6"],"7":[7,123,"2024-2025 Güz MT1 Q7"],"10":[9,126,"2023-2024 Güz MT1 Q5"],"12":[10,127,"2022-2023 Güz MT1 Q4"],"14":[11,128,"2021-2022 Bahar MT1 Q6"],"17":[12,129,"2019-2020 Güz Final Q8"],"19":[13,130,"2019-2020 Güz MT1 Q5"],"20":[14,131,"2018-2019 Bahar MT1 Q2"],"22":[15,132,"2018-2019 Güz MT1 Q2"],"23":[15,133,"2018-2019 Güz MT1 Q6"],"25":[16,134,"2017-2018 Güz MT1 Q5"],"26":[17,135,"2016-2017 Bahar Final Q5"],"28":[18,136,"2016-2017 Bahar MT1 Q5"],"30":[19,137,"2016-2017 Güz MT1 Q1"],"33":[20,139,"2015-2016 Bahar MT1 Q5"],"35":[21,140,"2015-2016 Güz MT1 Q5"],"36":[22,140,"2014-2015 Bahar MT1 Q5"],"37":[22,141,"2014-2015 Güz MT1 Q5"],"39":[23,142,"2014-2015 Güz MT1 Q7"],"43":[25,145,"2012-2013 Güz MT1 Q4"],"45":[26,146,"2011-2012 Bahar MT1 Q5"],"46":[27,147,"2011-2012 Güz MT1 Q4"],"49":[28,149,"2010-2011 Güz MT1 Q5"],"2":[4,121,"2025-2026 Bahar MT1 Q3"],"5":[6,122,"2024-2025 Bahar MT1 Q3"],"8":[7,124,"2024-2025 Güz MT1 Q8"],"9":[8,125,"2023-2024 Güz MT1 Q2"],"11":[9,127,"2022-2023 Güz MT1 Q3"],"13":[10,128,"2021-2022 Bahar MT1 Q3"],"15":[11,129,"2021-2022 Güz MT1 Q6"],"16":[12,129,"2019-2020 Güz Final Q6"],"18":[13,130,"2019-2020 Güz MT1 Q4"],"21":[14,131,"2018-2019 Güz Final Q5"],"24":[16,134,"2017-2018 Bahar MT1 Q3"],"27":[17,135,"2016-2017 Bahar MT1 Q1"],"29":[18,136,"2016-2017 Güz Final Q3"],"31":[19,138,"2016-2017 Güz MT1 Q5"],"32":[20,138,"2015-2016 Bahar MT1 Q2"],"34":[21,139,"2015-2016 Güz MT1 Q2"],"38":[23,141,"2014-2015 Güz MT1 Q6"],"40":[24,142,"2013-2014 Güz MT1 Q7"],"41":[24,143,"2012-2013 Bahar Final Q1"],"42":[25,144,"2012-2013 Güz MT1 Q2"],"44":[26,146,"2011-2012 Bahar MT1 Q4"],"47":[27,148,"2011-2012 Güz MT1 Q8"],"48":[28,148,"2010-2011 Güz MT1 Q4"],"51":[30,149,"2025-2026 Bahar MT1 Q5"],"53":[31,150,"2025-2026 Güz MT1 Q6"],"54":[32,151,"2024-2025 Bahar MT1 Q4"],"56":[33,151,"2024-2025 Güz MT1 Q4"],"59":[34,153,"2022-2023 Güz MT1 Q1"],"60":[35,154,"2021-2022 Güz MT1 Q4"],"62":[36,155,"2018-2019 Bahar MT1 Q1"],"63":[36,156,"2018-2019 Güz MT1 Q3"],"65":[37,158,"2015-2016 Bahar MT1 Q6"],"67":[38,160,"2014-2015 Bahar MT1 Q3"],"69":[39,161,"2014-2015 Güz MT1 Q3"],"70":[40,161,"2013-2014 Güz MT1 Q1"],"71":[40,162,"2012-2013 Güz Final Q1"],"74":[42,164,"2011-2012 Güz Final Q2"],"75":[43,165,"2011-2012 Güz MT1 Q1"],"77":[44,167,"2010-2011 Güz MT1 Q1"],"57":[33,152,"2023-2024 Bahar MT2 Q2"],"61":[35,154,"2019-2020 Güz MT1 Q3"],"64":[37,157,"2017-2018 Güz MT1 Q1"],"66":[38,159,"2015-2016 Güz MT1 Q6"],"68":[39,160,"2014-2015 Bahar MT1 Q4"],"72":[41,162,"2012-2013 Güz MT1 Q5"],"73":[41,163,"2011-2012 Bahar MT2 Q3"],"76":[43,166,"2011-2012 Güz MT1 Q7"],"78":[44,168,"2010-2011 Güz MT1 Q6"],"50":[30,149,"2025-2026 Bahar MT2 Q3"],"52":[31,150,"2025-2026 Güz MT1 Q4"],"55":[32,151,"2024-2025 Bahar MT1 Q7"],"58":[34,152,"2023-2024 Güz MT1 Q4"],"81":[47,169,"2025-2026 Bahar MT2 Q1"],"86":[50,171,"2025-2026 Güz MT2 Q1"],"94":[55,176,"2024-2025 Güz Final Q1"],"97":[56,177,"2024-2025 Güz MT2 Q1"],"100":[58,179,"2023-2024 Bahar MT2 Q1"],"104":[60,182,"2023-2024 Güz Final Q1"],"106":[61,183,"2023-2024 Güz MT2 Q1"],"114":[67,188,"2022-2023 Güz MT2 Q6"],"115":[67,189,"2021-2022 Bahar Bütünleme Q1"],"116":[68,189,"2021-2022 Bahar Final Q2"],"119":[69,191,"2021-2022 Bahar MT2 Q3"],"122":[71,193,"2021-2022 Güz MT1 Q2"],"125":[73,195,"2019-2020 Güz Final Q1"],"128":[74,198,"2019-2020 Güz MT2 Q2"],"130":[75,199,"2018-2019 Bahar Final Q1"],"135":[78,202,"2018-2019 Bahar MT1 Q4"],"137":[79,204,"2018-2019 Güz MT2 Q1"],"142":[82,207,"2017-2018 Bahar Final Q7"],"147":[84,211,"2017-2018 Bahar MT1 Q4"],"150":[86,213,"2017-2018 Güz MT2 Q1"],"156":[89,218,"2016-2017 Bahar MT2 Q2"],"160":[91,220,"2016-2017 Güz Final Q7"],"162":[92,222,"2016-2017 Güz MT2 Q2"],"165":[93,224,"2015-2016 Bahar Final Q1"],"171":[97,228,"2015-2016 Güz MT2 Q1"],"175":[99,231,"2014-2015 Bahar MT2 Q1"],"185":[105,240,"2013-2014 Güz Final Q1"],"189":[107,244,"2012-2013 Bahar MT2 Q1"],"203":[115,255,"2011-2012 Güz MT2 Q4"],"208":[118,259,"2010-2011 Güz MT2 Q3"],"83":[49,170,"2025-2026 Bahar MT2 Q9"],"87":[51,172,"2025-2026 Güz MT2 Q3"],"93":[54,175,"2024-2025 Bahar MT2 Q7"],"98":[57,178,"2024-2025 Güz MT2 Q4"],"103":[60,181,"2023-2024 Bahar MT2 Q6"],"108":[63,184,"2023-2024 Güz MT2 Q3"],"111":[65,186,"2022-2023 Güz MT2 Q2"],"120":[70,192,"2021-2022 Bahar MT2 Q6"],"123":[72,194,"2021-2022 Güz MT1 Q5"],"127":[74,197,"2019-2020 Güz MT2 Q1"],"133":[77,201,"2018-2019 Bahar MT2 Q6"],"140":[81,206,"2018-2019 Güz MT2 Q6"],"145":[83,209,"2017-2018 Bahar MT2 Q6"],"152":[87,215,"2017-2018 Güz MT2 Q6"],"155":[88,217,"2016-2017 Bahar MT2 Q1"],"161":[91,221,"2016-2017 Güz MT2 Q1"],"166":[94,225,"2015-2016 Bahar MT2 Q1"],"173":[98,229,"2015-2016 Güz MT2 Q7"],"177":[100,232,"2014-2015 Bahar MT2 Q6"],"182":[103,237,"2014-2015 Güz MT2 Q6"],"186":[105,241,"2013-2014 Güz Final Q6"],"188":[106,242,"2013-2014 Güz MT1 Q8"],"190":[107,245,"2012-2013 Bahar MT2 Q2"],"193":[109,247,"2012-2013 Güz MT2 Q3"],"197":[112,250,"2011-2012 Bahar MT2 Q2"],"200":[114,253,"2011-2012 Güz Final Q1"],"204":[116,256,"2011-2012 Güz MT2 Q5"],"210":[119,260,"2010-2011 Güz MT2 Q6"],"85":[50,171,"2025-2026 Güz Final Q2"],"92":[54,174,"2024-2025 Bahar MT2 Q6"],"99":[58,178,"2024-2025 Güz MT2 Q5"],"101":[59,180,"2023-2024 Bahar MT2 Q3"],"109":[64,184,"2023-2024 Güz MT2 Q4"],"110":[64,185,"2022-2023 Güz Final Q1"],"117":[68,190,"2021-2022 Bahar MT2 Q1"],"129":[75,198,"2019-2020 Güz MT2 Q6"],"131":[76,200,"2018-2019 Bahar MT2 Q1"],"139":[80,205,"2018-2019 Güz MT2 Q5"],"141":[81,207,"2017-2018 Bahar Final Q1"],"144":[83,208,"2017-2018 Bahar MT2 Q2"],"151":[86,214,"2017-2018 Güz MT2 Q4"],"157":[89,219,"2016-2017 Bahar MT2 Q5"],"163":[92,223,"2016-2017 Güz MT2 Q3"],"167":[94,226,"2015-2016 Bahar MT2 Q2"],"176":[100,231,"2014-2015 Bahar MT2 Q5"],"179":[101,234,"2014-2015 Güz Final Q2"],"191":[108,246,"2012-2013 Bahar MT2 Q3"],"194":[109,248,"2012-2013 Güz MT2 Q4"],"199":[113,252,"2011-2012 Bahar MT2 Q5"],"202":[115,254,"2011-2012 Güz MT2 Q3"],"206":[117,258,"2010-2011 Güz Final Q5"],"79":[46,168,"2025-2026 Bahar Final Q4"],"84":[49,170,"2025-2026 Bahar MT1 Q6"],"89":[52,173,"2024-2025 Bahar Final Q6"],"102":[59,180,"2023-2024 Bahar MT2 Q4"],"112":[66,187,"2022-2023 Güz MT2 Q3"],"121":[71,193,"2021-2022 Bahar MT1 Q7"],"124":[72,195,"2021-2022 Güz MT1 Q7"],"126":[73,196,"2019-2020 Güz Final Q2"],"134":[77,202,"2018-2019 Bahar MT1 Q3"],"146":[84,210,"2017-2018 Bahar MT1 Q1"],"153":[87,216,"2017-2018 Güz MT1 Q6"],"158":[90,219,"2016-2017 Bahar MT1 Q6"],"164":[93,223,"2016-2017 Güz MT1 Q6"],"168":[95,226,"2015-2016 Bahar MT1 Q3"],"174":[99,230,"2015-2016 Güz MT1 Q3"],"178":[101,233,"2014-2015 Bahar MT1 Q6"],"183":[104,238,"2014-2015 Güz MT1 Q4"],"187":[106,242,"2013-2014 Güz MT1 Q4"],"192":[108,246,"2012-2013 Bahar MT1 Q5"],"198":[113,251,"2011-2012 Bahar MT2 Q4"],"205":[116,257,"2011-2012 Güz MT1 Q6"],"207":[117,258,"2010-2011 Güz Final Q6"],"82":[48,170,"2025-2026 Bahar MT2 Q8"],"88":[52,172,"2025-2026 Güz MT2 Q4"],"90":[53,173,"2024-2025 Bahar MT2 Q3"],"95":[55,176,"2024-2025 Güz Final Q2"],"105":[61,182,"2023-2024 Güz Final Q4"],"113":[66,187,"2022-2023 Güz MT2 Q4"],"136":[78,204,"2018-2019 Bahar MT1 Q6"],"148":[85,212,"2017-2018 Güz Final Q1"],"154":[88,216,"2016-2017 Bahar Final Q4"],"159":[90,220,"2016-2017 Güz Final Q6"],"169":[96,227,"2015-2016 Güz Final Q4"],"170":[97,227,"2015-2016 Güz Final Q8"],"181":[102,236,"2014-2015 Güz MT2 Q4"],"184":[104,239,"2013-2014 Bahar Final Q8"],"209":[118,260,"2010-2011 Güz MT2 Q4"],"80":[46,169,"2025-2026 Bahar Final Q7"],"91":[53,173,"2024-2025 Bahar MT2 Q4"],"96":[56,177,"2024-2025 Güz Final Q4"],"118":[69,190,"2021-2022 Bahar MT2 Q2"],"132":[76,200,"2018-2019 Bahar MT2 Q2"],"138":[79,205,"2018-2019 Güz MT2 Q4"],"143":[82,207,"2017-2018 Bahar Final Q8"],"149":[85,212,"2017-2018 Güz Final Q8"],"172":[98,229,"2015-2016 Güz MT2 Q5"],"180":[102,235,"2014-2015 Güz MT2 Q3"],"196":[111,249,"2011-2012 Bahar Final Q4"],"201":[114,254,"2011-2012 Güz MT2 Q1"],"107":[62,183,"2023-2024 Güz MT2 Q2"],"195":[110,249,"2011-2012 Bahar Final Q2"]};
+(function(){
+const LS={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const P='m119mt2:';
+// theme
+const root=document.documentElement;const th=LS.get(P+'theme');if(th)root.dataset.theme=th;
+document.getElementById('themeBtn').onclick=()=>{const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;root.dataset.theme=dark?'light':'dark';LS.set(P+'theme',root.dataset.theme)};
+// item links
+document.querySelectorAll('a.it[data-i]').forEach(a=>{const n=+a.dataset.i,it=ITEMS[n];if(!it){a.textContent='#'+n;return}
+ a.href='210-cikmis.pdf#page='+it[0];a.target='_blank';a.rel='noopener';a.title='Soru s.'+it[0]+' · Çözüm s.'+it[1];
+ a.innerHTML='#'+n+' <span class="y">'+it[2].replace(/^20(\d\d)-20(\d\d) /,'$1–$2 ')+'</span>';
+ if(a.hasAttribute('data-x'))a.classList.add('out');
+ const s=document.createElement('a');s.className='sl';s.href='210-cikmis.pdf#page='+it[1];s.target='_blank';s.rel='noopener';s.textContent='çözüm';s.title='#'+n+' çözümü, s.'+it[1];a.after(s)});
+// checkboxes
+const tips=[...document.querySelectorAll('article.tip[data-key]')];
+function prog(){const d=tips.filter(t=>t.classList.contains('done')).length;document.getElementById('prog').textContent=d+'/'+tips.length+' tip';
+ document.querySelectorAll('section.topic').forEach(s=>{const ts=s.querySelectorAll('article.tip'),dn=s.querySelectorAll('article.tip.done');const a=document.querySelector('nav.toc a[href="#'+s.id+'"]');if(a){let c=a.querySelector('.cnt');if(!c){c=document.createElement('span');c.className='cnt';a.append(c)}c.textContent=dn.length+'/'+ts.length}})}
+tips.forEach(t=>{const cb=t.querySelector('header input[type=checkbox]');const k=P+'tip:'+t.dataset.key;if(LS.get(k)==='1'){cb.checked=true;t.classList.add('done')}
+ cb.addEventListener('change',()=>{t.classList.toggle('done',cb.checked);LS.set(k,cb.checked?'1':'0');prog()})});
+prog();
+// notes
+document.querySelectorAll('textarea.note').forEach(ta=>{const k=P+ta.dataset.key;ta.value=LS.get(k)||'';let t;ta.addEventListener('input',()=>{clearTimeout(t);t=setTimeout(()=>LS.set(k,ta.value),300)})});
+// search
+const q=document.getElementById('q');const units=[...document.querySelectorAll('article.tip,.cheat,.trick,.hard,.mock .q')];
+q.addEventListener('input',()=>{const v=q.value.trim().toLocaleLowerCase('tr');
+ units.forEach(u=>{u.classList.toggle('hidden',!!v&&!u.textContent.toLocaleLowerCase('tr').includes(v.replace(/^#/,'#')))});
+ document.querySelectorAll('section.topic,section.block').forEach(s=>{const has=[...s.querySelectorAll('article.tip,.cheat,.trick,.hard,.mock .q')].some(u=>!u.classList.contains('hidden'));s.classList.toggle('hidden',!!v&&!has)})});
+// toc highlight + mobile menu
+const toc=document.getElementById('toc');document.getElementById('menuBtn').onclick=()=>toc.classList.toggle('open');
+toc.addEventListener('click',e=>{if(e.target.closest('a'))toc.classList.remove('open')});
+const links=[...toc.querySelectorAll('a')];const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id))}})},{rootMargin:'-20% 0px -70% 0px'});
+document.querySelectorAll('section[id]').forEach(s=>obs.observe(s));
+// timers
+document.querySelectorAll('.timer').forEach(tm=>{const total=+tm.dataset.min*60;let left=total,iv=null;const c=tm.querySelector('.clock');
+ const show=()=>{const m=Math.floor(left/60),s=left%60;c.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')};
+ const b=tm.querySelector('.start');b.onclick=()=>{if(iv){clearInterval(iv);iv=null;b.textContent='Devam'}else{iv=setInterval(()=>{left--;show();if(left<=0){clearInterval(iv);iv=null;c.textContent='Süre bitti';b.textContent='Başlat'}},1000);b.textContent='Duraklat'}};
+ tm.querySelector('.reset').onclick=()=>{clearInterval(iv);iv=null;left=total;show();b.textContent='Başlat'};
+ tm.querySelector('.showall').onclick=()=>{const ds=tm.closest('section').querySelectorAll('details.sol');const open=![...ds].every(d=>d.open);ds.forEach(d=>d.open=open)}});
+// print: open all solutions
+addEventListener('beforeprint',()=>document.querySelectorAll('details.sol').forEach(d=>d.open=true));
+// katex
+function km(){if(window.renderMathInElement){renderMathInElement(document.getElementById('main'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,ignoredTags:['script','noscript','style','textarea','pre','code']})}}
+if(window.renderMathInElement)km();else addEventListener('load',km);
+})();
+</script>
+</body>
+</html>
