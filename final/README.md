@@ -1,5 +1,7 @@
 # Final çalışma rehberi
 
+[180 sorunun konu ve çözüm dizini](cikmis-dizini.md) · [İntegral pratiği için 2024 föyleri](../recitations/2024-guz/README.md) · [Haftalık çözümler](../recitations/README.md)
+
 2026–27 güz izlencesindeki integral ve geometri başlıkları. Final için ayrı bir kapsam duyurusu paylaşılmadığından bu sıra çalışma planıdır. Önceki konuları karma çıkmışlarla tekrar et.
 
 [İzlence ve önerilen kitap soruları](../kaynaklar/izlence-2.pdf) · [Çözümlü sınav arşivi](../kaynaklar/cikmis-sinavlar.pdf)

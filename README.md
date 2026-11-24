@@ -11,6 +11,21 @@
 | Gerçek sınav çözmek | [Üç boş sınav ve karşılık gelen çözümler](denemeler/README.md) |
 | Konuyu ayrıntılı okumak | [Konu defterinin sayfa dizini](kaynaklar/konu-indeksi.md) · [İki Drive’daki ek sınav kaynakları](kaynaklar/drive.md) |
 
+## Haftalık föyler ve çözümler
+
+| Hafta | Konu | Soru | Kaynak |
+| --- | --- | ---: | --- |
+| [01 · Çözümler](recitations/hafta-01.md) | Doğrular, bölgeler, fonksiyonlar ve grafikler | 8 | [Orijinal föy](recitations/hafta-01.pdf) |
+| [02 · Çözümler](recitations/hafta-02.md) | Limit, sıkıştırma ve parçalı fonksiyonlar | 7 | [Orijinal föy](recitations/hafta-02.pdf) |
+| [03 · Çözümler](recitations/hafta-03.md) | Süreklilik, ara değer ve türev tanımı | 6 | [Orijinal föy](recitations/hafta-03.pdf) |
+| [04 · Çözümler](recitations/hafta-04.md) | Zincir kuralı, Rolle ve MVT ile ispat | 7 | [Orijinal föy](recitations/hafta-04.pdf) |
+| [05 · Çözümler](recitations/hafta-05.md) | Örtük türev, ters fonksiyon ve logaritmik türev | 8 | [Orijinal föy](recitations/hafta-05.pdf) |
+| [06 · Çözümler](recitations/hafta-06.md) | Bağlı hızlar ve belirsiz biçimler | 8 | [Orijinal föy](recitations/hafta-06.pdf) |
+| [07 · Çözümler](recitations/hafta-07.md) | Ekstremum, konkavlık ve grafik çizimi | 4 | [Orijinal föy](recitations/hafta-07.pdf) |
+| [08 · Çözümler](recitations/hafta-08.md) | Doğrusallaştırma, optimizasyon ve Riemann toplamı | 5 | [Orijinal föy](recitations/hafta-08.pdf) |
+
+[14 haftalık ek recitation dizini](recitations/2024-guz/README.md) · [210 MT2 sorusu ve çözüm sayfaları](mt2/cikmis-dizini.md) · [Final için 180 integral ve geometri sorusu](final/cikmis-dizini.md)
+
 ## MT2’ye dört oturumda hazırlan
 
 1. **Teorem ve türev.** [Hafta 4](recitations/hafta-04.pdf) Q3–7 ile ispat yaz. [Hafta 5](recitations/hafta-05.pdf) Q1 ve Q3–8 ile örtük türev, ters fonksiyon ve logaritmik türeve geç. Ters trigonometrik fonksiyonlar için [210 soruluk bankadan](mt2/210-cikmis.pdf) 50, 52, 55’i çöz.

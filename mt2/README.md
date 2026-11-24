@@ -1,5 +1,7 @@
 # MT2 çalışma rehberi
 
+[210 sorunun konu ve çözüm dizini](cikmis-dizini.md) · [Teoremle ispat örnekleri](teoremle-ispat.pdf) · [Haftalık çözümler](../recitations/README.md)
+
 Duyuru ve kapsam görselindeki 12 başlık. Çıkmış numaraları PDF içindeki Item numaralarıdır.
 
 [210 çıkmış soru ve çözümleri](210-cikmis.pdf) · [Resmî kapsam görseli](kapsam.png)

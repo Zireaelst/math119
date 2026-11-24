@@ -19,3 +19,17 @@
 | 2024–25 Bahar | [s.126](../kaynaklar/cikmis-sinavlar.pdf#page=126) | [s.232](../kaynaklar/cikmis-sinavlar.pdf#page=232) |
 
 Tüm dönemlerin listesi arşivin ilk sayfalarında. 2024–25 Bahar finalinde özellikle Q2 integral teknikleri, Q3 uygunsuz integraller ve Q5 yay uzunluğu için kullanılabilir.
+
+## Tek dosyada çözüm anahtarları
+
+- [2021 Güz final](cozumler/2021-guz-final.pdf)
+- [2022 Güz final](cozumler/2022-guz-final.pdf)
+- [2022 Güz MT2](cozumler/2022-guz-mt2.pdf)
+- [2023 Güz final](cozumler/2023-guz-final.pdf)
+- [2023 Güz MT2](cozumler/2023-guz-mt2.pdf)
+- [2024 Bahar MT2](cozumler/2024-bahar-mt2.pdf)
+- [2024 Güz final](cozumler/2024-guz-final.pdf)
+- [2024 Güz MT2](cozumler/2024-guz-mt2.pdf)
+- [2025 Bahar final](cozumler/2025-bahar-final.pdf)
+- [2025 Bahar MT2](cozumler/2025-bahar-mt2.pdf)
+- [2025 Güz final](cozumler/2025-guz-final.pdf)
